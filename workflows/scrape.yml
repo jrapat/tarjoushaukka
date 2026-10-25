@@ -30,7 +30,7 @@ jobs:
           playwright install chromium
 
       - name: Aja skraikkaus-skripti
-        run: python skripti.py  # <--- Varmista että nimi vastaa omaa Python-tiedostoasi!
+        run: python juomienselaus.py
 
       - name: Tallenna päivitetty data.json takaisin GitHubiin
         run: |
