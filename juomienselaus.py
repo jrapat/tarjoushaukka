@@ -1,6 +1,7 @@
 import json
 import os
 import re
+import subprocess
 from playwright.sync_api import sync_playwright
 
 # Tarkistetaan automaattisesti, ajetaanko skriptiä GitHub Actionsissa (CI) vai omalla koneella
@@ -146,7 +147,7 @@ def get_store_links_from_page(page):
 def check_product_group(
     search_url: str,
     group_label: str,
-    target_store_count: int = 60,
+    target_store_count: int = 50,
     required_keywords: list = None,
     exclude_keywords: list = None,
 ):
@@ -159,7 +160,6 @@ def check_product_group(
 
   results = []
   with sync_playwright() as p:
-    # headless=False omalla koneella (näet mitä tapahtuu), True GitHubissa
     browser = p.chromium.launch(
         headless=is_ci,
         args=[
@@ -212,7 +212,7 @@ def check_product_group(
       print(
           f"[{len(master_store_data)+1}/{target_store_count}] {store_name}"
           f" ({dist:.0f} km)",
-          end="",
+          end=", ",
           flush=True,
       )
 
@@ -247,7 +247,7 @@ def check_product_group(
                     }
                 """)
 
-        print(f" -> Löytyi {len(store_products)} tuotetta.")
+        print(f"Löytyi {len(store_products)} tuotetta.")
         master_store_data.append({
             "store": store_name,
             "distance": dist,
@@ -261,13 +261,12 @@ def check_product_group(
           ):
             stores_to_visit.append(ns)
       except Exception as e:
-        print(f" -> Virhe: {e}")
+        print(f"Virhe: {e}")
 
       idx += 1
 
     browser.close()
 
-    # Käsittely ja suodatus (debug-tulostuksilla)
     for store_info in master_store_data:
       s_name = store_info["store"]
       s_dist = store_info["distance"]
@@ -292,9 +291,27 @@ def check_product_group(
                 "product": p["name"],
                 "basePrice": val,
             })
-            print(f"   [HYVÄKSYTTY] {s_name}: {p['name']} -> {val} €")
 
   return results
+
+
+def git_push_updates():
+  print("\n🔄 Päivitetään data.json GitHub-repositorioosi...")
+  try:
+    subprocess.run(["git", "add", "data.json"], check=True)
+    subprocess.run(
+        [
+            "git",
+            "commit",
+            "-m",
+            "Automated price update from local scraper [skip ci]",
+        ],
+        check=True,
+    )
+    subprocess.run(["git", "push"], check=True)
+    print("🚀 Päivitys työnnetty GitHubiin!")
+  except subprocess.CalledProcessError:
+    print("ℹ️ Ei uusia muutoksia pushattavaksi tai git-komento epäonnistui.")
 
 
 if __name__ == "__main__":
@@ -303,7 +320,7 @@ if __name__ == "__main__":
           "https://www.k-ruoka.fi/kauppa/tuotehaku?haku=Coca%20cola&tuote=coca-cola-zero-033l-kmp-24-pack-6415600550413"
       ),
       group_label="24-packit (Limut)",
-      target_store_count=5,  # Testataan ensin pienemmällä määrällä (esim. 5 kauppaa), että dataa alkaa tulla!
+      target_store_count=50,
       required_keywords=["24"],
       exclude_keywords=["novelle", "kivennäisvesi", "vichy"],
   )
@@ -313,7 +330,7 @@ if __name__ == "__main__":
           "https://www.k-ruoka.fi/kauppa/tuotehaku?haku=novelle&tuote=novelle-kivennaisve-033l-kmp-24-pack-6413601003846"
       ),
       group_label="24-packit (Novelle Kivennäisvedet)",
-      target_store_count=5,
+      target_store_count=50,
       required_keywords=["novelle"],
       exclude_keywords=[],
   )
@@ -323,7 +340,7 @@ if __name__ == "__main__":
           "https://www.k-ruoka.fi/kauppa/tuotehaku/juomat/virvoitusjuomat/cola-juomat?tuote=pepsi-max-033l-kmp-18-pack-6413605291584"
       ),
       group_label="18-packit",
-      target_store_count=5,
+      target_store_count=50,
       required_keywords=["18"],
       exclude_keywords=["novelle", "kivennäisvesi"],
   )
@@ -333,7 +350,7 @@ if __name__ == "__main__":
           "https://www.k-ruoka.fi/kauppa/tuotehaku?haku=Pepsi%20max&tuote=pepsi-max-033l-tlk-6-pack-6413605015555"
       ),
       group_label="6-packit",
-      target_store_count=5,
+      target_store_count=50,
       required_keywords=["6"],
       exclude_keywords=["dippi", "taffel", "mauste", "kastike", "chip"],
   )
@@ -356,6 +373,8 @@ if __name__ == "__main__":
   with open("data.json", "w", encoding="utf-8") as f:
     json.dump(output_data, f, ensure_ascii=False, indent=4)
 
-  print(
-      "\n✅ Kaikki tiedot tallennettu onnistuneesti tiedostoon data.json!"
-  )
+  print("\n✅ Kaikki tiedot tallennettu onnistuneesti tiedostoon data.json!")
+
+  # Ajetaan git push automaattisesti haun jälkeen
+  git_push_updates()
+  
