@@ -66,7 +66,7 @@
                         </div>
                     </div>
 
-                    <button onclick="recalculate()" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-medium py-2 px-4 rounded-lg transition text-sm shadow-md">
+                    <button onclick="recalculate()" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-medium py-2 px-4 rounded-lg transition text-sm shadow-md cursor-pointer">
                         Laske uudelleen
                     </button>
                 </div>
@@ -85,7 +85,7 @@
                 <div class="bg-slate-800 border border-slate-700 rounded-2xl p-6 shadow-xl">
                     <div class="flex justify-between items-center mb-4">
                         <h2 class="text-xl font-bold text-white flex items-center gap-2">
-                            ⚡ Sähköauton Top-valinnat
+                            ⚡ Sähköauton Top 10 -valinnat
                         </h2>
                         <span id="categoryTitleEV" class="text-xs bg-emerald-500/20 text-emerald-400 px-3 py-1 rounded-full font-medium"></span>
                     </div>
@@ -98,7 +98,7 @@
                 <div class="bg-slate-800 border border-slate-700 rounded-2xl p-6 shadow-xl">
                     <div class="flex justify-between items-center mb-4">
                         <h2 class="text-xl font-bold text-white flex items-center gap-2">
-                            ⛽ Polttomoottorin Top-valinnat
+                            ⛽ Polttomoottorin Top 10 -valinnat
                         </h2>
                         <span id="categoryTitleICE" class="text-xs bg-amber-500/20 text-amber-400 px-3 py-1 rounded-full font-medium"></span>
                     </div>
@@ -114,10 +114,10 @@
     <script>
         let categories = {};
 
-        // Haetaan data ulkoisesta data.json tiedostosta sivun latautuessa
+        // Haetaan data data.json tiedostosta aina tuoreena (välimuistin ohitus ?t=)
         async function loadData() {
             try {
-                const response = await fetch('data.json');
+                const response = await fetch('data.json?t=' + new Date().getTime());
                 if (!response.ok) throw new Error('Dataa ei löytynyt');
                 categories = await response.json();
                 initTabs();
@@ -139,7 +139,7 @@
             container.innerHTML = "";
             for (const [key, cat] of Object.entries(categories)) {
                 const btn = document.createElement("button");
-                btn.className = `px-4 py-2 rounded-xl text-sm font-medium transition ${key === currentCategoryKey ? 'bg-blue-600 text-white shadow-lg' : 'bg-slate-700 hover:bg-slate-600 text-slate-300'}`;
+                btn.className = `px-4 py-2 rounded-xl text-sm font-medium transition cursor-pointer ${key === currentCategoryKey ? 'bg-blue-600 text-white shadow-lg' : 'bg-slate-700 hover:bg-slate-600 text-slate-300'}`;
                 btn.innerText = cat.name;
                 btn.onclick = () => {
                     currentCategoryKey = key;
@@ -203,7 +203,8 @@
             const container = document.getElementById(elementId);
             container.innerHTML = "";
 
-            items.slice(0, 5).forEach((item, index) => {
+            // Rajataan Top 10 halvinta
+            items.slice(0, 10).forEach((item, index) => {
                 const price = item[priceKey].toFixed(2);
                 const base = item.basePrice.toFixed(2);
                 
@@ -213,13 +214,13 @@
                 div.className = "bg-slate-900/60 border border-slate-700/80 rounded-xl p-4 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 transition hover:border-slate-600";
                 div.innerHTML = `
                     <div class="flex items-center gap-3">
-                        <span class="w-7 h-7 rounded-lg font-bold text-xs flex items-center justify-center ${badgeColor}">${index + 1}</span>
+                        <span class="w-7 h-7 rounded-lg font-bold text-xs flex items-center justify-center shrink-0 ${badgeColor}">${index + 1}</span>
                         <div>
                             <h4 class="font-semibold text-white text-sm sm:text-base">${item.store}</h4>
                             <p class="text-xs text-slate-400">${item.product} • Suoraan ${item.distance} km (edestakaisin ${item.roundTripKm} km, ${item.driveTime})</p>
                         </div>
                     </div>
-                    <div class="text-left sm:text-right w-full sm:w-auto flex sm:flex-col justify-between items-center sm:items-end border-t sm:border-0 border-slate-800 pt-2 sm:pt-0">
+                    <div class="text-left sm:text-right w-full sm:w-auto flex sm:flex-col justify-between items-center sm:items-end border-t sm:border-0 border-slate-800 pt-2 sm:pt-0 shrink-0">
                         <span class="text-lg font-bold text-white">${price} € <span class="text-xs font-normal text-slate-400">/ kpl</span></span>
                         <span class="text-xs text-slate-400">Tuotehinta: ${base} €</span>
                     </div>
