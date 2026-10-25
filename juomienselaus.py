@@ -7,27 +7,50 @@ from playwright.sync_api import sync_playwright
 # Tarkistetaan automaattisesti, ajetaanko skriptiä GitHub Actionsissa (CI) vai omalla koneella
 is_ci = os.getenv("CI") is not None
 
-# Täydellinen ja päivitetty etäisyyssanakirja Tuusulasta (km yhdensuuntaisesti)
+# Päivitetty ja täydennetty etäisyyssanakirja Tuusulasta (km yhdensuuntaisesti)
 TUUSULA_DISTANCES = {
     # Lähialue & Tuusula / Järvenpää / Kerava
     "Hyrrä": 1,
-    "Lahela": 3,
     "Hyrylä": 1,
+    "Lahela": 3,
+    "Sahankulma": 4,   # Tuusula
     "Parila": 5,
     "Järvenpää": 10,
+    "Kinnari": 10,     # Järvenpää
+    "Kyrölä": 10,      # Järvenpää
+    "Saunakallio": 10, # Järvenpää
     "Pajala": 11,
     "Kerava": 12,
     "Karuselli": 12,
+    "Kalevantori": 12, # Kerava
+    "Ahjontori": 12,   # Kerava
+    "Haarajoki": 13,   # Järvenpää
     "Kellokoski": 14,
+    "Kivistö": 14,
     "Jokela": 20,
     "Pornainen": 28,
     "Mäntsälä": 32,
-    "Pornainen": 30,
+    # Nurmijärvi & Rajamäki & Klaukkala & Vihti
+    "Lähde": 22,       # Rajamäki
+    "Rajamäki": 22,
+    "Klaukkala": 22,
+    "Nurmijärvi": 20,
+    "Masi": 20,
+    "Nummela": 45,
+    "Karkkila": 55,
+    "Lohja": 45,
+    "Kirkkonummi": 48,
     # Vantaa
     "Korso": 15,
     "Nikinmäki": 15,
     "Hakunila": 15,
+    "Ilola": 15,
+    "Kulomäki": 15,
+    "Mikkola": 16,
+    "Rekola": 16,
+    "Oregano": 16,
     "Koivukylä": 17,
+    "Asola": 17,
     "Tammisto": 18,
     "Jumbo": 18,
     "Tikkuri": 18,
@@ -36,23 +59,20 @@ TUUSULA_DISTANCES = {
     "Jokiniemi": 18,
     "Simonkallio": 18,
     "Peltola": 18,
-    "Ilola": 15,
-    "Kulomäki": 15,
-    "Mikkola": 16,
-    "Rekola": 16,
-    "Asola": 17,
-    "Kivistö": 14,
+    "Yliveto": 18,
+    "Riskiläkuja": 18, # Vantaa
+    "Kastanja": 18,    # Vantaa
+    "Kartanonkoski": 18, # Vantaa
     "Manteli": 20,
     "Honkatori": 22,
     "Martsari": 21,
     "Martinlaakso": 21,
     "Myyrmäki": 22,
+    "Niipperi": 22,
+    "Länsimäki": 22,
     "Pähkinärinne": 25,
     "Hämeenkylä": 24,
-    "Yliveto": 18,
-    "Länsimäki": 22,
-    "Oregano": 16,
-    # Helsinki
+    # Helsinki & Sipoo
     "Puistori": 20,
     "Heikinlaakso": 20,
     "Suutarila": 20,
@@ -61,47 +81,37 @@ TUUSULA_DISTANCES = {
     "Töyrynummi": 21,
     "Torpparinmäki": 21,
     "Jakomäki": 22,
-    "Malmi": 28,
-    "Malminmäki": 28,
-    "Mustapekka": 25,
-    "Pohjois-Haaga": 26,
-    "Haaga": 26,
-    "Konala": 25,
-    "Reimarla": 26,
-    "Arabia": 18,
     "Viikki": 23,
     "Myllypuro": 24,
-    "Kontumarket": 25,
     "Vesala": 24,
+    "Mustapekka": 25,
+    "Konala": 25,
+    "Kontumarket": 25,
     "Easton": 25,
     "Columbus": 25,
+    "Basilika": 25,    # Sipoo
+    "Pohjois-Haaga": 26,
+    "Haaga": 26,
+    "Reimarla": 26,
     "Hertta": 26,
-    "Redi": 27,
-    "Tripla": 27,
-    "Kasarmi": 30,
-    "Postitalo": 30,
-    "Merihaka": 29,
-    "Ruoholahti": 34,
-    "Saari": 30,
-    # Espoo & Kauniainen
     "Derby": 26,
     "Leppävaara": 26,
     "Perkkaa": 27,
+    "Redi": 27,
+    "Tripla": 27,
     "Sello": 28,
     "Lähderanta": 27,
-    "Niipperi": 22,
-    "Grani": 30,
+    "Malmi": 28,
+    "Malminmäki": 28,
     "Munkki": 28,
-    "Kivenlahti": 35,
+    "Merihaka": 29,
+    "Kasarmi": 30,
+    "Postitalo": 30,
+    "Saari": 30,
+    "Masurkka": 30,    # Helsinki
     "Iso Omena": 33,
-    # Nurmijärvi & Klaukkala & Vihti
-    "Klaukkala": 22,
-    "Nurmijärvi": 20,
-    "Masi": 20,
-    "Nummela": 45,
-    "Karkkila": 55,
-    "Lohja": 45,
-    "Kirkkonummi": 48,
+    "Ruoholahti": 34,
+    "Kivenlahti": 35,
     # Porvoo
     "Porvoo": 45,
     "Tarmola": 47,
@@ -146,16 +156,22 @@ def get_distance(store_name: str) -> float:
     if key.lower() in s_lower:
       return float(dist)
 
-  # Alueelliset oletusetäisyydet, jos tiettyä lähikauppaa ei ole sanakirjassa
   if any(x in s_lower for x in ["tuusula", "hyrylä"]):
     return 1.0
-  if any(x in s_lower for x in ["järvenpää", "kerava"]):
-    return 11.0
+  if any(x in s_lower for x in ["järvenpää"]):
+    return 10.0
+  if any(x in s_lower for x in ["kerava"]):
+    return 12.0
   if any(x in s_lower for x in ["vantaa", "korso", "tikkurila", "koivukylä"]):
     return 18.0
-  if any(x in s_lower for x in ["helsinki", "espoo", "kauniainen"]):
+  if any(x in s_lower for x in ["sipoo"]):
     return 25.0
-  if any(x in s_lower for x in ["nurmijärvi", "klaukkala", "hyvinkää"]):
+  if any(x in s_lower for x in ["helsinki", "espoo", "kauniainen"]):
+    return 30.0
+  if any(
+      x in s_lower
+      for x in ["nurmijärvi", "rajamäki", "klaukkala", "hyvinkää"]
+  ):
     return 22.0
   if any(x in s_lower for x in ["mäntsälä", "porvoo"]):
     return 35.0
