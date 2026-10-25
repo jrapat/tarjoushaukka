@@ -1,52 +1,56 @@
 import json
+import os
 import re
 from playwright.sync_api import sync_playwright
 
+# Tarkistetaan automaattisesti, ajetaanko skriptiä GitHub Actionsissa (CI) vai omalla koneella
+is_ci = os.getenv("CI") is not None
+
 # Kattava etäisyyssanakirja Tuusulasta (km yhdensuuntaisesti)
 TUUSULA_DISTANCES = {
-    'Hyrrä': 1,
-    'Lahela': 3,
-    'Hyrylä': 1,
-    'Parila': 5,
-    'Järvenpää': 10,
-    'Pajala': 11,
-    'Kerava': 12,
-    'Karuselli': 12,
-    'Kellokoski': 14,
-    'Kivistö': 14,
-    'Koivukylä': 17,
-    'Tammisto': 18,
-    'Jumbo': 18,
-    'Hyvinkää': 20,
-    'Manteli': 20,
-    'Martsari': 21,
-    'Myyrmäki': 22,
-    'Niipperi': 22,
-    'Klaukkala': 22,
-    'Pähkinärinne': 25,
-    'Konala': 25,
-    'Sello': 28,
-    'Malmi': 28,
-    'Malminmäki': 28,
-    'Arabia': 18,
-    'Hakunila': 15,
-    'Honkatori': 22,
-    'Masi': 20,
-    'Easton': 25,
-    'Columbus': 25,
-    'Mäntsälä': 32,
-    'Kivenlahti': 35,
-    'Ruoholahti': 34,
-    'Porvoo': 45,
-    'Riihimäki': 48,
-    'Lohja': 45,
-    'Nummela': 45,
-    'Kirkkonummi': 48,
-    'Hämeensaari': 75,
-    'Forssa': 120,
-    'Kouvola': 150,
-    'Lielahti': 150,
-    'Jämsä': 205,
+    "Hyrrä": 1,
+    "Lahela": 3,
+    "Hyrylä": 1,
+    "Parila": 5,
+    "Järvenpää": 10,
+    "Pajala": 11,
+    "Kerava": 12,
+    "Karuselli": 12,
+    "Kellokoski": 14,
+    "Kivistö": 14,
+    "Koivukylä": 17,
+    "Tammisto": 18,
+    "Jumbo": 18,
+    "Hyvinkää": 20,
+    "Manteli": 20,
+    "Martsari": 21,
+    "Myyrmäki": 22,
+    "Niipperi": 22,
+    "Klaukkala": 22,
+    "Pähkinärinne": 25,
+    "Konala": 25,
+    "Sello": 28,
+    "Malmi": 28,
+    "Malminmäki": 28,
+    "Arabia": 18,
+    "Hakunila": 15,
+    "Honkatori": 22,
+    "Masi": 20,
+    "Easton": 25,
+    "Columbus": 25,
+    "Mäntsälä": 32,
+    "Kivenlahti": 35,
+    "Ruoholahti": 34,
+    "Porvoo": 45,
+    "Riihimäki": 48,
+    "Lohja": 45,
+    "Nummela": 45,
+    "Kirkkonummi": 48,
+    "Hämeensaari": 75,
+    "Forssa": 120,
+    "Kouvola": 150,
+    "Lielahti": 150,
+    "Jämsä": 205,
 }
 
 
@@ -59,20 +63,20 @@ def get_distance(store_name: str) -> float:
   if any(
       x in s_lower
       for x in [
-          'tuusula',
-          'järvenpää',
-          'kerava',
-          'vantaa',
-          'helsinki',
-          'espoo',
-          'nurmijärvi',
-          'sipoo',
+          "tuusula",
+          "järvenpää",
+          "kerava",
+          "vantaa",
+          "helsinki",
+          "espoo",
+          "nurmijärvi",
+          "sipoo",
       ]
   ):
     return 20.0
   if any(
       x in s_lower
-      for x in ['hyvinkää', 'mäntsälä', 'porvoo', 'lohja', 'vihti', 'riihimäki']
+      for x in ["hyvinkää", "mäntsälä", "porvoo", "lohja", "vihti", "riihimäki"]
   ):
     return 45.0
   return 120.0
@@ -80,7 +84,7 @@ def get_distance(store_name: str) -> float:
 
 def set_store_to_hyrra(page):
   try:
-    page.goto('https://www.k-ruoka.fi/kauppa/k-supermarket-hyrra', timeout=30000)
+    page.goto("https://www.k-ruoka.fi/kauppa/k-supermarket-hyrra", timeout=30000)
     page.wait_for_timeout(2000)
     onetrust_btn = page.locator(
         '#onetrust-accept-btn-handler, button:has-text("Hyväksy kaikki")'
@@ -117,7 +121,7 @@ def get_store_links_from_page(page):
             more_btn.first.click(timeout=1000)
           except Exception:
             pass
-        page.evaluate('window.scrollBy(0, 1000);')
+        page.evaluate("window.scrollBy(0, 1000);")
         page.wait_for_timeout(400)
   except Exception:
     pass
@@ -146,7 +150,7 @@ def check_product_group(
     required_keywords: list = None,
     exclude_keywords: list = None,
 ):
-  print(f'\n🥤 HAETAAN KATEGORIA: {group_label.upper()}')
+  print(f"\n🥤 HAETAAN KATEGORIA: {group_label.upper()}")
 
   if required_keywords is None:
     required_keywords = []
@@ -155,25 +159,25 @@ def check_product_group(
 
   results = []
   with sync_playwright() as p:
-    # headless=True ja bottisuojauksen ohitusargumentit Linux-ympäristöä varten
+    # headless=False omalla koneella (näet mitä tapahtuu), True GitHubissa
     browser = p.chromium.launch(
-        headless=True,
+        headless=is_ci,
         args=[
-            '--no-sandbox',
-            '--disable-setuid-sandbox',
-            '--disable-dev-shm-usage',
-            '--disable-blink-features=AutomationControlled',
-            '--start-maximized',
+            "--no-sandbox",
+            "--disable-setuid-sandbox",
+            "--disable-dev-shm-usage",
+            "--disable-blink-features=AutomationControlled",
+            "--start-maximized",
         ],
     )
     context = browser.new_context(
         user_agent=(
-            'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
-            ' (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36'
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+            " (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36"
         ),
-        locale='fi-FI',
-        viewport={'width': 1280, 'height': 900},
-        extra_http_headers={'Accept-Language': 'fi-FI,fi;q=0.9'},
+        locale="fi-FI",
+        viewport={"width": 1280, "height": 900},
+        extra_http_headers={"Accept-Language": "fi-FI,fi;q=0.9"},
     )
     page = context.new_page()
     page.add_init_script(
@@ -181,15 +185,16 @@ def check_product_group(
     )
 
     set_store_to_hyrra(page)
-    page.goto(search_url, wait_until='domcontentloaded', timeout=60000)
+    page.goto(search_url, wait_until="domcontentloaded", timeout=60000)
     page.wait_for_timeout(1500)
 
     stores_to_visit = []
     visited_urls = set()
 
     initial_stores = get_store_links_from_page(page)
+    print(f"Löytyi {len(initial_stores)} kauppaa kiertoon.")
     for s in initial_stores:
-      if s['url'] not in visited_urls:
+      if s["url"] not in visited_urls:
         stores_to_visit.append(s)
 
     master_store_data = []
@@ -199,20 +204,20 @@ def check_product_group(
         idx < len(stores_to_visit) and len(master_store_data) < target_store_count
     ):
       current_store = stores_to_visit[idx]
-      store_name = current_store['name']
-      store_url = current_store['url']
+      store_name = current_store["name"]
+      store_url = current_store["url"]
       visited_urls.add(store_url)
 
       dist = get_distance(store_name)
       print(
-          f'[{len(master_store_data)+1}/{target_store_count}] {store_name}'
-          f' ({dist:.0f} km)',
-          end=', ',
+          f"[{len(master_store_data)+1}/{target_store_count}] {store_name}"
+          f" ({dist:.0f} km)",
+          end="",
           flush=True,
       )
 
       try:
-        page.goto(store_url, wait_until='domcontentloaded', timeout=30000)
+        page.goto(store_url, wait_until="domcontentloaded", timeout=30000)
         page.wait_for_timeout(1000)
 
         store_products = page.evaluate("""
@@ -242,33 +247,34 @@ def check_product_group(
                     }
                 """)
 
+        print(f" -> Löytyi {len(store_products)} tuotetta.")
         master_store_data.append({
-            'store': store_name,
-            'distance': dist,
-            'products': store_products,
+            "store": store_name,
+            "distance": dist,
+            "products": store_products,
         })
 
         new_stores = get_store_links_from_page(page)
         for ns in new_stores:
-          if ns['url'] not in visited_urls and not any(
-              s['url'] == ns['url'] for s in stores_to_visit
+          if ns["url"] not in visited_urls and not any(
+              s["url"] == ns["url"] for s in stores_to_visit
           ):
             stores_to_visit.append(ns)
-      except Exception:
-        pass
+      except Exception as e:
+        print(f" -> Virhe: {e}")
 
       idx += 1
 
-    print('\n')
     browser.close()
 
+    # Käsittely ja suodatus (debug-tulostuksilla)
     for store_info in master_store_data:
-      s_name = store_info['store']
-      s_dist = store_info['distance']
+      s_name = store_info["store"]
+      s_dist = store_info["distance"]
 
-      if store_info['products']:
-        for p in store_info['products']:
-          p_name = p['name'].lower()
+      if store_info["products"]:
+        for p in store_info["products"]:
+          p_name = p["name"].lower()
 
           if required_keywords and not all(
               req in p_name for req in required_keywords
@@ -277,76 +283,79 @@ def check_product_group(
           if any(ex in p_name for ex in exclude_keywords):
             continue
 
-          match = re.search(r'(\d+[\.,]\d+)\s*€', p['price'])
+          match = re.search(r"(\d+[\.,]\d+)\s*€", p["price"])
           if match:
-            val = float(match.group(1).replace(',', '.'))
+            val = float(match.group(1).replace(",", "."))
             results.append({
-                'store': s_name,
-                'distance': s_dist,
-                'product': p['name'],
-                'basePrice': val,
+                "store": s_name,
+                "distance": s_dist,
+                "product": p["name"],
+                "basePrice": val,
             })
+            print(f"   [HYVÄKSYTTY] {s_name}: {p['name']} -> {val} €")
 
   return results
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
   res_limut = check_product_group(
       search_url=(
-          'https://www.k-ruoka.fi/kauppa/tuotehaku?haku=Coca%20cola&tuote=coca-cola-zero-033l-kmp-24-pack-6415600550413'
+          "https://www.k-ruoka.fi/kauppa/tuotehaku?haku=Coca%20cola&tuote=coca-cola-zero-033l-kmp-24-pack-6415600550413"
       ),
-      group_label='24-packit (Limut)',
-      target_store_count=60,
-      required_keywords=['24'],
-      exclude_keywords=['novelle', 'kivennäisvesi', 'vichy'],
+      group_label="24-packit (Limut)",
+      target_store_count=5,  # Testataan ensin pienemmällä määrällä (esim. 5 kauppaa), että dataa alkaa tulla!
+      required_keywords=["24"],
+      exclude_keywords=["novelle", "kivennäisvesi", "vichy"],
   )
 
   res_novelle = check_product_group(
       search_url=(
-          'https://www.k-ruoka.fi/kauppa/tuotehaku?haku=novelle&tuote=novelle-kivennaisve-033l-kmp-24-pack-6413601003846'
+          "https://www.k-ruoka.fi/kauppa/tuotehaku?haku=novelle&tuote=novelle-kivennaisve-033l-kmp-24-pack-6413601003846"
       ),
-      group_label='24-packit (Novelle Kivennäisvedet)',
-      target_store_count=60,
-      required_keywords=['novelle'],
+      group_label="24-packit (Novelle Kivennäisvedet)",
+      target_store_count=5,
+      required_keywords=["novelle"],
       exclude_keywords=[],
   )
 
   res_18pack = check_product_group(
       search_url=(
-          'https://www.k-ruoka.fi/kauppa/tuotehaku/juomat/virvoitusjuomat/cola-juomat?tuote=pepsi-max-033l-kmp-18-pack-6413605291584'
+          "https://www.k-ruoka.fi/kauppa/tuotehaku/juomat/virvoitusjuomat/cola-juomat?tuote=pepsi-max-033l-kmp-18-pack-6413605291584"
       ),
-      group_label='18-packit',
-      target_store_count=60,
-      required_keywords=['18'],
-      exclude_keywords=['novelle', 'kivennäisvesi'],
+      group_label="18-packit",
+      target_store_count=5,
+      required_keywords=["18"],
+      exclude_keywords=["novelle", "kivennäisvesi"],
   )
 
   res_6pack = check_product_group(
       search_url=(
-          'https://www.k-ruoka.fi/kauppa/tuotehaku?haku=Pepsi%20max&tuote=pepsi-max-033l-tlk-6-pack-6413605015555'
+          "https://www.k-ruoka.fi/kauppa/tuotehaku?haku=Pepsi%20max&tuote=pepsi-max-033l-tlk-6-pack-6413605015555"
       ),
-      group_label='6-packit',
-      target_store_count=60,
-      required_keywords=['6'],
-      exclude_keywords=['dippi', 'taffel', 'mauste', 'kastike', 'chip'],
+      group_label="6-packit",
+      target_store_count=5,
+      required_keywords=["6"],
+      exclude_keywords=["dippi", "taffel", "mauste", "kastike", "chip"],
   )
 
   output_data = {
-      '24-pack-limut': {
-          'name': '24-packit (Limut)',
-          'buyQuantity': 2,
-          'items': res_limut,
+      "24-pack-limut": {
+          "name": "24-packit (Limut)",
+          "buyQuantity": 2,
+          "items": res_limut,
       },
-      'novelle': {
-          'name': '24-packit (Novelle)',
-          'buyQuantity': 2,
-          'items': res_novelle,
+      "novelle": {
+          "name": "24-packit (Novelle)",
+          "buyQuantity": 2,
+          "items": res_novelle,
       },
-      '18-pack': {'name': '18-packit', 'buyQuantity': 2, 'items': res_18pack},
-      '6-pack': {'name': '6-packit', 'buyQuantity': 4, 'items': res_6pack},
+      "18-pack": {"name": "18-packit", "buyQuantity": 2, "items": res_18pack},
+      "6-pack": {"name": "6-packit", "buyQuantity": 4, "items": res_6pack},
   }
 
-  with open('data.json', 'w', encoding='utf-8') as f:
+  with open("data.json", "w", encoding="utf-8") as f:
     json.dump(output_data, f, ensure_ascii=False, indent=4)
 
-  print('\n✅ Kaikki tiedot tallennettu onnistuneesti tiedostoon data.json!')
+  print(
+      "\n✅ Kaikki tiedot tallennettu onnistuneesti tiedostoon data.json!"
+  )
