@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juomavertailu & Matkakululaskuri (Tuusula)</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-slate-900 text-slate-100 min-p-4 sm:p-8">
+    <div class="max-w-7xl mx-auto space-y-6">
+        
+        <!-- Header -->
+        <header class="bg-slate-800 border border-slate-700 rounded-2xl p-6 shadow-xl flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+            <div>
+                <h1 class="text-2xl sm:text-3xl font-bold tracking-tight text-white flex items-center gap-2">
+                    🥤 Juomavertailu & Matkakululaskuri
+                </h1>
+                <p class="text-slate-400 text-sm mt-1">Lähtöpiste: Tuusula • Automaattinen efektiivisen hinnan laskenta</p>
+            </div>
+            
+            <!-- Category Tabs -->
+            <div id="categoryTabs" class="flex flex-wrap gap-2">
+                <!-- Dynamically generated -->
+            </div>
+        </header>
+
+        <!-- Main Content Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+            
+            <!-- Controls / Settings Sidebar -->
+            <div class="lg:col-span-1 space-y-6">
+                
+                <!-- Vehicle Settings Card -->
+                <div class="bg-slate-800 border border-slate-700 rounded-2xl p-5 shadow-lg space-y-4">
+                    <h2 class="text-lg font-semibold text-white border-b border-slate-700 pb-2">🚗 Autoasetukset</h2>
+                    
+                    <!-- EV Settings -->
+                    <div class="space-y-3">
+                        <h3 class="text-xs font-bold uppercase tracking-wider text-emerald-400">Sähköauto (EV)</h3>
+                        <div>
+                            <label class="block text-xs text-slate-400 mb-1">Kulutus (kWh / 100km)</label>
+                            <input type="number" id="evConsumption" value="16.0" step="0.5" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-emerald-500">
+                        </div>
+                        <div>
+                            <label class="block text-xs text-slate-400 mb-1">Sähkön hinta (€ / kWh)</label>
+                            <input type="number" id="evPrice" value="0.08" step="0.01" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-emerald-500">
+                        </div>
+                    </div>
+
+                    <hr class="border-slate-700">
+
+                    <!-- ICE Settings -->
+                    <div class="space-y-3">
+                        <h3 class="text-xs font-bold uppercase tracking-wider text-amber-400">Polttomoottori (Bensa/Diesel)</h3>
+                        <div>
+                            <label class="block text-xs text-slate-400 mb-1">Kulutus (l / 100km)</label>
+                            <input type="number" id="iceConsumption" value="6.0" step="0.1" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-amber-500">
+                        </div>
+                        <div>
+                            <label class="block text-xs text-slate-400 mb-1">Polttoaineen hinta (€ / l)</label>
+                            <input type="number" id="icePrice" value="2.20" step="0.05" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-amber-500">
+                        </div>
+                    </div>
+
+                    <button onclick="recalculate()" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-medium py-2 px-4 rounded-lg transition text-sm shadow-md">
+                        Laske uudelleen
+                    </button>
+                </div>
+
+                <!-- Info Box -->
+                <div class="bg-slate-800/50 border border-slate-700/60 rounded-2xl p-5 text-xs text-slate-400 space-y-2">
+                    <p class="font-semibold text-slate-300">💡 Vinkki:</p>
+                    <p>Efektiivinen hinta laskee yhteen tuotteen hinnan sekä edestakaisen matkan polttoaine- / sähkökustannukset jaettuna ostomäärällä.</p>
+                </div>
+            </div>
+
+            <!-- Results Section -->
+            <div class="lg:col-span-3 space-y-6">
+                
+                <!-- EV Top Choice Banner / List -->
+                <div class="bg-slate-800 border border-slate-700 rounded-2xl p-6 shadow-xl">
+                    <div class="flex justify-between items-center mb-4">
+                        <h2 class="text-xl font-bold text-white flex items-center gap-2">
+                            ⚡ Sähköauton Top-valinnat
+                        </h2>
+                        <span id="categoryTitleEV" class="text-xs bg-emerald-500/20 text-emerald-400 px-3 py-1 rounded-full font-medium"></span>
+                    </div>
+                    <div id="evResultsList" class="space-y-3">
+                        <!-- Dynamically populated -->
+                    </div>
+                </div>
+
+                <!-- ICE Top Choice Banner / List -->
+                <div class="bg-slate-800 border border-slate-700 rounded-2xl p-6 shadow-xl">
+                    <div class="flex justify-between items-center mb-4">
+                        <h2 class="text-xl font-bold text-white flex items-center gap-2">
+                            ⛽ Polttomoottorin Top-valinnat
+                        </h2>
+                        <span id="categoryTitleICE" class="text-xs bg-amber-500/20 text-amber-400 px-3 py-1 rounded-full font-medium"></span>
+                    </div>
+                    <div id="iceResultsList" class="space-y-3">
+                        <!-- Dynamically populated -->
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Esitiedot / Datalogi skriptin tuottamista tuloksista
+        const categories = {
+            "24-pack-limut": {
+                name: "24-packit (Limut)",
+                buyQuantity: 2,
+                items: [
+                    { store: "K‑Citymarket Mäntsälä", distance: 32, product: "Sprite Zero Lemon-Lime 24-pack", basePrice: 10.99 },
+                    { store: "K‑Citymarket Mäntsälä", distance: 32, product: "Fanta Vadelma Zero 24-pack", basePrice: 10.99 },
+                    { store: "K‑Supermarket HerkkuDuo", distance: 120, product: "Coca-Cola Zero 24-pack", basePrice: 10.99 },
+                    { store: "K‑Supermarket Pajala", distance: 11, product: "Coca-Cola Zero 24-pack", basePrice: 12.95 },
+                    { store: "K‑Citymarket Salo", distance: 120, product: "Fanta Vadelma Zero 24-pack", basePrice: 11.99 },
+                    { store: "K‑Supermarket Konala", distance: 25, product: "Coca-Cola Zero 24-pack", basePrice: 13.99 },
+                    { store: "K‑Citymarket Koivukylä", distance: 17, product: "Coca-Cola Zero 24-pack", basePrice: 14.99 },
+                    { store: "K‑Supermarket Hyrrä", distance: 1, product: "Coca-Cola Zero 24-pack", basePrice: 16.30 }
+                ]
+            },
+            "novelle": {
+                name: "24-packit (Novelle)",
+                buyQuantity: 2,
+                items: [
+                    { store: "K‑Citymarket Järvenpää", distance: 10, product: "Novelle Kivennäisvesi 24-pack", basePrice: 10.99 },
+                    { store: "K‑Citymarket Kerava", distance: 12, product: "Novelle Citronelle 24-pack", basePrice: 10.99 },
+                    { store: "K‑Citymarket Kivistö", distance: 14, product: "Novelle Kivennäisvesi 24-pack", basePrice: 10.99 },
+                    { store: "K‑Citymarket Hyvinkää", distance: 20, product: "Novelle Citronelle 24-pack", basePrice: 11.29 }
+                ]
+            },
+            "18-pack": {
+                name: "18-packit",
+                buyQuantity: 2,
+                items: [
+                    { store: "K‑Supermarket Honkatori", distance: 120, product: "Pepsi Max 18-pack", basePrice: 9.95 },
+                    { store: "K‑Supermarket Honkatori", distance: 120, product: "Hartwall Jaffa Appelsiini 18-pack", basePrice: 9.95 },
+                    { store: "K‑Supermarket Arabia", distance: 18, product: "Pepsi Max 18-pack", basePrice: 9.99 },
+                    { store: "K‑Supermarket Konala", distance: 25, product: "Hartwall Jaffa Appelsiini 18-pack", basePrice: 10.95 },
+                    { store: "K‑Citymarket Kerava", distance: 12, product: "Pepsi Max 18-pack", basePrice: 13.95 },
+                    { store: "K‑Supermarket Hyrrä", distance: 1, product: "Pepsi Max 18-pack", basePrice: 14.95 }
+                ]
+            },
+            "6-pack": {
+                name: "6-packit",
+                buyQuantity: 4,
+                items: [
+                    { store: "K‑Market Manteli", distance: 20, product: "Pepsi Max 6-pack", basePrice: 4.99 },
+                    { store: "K‑Citymarket Järvenpää", distance: 10, product: "Pepsi Max 6-pack", basePrice: 5.19 },
+                    { store: "K‑Citymarket Kerava", distance: 12, product: "Pepsi Max 6-pack", basePrice: 5.19 },
+                    { store: "K‑Supermarket Hyrrä", distance: 1, product: "Pepsi Max 6-pack", basePrice: 5.39 }
+                ]
+            }
+        };
+
+        let currentCategoryKey = "24-pack-limut";
+
+        function initTabs() {
+            const container = document.getElementById("categoryTabs");
+            container.innerHTML = "";
+            for (const [key, cat] of Object.entries(categories)) {
+                const btn = document.createElement("button");
+                btn.className = `px-4 py-2 rounded-xl text-sm font-medium transition ${key === currentCategoryKey ? 'bg-blue-600 text-white shadow-lg' : 'bg-slate-700 hover:bg-slate-600 text-slate-300'}`;
+                btn.innerText = cat.name;
+                btn.onclick = () => {
+                    currentCategoryKey = key;
+                    initTabs();
+                    recalculate();
+                };
+                container.appendChild(btn);
+            }
+        }
+
+        function calculateDriveTime(distanceOneWay, speedKmh = 100) {
+            const roundTripKm = distanceOneWay * 2;
+            const hours = roundTripKm / speedKmh;
+            const h = Math.floor(hours);
+            const m = Math.round((hours - h) * 60);
+            return {
+                roundTripKm,
+                timeStr: h > 0 ? `${h} h ${m} min` : `${m} min`
+            };
+        }
+
+        function recalculate() {
+            const evCons = parseFloat(document.getElementById("evConsumption").value) || 16;
+            const evPriceVal = parseFloat(document.getElementById("evPrice").value) || 0.08;
+            const iceCons = parseFloat(document.getElementById("iceConsumption").value) || 6;
+            const icePriceVal = parseFloat(document.getElementById("icePrice").value) || 2.20;
+
+            const costPerKmEV = (evCons / 100) * evPriceVal;
+            const costPerKmICE = (iceCons / 100) * icePriceVal;
+
+            const cat = categories[currentCategoryKey];
+            document.getElementById("categoryTitleEV").innerText = cat.name;
+            document.getElementById("categoryTitleICE").innerText = cat.name;
+
+            const processedItems = cat.items.map(item => {
+                const dt = calculateDriveTime(item.distance);
+                const addCostEV = (dt.roundTripKm * costPerKmEV) / cat.buyQuantity;
+                const addCostICE = (dt.roundTripKm * costPerKmICE) / cat.buyQuantity;
+
+                return {
+                    ...item,
+                    roundTripKm: dt.roundTripKm,
+                    driveTime: dt.timeStr,
+                    effEV: item.basePrice + addCostEV,
+                    effICE: item.basePrice + addCostICE
+                };
+            });
+
+            // Sort EV
+            const sortedEV = [...processedItems].sort((a, b) => a.effEV - b.effEV);
+            renderList("evResultsList", sortedEV, 'effEV', 'emerald');
+
+            // Sort ICE
+            const sortedICE = [...processedItems].sort((a, b) => a.effICE - b.effICE);
+            renderList("iceResultsList", sortedICE, 'effICE', 'amber');
+        }
+
+        function renderList(elementId, items, priceKey, colorTheme) {
+            const container = document.getElementById(elementId);
+            container.innerHTML = "";
+
+            items.slice(0, 5).forEach((item, index) => {
+                const price = item[priceKey].toFixed(2);
+                const base = item.basePrice.toFixed(2);
+                
+                const badgeColor = index === 0 ? `bg-${colorTheme}-500/20 text-${colorTheme}-400 border border-${colorTheme}-500/30` : 'bg-slate-700 text-slate-300';
+
+                const div = document.createElement("div");
+                div.className = "bg-slate-900/60 border border-slate-700/80 rounded-xl p-4 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 transition hover:border-slate-600";
+                div.innerHTML = `
+                    <div class="flex items-center gap-3">
+                        <span class="w-7 h-7 rounded-lg font-bold text-xs flex items-center justify-center ${badgeColor}">${index + 1}</span>
+                        <div>
+                            <h4 class="font-semibold text-white text-sm sm:text-base">${item.store}</h4>
+                            <p class="text-xs text-slate-400">${item.product} • Suoraan ${item.distance} km (eestaas ${item.roundTripKm} km, ${item.driveTime})</p>
+                        </div>
+                    </div>
+                    <div class="text-left sm:text-right w-full sm:w-auto flex sm:flex-col justify-between items-center sm:items-end border-t sm:border-0 border-slate-800 pt-2 sm:pt-0">
+                        <span class="text-lg font-bold text-white">${price} € <span class="text-xs font-normal text-slate-400">/ kpl</span></span>
+                        <span class="text-xs text-slate-400">Tuotehinta: ${base} €</span>
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        // Initialize on load
+        window.onload = () => {
+            initTabs();
+            recalculate();
+        };
+    </script>
+</body>
+</html>
