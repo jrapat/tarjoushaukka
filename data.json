@@ -1,0 +1,22 @@
+{
+    "24-pack-limut": {
+        "name": "24-packit (Limut)",
+        "buyQuantity": 2,
+        "items": []
+    },
+    "novelle": {
+        "name": "24-packit (Novelle)",
+        "buyQuantity": 2,
+        "items": []
+    },
+    "18-pack": {
+        "name": "18-packit",
+        "buyQuantity": 2,
+        "items": []
+    },
+    "6-pack": {
+        "name": "6-packit",
+        "buyQuantity": 4,
+        "items": []
+    }
+}
