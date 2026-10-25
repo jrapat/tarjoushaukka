@@ -112,54 +112,24 @@
     </div>
 
     <script>
-        // Esitiedot / Datalogi skriptin tuottamista tuloksista
-        const categories = {
-            "24-pack-limut": {
-                name: "24-packit (Limut)",
-                buyQuantity: 2,
-                items: [
-                    { store: "K‑Citymarket Mäntsälä", distance: 32, product: "Sprite Zero Lemon-Lime 24-pack", basePrice: 10.99 },
-                    { store: "K‑Citymarket Mäntsälä", distance: 32, product: "Fanta Vadelma Zero 24-pack", basePrice: 10.99 },
-                    { store: "K‑Supermarket HerkkuDuo", distance: 120, product: "Coca-Cola Zero 24-pack", basePrice: 10.99 },
-                    { store: "K‑Supermarket Pajala", distance: 11, product: "Coca-Cola Zero 24-pack", basePrice: 12.95 },
-                    { store: "K‑Citymarket Salo", distance: 120, product: "Fanta Vadelma Zero 24-pack", basePrice: 11.99 },
-                    { store: "K‑Supermarket Konala", distance: 25, product: "Coca-Cola Zero 24-pack", basePrice: 13.99 },
-                    { store: "K‑Citymarket Koivukylä", distance: 17, product: "Coca-Cola Zero 24-pack", basePrice: 14.99 },
-                    { store: "K‑Supermarket Hyrrä", distance: 1, product: "Coca-Cola Zero 24-pack", basePrice: 16.30 }
-                ]
-            },
-            "novelle": {
-                name: "24-packit (Novelle)",
-                buyQuantity: 2,
-                items: [
-                    { store: "K‑Citymarket Järvenpää", distance: 10, product: "Novelle Kivennäisvesi 24-pack", basePrice: 10.99 },
-                    { store: "K‑Citymarket Kerava", distance: 12, product: "Novelle Citronelle 24-pack", basePrice: 10.99 },
-                    { store: "K‑Citymarket Kivistö", distance: 14, product: "Novelle Kivennäisvesi 24-pack", basePrice: 10.99 },
-                    { store: "K‑Citymarket Hyvinkää", distance: 20, product: "Novelle Citronelle 24-pack", basePrice: 11.29 }
-                ]
-            },
-            "18-pack": {
-                name: "18-packit",
-                buyQuantity: 2,
-                items: [
-                    { store: "K‑Supermarket Honkatori", distance: 120, product: "Pepsi Max 18-pack", basePrice: 9.95 },
-                    { store: "K‑Supermarket Honkatori", distance: 120, product: "Hartwall Jaffa Appelsiini 18-pack", basePrice: 9.95 },
-                    { store: "K‑Supermarket Arabia", distance: 18, product: "Pepsi Max 18-pack", basePrice: 9.99 },
-                    { store: "K‑Supermarket Konala", distance: 25, product: "Hartwall Jaffa Appelsiini 18-pack", basePrice: 10.95 },
-                    { store: "K‑Citymarket Kerava", distance: 12, product: "Pepsi Max 18-pack", basePrice: 13.95 },
-                    { store: "K‑Supermarket Hyrrä", distance: 1, product: "Pepsi Max 18-pack", basePrice: 14.95 }
-                ]
-            },
-            "6-pack": {
-                name: "6-packit",
-                buyQuantity: 4,
-                items: [
-                    { store: "K‑Market Manteli", distance: 20, product: "Pepsi Max 6-pack", basePrice: 4.99 },
-                    { store: "K‑Citymarket Järvenpää", distance: 10, product: "Pepsi Max 6-pack", basePrice: 5.19 },
-                    { store: "K‑Citymarket Kerava", distance: 12, product: "Pepsi Max 6-pack", basePrice: 5.19 },
-                    { store: "K‑Supermarket Hyrrä", distance: 1, product: "Pepsi Max 6-pack", basePrice: 5.39 }
-                ]
+        let categories = {};
+
+        // Haetaan data ulkoisesta data.json tiedostosta sivun latautuessa
+        async function loadData() {
+            try {
+                const response = await fetch('data.json');
+                if (!response.ok) throw new Error('Dataa ei löytynyt');
+                categories = await response.json();
+                initTabs();
+                recalculate();
+            } catch (error) {
+                console.error('Virhe datan latauksessa:', error);
+                document.getElementById('evResultsList').innerHTML = `<p class="text-red-400 text-sm">Virhe: data.json tiedostoa ei löytynyt tai se on tyhjä. Aja ensin Python-skripti.</p>`;
             }
+        }
+
+        window.onload = () => {
+            loadData();
         };
 
         let currentCategoryKey = "24-pack-limut";
@@ -201,6 +171,8 @@
             const costPerKmICE = (iceCons / 100) * icePriceVal;
 
             const cat = categories[currentCategoryKey];
+            if (!cat) return;
+            
             document.getElementById("categoryTitleEV").innerText = cat.name;
             document.getElementById("categoryTitleICE").innerText = cat.name;
 
@@ -244,7 +216,7 @@
                         <span class="w-7 h-7 rounded-lg font-bold text-xs flex items-center justify-center ${badgeColor}">${index + 1}</span>
                         <div>
                             <h4 class="font-semibold text-white text-sm sm:text-base">${item.store}</h4>
-                            <p class="text-xs text-slate-400">${item.product} • Suoraan ${item.distance} km (eestaas ${item.roundTripKm} km, ${item.driveTime})</p>
+                            <p class="text-xs text-slate-400">${item.product} • Suoraan ${item.distance} km (edestakaisin ${item.roundTripKm} km, ${item.driveTime})</p>
                         </div>
                     </div>
                     <div class="text-left sm:text-right w-full sm:w-auto flex sm:flex-col justify-between items-center sm:items-end border-t sm:border-0 border-slate-800 pt-2 sm:pt-0">
@@ -255,12 +227,6 @@
                 container.appendChild(div);
             });
         }
-
-        // Initialize on load
-        window.onload = () => {
-            initTabs();
-            recalculate();
-        };
     </script>
 </body>
 </html>
