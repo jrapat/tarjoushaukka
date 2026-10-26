@@ -610,6 +610,30 @@
                 "basePrice": 16.25
             },
             {
+                "store": "K‑Citymarket Iso Omena",
+                "distance": 33.0,
+                "product": "Sprite Zero Sugar Lemon-Lime virvoitusjuoma 0,33l 24-pack",
+                "basePrice": 16.45
+            },
+            {
+                "store": "K‑Citymarket Iso Omena",
+                "distance": 33.0,
+                "product": "Fanta Appelsiini Zero virvoitusjuoma 0,33l 24-pack",
+                "basePrice": 16.45
+            },
+            {
+                "store": "K‑Citymarket Iso Omena",
+                "distance": 33.0,
+                "product": "Fanta Vadelma Zero virvoitusjuoma 0,33l 24-pack",
+                "basePrice": 16.45
+            },
+            {
+                "store": "K‑Citymarket Iso Omena",
+                "distance": 33.0,
+                "product": "Coca-Cola 0,33l 24-pack",
+                "basePrice": 20.45
+            },
+            {
                 "store": "K‑Citymarket Hämeensaari",
                 "distance": 30.0,
                 "product": "Coca-Cola Zero 0,33l 24-pack",
@@ -886,6 +910,30 @@
                 "basePrice": 16.15
             },
             {
+                "store": "K‑Citymarket Forssa",
+                "distance": 120.0,
+                "product": "Sprite Zero Sugar Lemon-Lime virvoitusjuoma 0,33l 24-pack",
+                "basePrice": 16.25
+            },
+            {
+                "store": "K‑Citymarket Forssa",
+                "distance": 120.0,
+                "product": "Fanta Appelsiini Zero virvoitusjuoma 0,33l 24-pack",
+                "basePrice": 16.25
+            },
+            {
+                "store": "K‑Citymarket Forssa",
+                "distance": 120.0,
+                "product": "Fanta Vadelma Zero virvoitusjuoma 0,33l 24-pack",
+                "basePrice": 16.25
+            },
+            {
+                "store": "K‑Citymarket Forssa",
+                "distance": 120.0,
+                "product": "Coca-Cola 0,33l 24-pack",
+                "basePrice": 20.2
+            },
+            {
                 "store": "K‑Citymarket Ideapark",
                 "distance": 135.0,
                 "product": "Coca-Cola Zero 0,33l 24-pack",
@@ -949,7 +997,7 @@
                 "store": "K‑Citymarket Turtola",
                 "distance": 145.0,
                 "product": "Coca-Cola 0,33l 24-pack",
-                "basePrice": 15.99
+                "basePrice": 16.99
             },
             {
                 "store": "K‑Citymarket Linnainmaa",
@@ -1319,13 +1367,13 @@
             },
             {
                 "store": "K‑Supermarket Basilika",
-                "distance": 120.0,
+                "distance": 25.0,
                 "product": "Hartwall Novelle kivennäisvesi 0,33l 24-pack",
                 "basePrice": 11.79
             },
             {
                 "store": "K‑Supermarket Basilika",
-                "distance": 120.0,
+                "distance": 25.0,
                 "product": "Hartwall Novelle Plus Sinkki E 0,33l 12-pack",
                 "basePrice": 10.5
             },
@@ -1358,6 +1406,24 @@
                 "distance": 18.0,
                 "product": "Hartwall Novelle kivennäisvesi 0,33l 24-pack",
                 "basePrice": 11.31
+            },
+            {
+                "store": "K‑Citymarket Tammisto",
+                "distance": 18.0,
+                "product": "Hartwall Novelle Vadelma-veriappelsiini kivennäisvesi 0,33l 24-pack",
+                "basePrice": 11.31
+            },
+            {
+                "store": "K‑Citymarket Tammisto",
+                "distance": 18.0,
+                "product": "Hartwall Novelle Citronelle kivennäisvesi 0,33l 24-pack",
+                "basePrice": 11.29
+            },
+            {
+                "store": "K‑Citymarket Tammisto",
+                "distance": 18.0,
+                "product": "Hartwall Novelle Plus Sinkki E 0,33l 12-pack",
+                "basePrice": 11.25
             },
             {
                 "store": "K‑Citymarket Malmi",
@@ -1445,7 +1511,7 @@
             },
             {
                 "store": "K‑Market Pornainen",
-                "distance": 30.0,
+                "distance": 28.0,
                 "product": "Hartwall Novelle kivennäisvesi 0,33l 24-pack",
                 "basePrice": 13.4
             },
@@ -1511,7 +1577,7 @@
             },
             {
                 "store": "K‑Market Masurkka",
-                "distance": 120.0,
+                "distance": 30.0,
                 "product": "Hartwall Novelle kivennäisvesi 0,33l 24-pack",
                 "basePrice": 15.9
             },
@@ -1601,13 +1667,13 @@
             },
             {
                 "store": "K‑Supermarket Arabia",
-                "distance": 18.0,
+                "distance": 120.0,
                 "product": "Hartwall Novelle kivennäisvesi 0,33l 24-pack",
                 "basePrice": 12.29
             },
             {
                 "store": "K‑Supermarket Arabia",
-                "distance": 18.0,
+                "distance": 120.0,
                 "product": "Hartwall Novelle Citronelle kivennäisvesi 0,33l 24-pack",
                 "basePrice": 12.29
             },
@@ -1679,19 +1745,19 @@
             },
             {
                 "store": "K‑Supermarket Lähde",
-                "distance": 120.0,
+                "distance": 22.0,
                 "product": "Hartwall Novelle kivennäisvesi 0,33l 24-pack",
                 "basePrice": 11.99
             },
             {
                 "store": "K‑Supermarket Lähde",
-                "distance": 120.0,
+                "distance": 22.0,
                 "product": "Hartwall Novelle Citronelle kivennäisvesi 0,33l 24-pack",
                 "basePrice": 11.99
             },
             {
                 "store": "K‑Supermarket Lähde",
-                "distance": 120.0,
+                "distance": 22.0,
                 "product": "Hartwall Novelle Plus Sinkki E 0,33l 12-pack",
                 "basePrice": 9.99
             },
@@ -1894,6 +1960,18 @@
                 "basePrice": 11.79
             },
             {
+                "store": "K‑Supermarket Hämeenkylä",
+                "distance": 24.0,
+                "product": "Hartwall Novelle Citronelle kivennäisvesi 0,33l 24-pack",
+                "basePrice": 11.79
+            },
+            {
+                "store": "K‑Supermarket Hämeenkylä",
+                "distance": 24.0,
+                "product": "Hartwall Novelle Plus Sinkki E 0,33l 12-pack",
+                "basePrice": 9.99
+            },
+            {
                 "store": "K‑Supermarket Pähkinärinne",
                 "distance": 25.0,
                 "product": "Hartwall Novelle kivennäisvesi 0,33l 24-pack",
@@ -1928,6 +2006,18 @@
                 "distance": 26.0,
                 "product": "Hartwall Novelle kivennäisvesi 0,33l 24-pack",
                 "basePrice": 12.29
+            },
+            {
+                "store": "K‑Supermarket Derby",
+                "distance": 26.0,
+                "product": "Hartwall Novelle Citronelle kivennäisvesi 0,33l 24-pack",
+                "basePrice": 12.29
+            },
+            {
+                "store": "K‑Supermarket Derby",
+                "distance": 26.0,
+                "product": "Hartwall Novelle Plus Sinkki E 0,33l 12-pack",
+                "basePrice": 10.85
             },
             {
                 "store": "K‑Supermarket Leppävaara",
@@ -2332,24 +2422,6 @@
                 "basePrice": 14.15
             },
             {
-                "store": "K‑Supermarket Hämeenkylä",
-                "distance": 24.0,
-                "product": "Pepsi Max virvoitusjuoma 0,33l 18-pack",
-                "basePrice": 14.65
-            },
-            {
-                "store": "K‑Supermarket Hämeenkylä",
-                "distance": 24.0,
-                "product": "Hartwall Jaffa Lemonade sokeriton virvoitusjuoma 0,33l 18-pack DOLLY",
-                "basePrice": 14.65
-            },
-            {
-                "store": "K‑Supermarket Hämeenkylä",
-                "distance": 24.0,
-                "product": "7UP Zero Sugar virvoitusjuoma 0,33l 18-pack",
-                "basePrice": 14.65
-            },
-            {
                 "store": "K‑Supermarket Pähkinärinne",
                 "distance": 25.0,
                 "product": "Pepsi Max virvoitusjuoma 0,33l 18-pack",
@@ -2366,6 +2438,24 @@
                 "distance": 25.0,
                 "product": "Hartwall Jaffa Appelsiini sokeriton virvoitusjuoma 0,33l 18-pack",
                 "basePrice": 10.95
+            },
+            {
+                "store": "K‑Supermarket Pohjois-Haaga",
+                "distance": 26.0,
+                "product": "Pepsi Max virvoitusjuoma 0,33l 18-pack",
+                "basePrice": 15.2
+            },
+            {
+                "store": "K‑Supermarket Pohjois-Haaga",
+                "distance": 26.0,
+                "product": "Hartwall Jaffa Appelsiini sokeriton virvoitusjuoma 0,33l 18-pack",
+                "basePrice": 15.2
+            },
+            {
+                "store": "K‑Supermarket Pohjois-Haaga",
+                "distance": 26.0,
+                "product": "Hartwall Jaffa Lemonade sokeriton virvoitusjuoma 0,33l 18-pack DOLLY",
+                "basePrice": 15.99
             },
             {
                 "store": "K‑Citymarket Easton",
@@ -2398,26 +2488,8 @@
                 "basePrice": 15.2
             },
             {
-                "store": "K‑Supermarket Pohjois-Haaga",
-                "distance": 26.0,
-                "product": "Pepsi Max virvoitusjuoma 0,33l 18-pack",
-                "basePrice": 15.2
-            },
-            {
-                "store": "K‑Supermarket Pohjois-Haaga",
-                "distance": 26.0,
-                "product": "Hartwall Jaffa Appelsiini sokeriton virvoitusjuoma 0,33l 18-pack",
-                "basePrice": 15.2
-            },
-            {
-                "store": "K‑Supermarket Pohjois-Haaga",
-                "distance": 26.0,
-                "product": "Hartwall Jaffa Lemonade sokeriton virvoitusjuoma 0,33l 18-pack DOLLY",
-                "basePrice": 15.99
-            },
-            {
                 "store": "K‑Supermarket Arabia",
-                "distance": 18.0,
+                "distance": 120.0,
                 "product": "Pepsi Max virvoitusjuoma 0,33l 18-pack",
                 "basePrice": 9.99
             },
@@ -2434,6 +2506,18 @@
                 "basePrice": 15.2
             },
             {
+                "store": "K‑Supermarket Kumela",
+                "distance": 48.0,
+                "product": "Hartwall Jaffa Appelsiini sokeriton virvoitusjuoma 0,33l 18-pack",
+                "basePrice": 15.2
+            },
+            {
+                "store": "K‑Supermarket Kumela",
+                "distance": 48.0,
+                "product": "Hartwall Jaffa Lemonade sokeriton virvoitusjuoma 0,33l 18-pack DOLLY",
+                "basePrice": 15.99
+            },
+            {
                 "store": "K‑Citymarket Riihimäki",
                 "distance": 48.0,
                 "product": "Pepsi Max virvoitusjuoma 0,33l 18-pack",
@@ -2447,7 +2531,7 @@
             },
             {
                 "store": "K‑Supermarket Lähderanta",
-                "distance": 27.0,
+                "distance": 22.0,
                 "product": "Pepsi Max virvoitusjuoma 0,33l 18-pack",
                 "basePrice": 15.2
             },
@@ -2621,15 +2705,33 @@
             },
             {
                 "store": "K‑Supermarket Grani",
-                "distance": 30.0,
+                "distance": 120.0,
                 "product": "Pepsi Max virvoitusjuoma 0,33l 18-pack",
                 "basePrice": 14.95
             },
             {
                 "store": "K‑Supermarket Grani",
-                "distance": 30.0,
+                "distance": 120.0,
                 "product": "Hartwall Jaffa Appelsiini sokeriton virvoitusjuoma 0,33l 18-pack",
                 "basePrice": 14.95
+            },
+            {
+                "store": "K‑Supermarket Kunkku",
+                "distance": 120.0,
+                "product": "Pepsi Max virvoitusjuoma 0,33l 18-pack",
+                "basePrice": 10.99
+            },
+            {
+                "store": "K‑Supermarket Kunkku",
+                "distance": 120.0,
+                "product": "Hartwall Jaffa Appelsiini sokeriton virvoitusjuoma 0,33l 18-pack",
+                "basePrice": 15.2
+            },
+            {
+                "store": "K‑Supermarket Kunkku",
+                "distance": 120.0,
+                "product": "7UP Zero Sugar virvoitusjuoma 0,33l 18-pack",
+                "basePrice": 10.99
             }
         ]
     },
@@ -2639,26 +2741,14 @@
         "items": [
             {
                 "store": "K‑Market Sahankulma",
-                "distance": 120.0,
-                "product": "Pepsi Max 0,33L tlk 6-pack",
-                "basePrice": 5.39
-            },
-            {
-                "store": "K‑Market Sahankulma",
-                "distance": 120.0,
-                "product": "Pepsi Max Mango virvoitusjuoma 0,33l 6-pack",
-                "basePrice": 5.39
-            },
-            {
-                "store": "K‑Market Parila",
-                "distance": 5.0,
+                "distance": 4.0,
                 "product": "Pepsi Max 0,33L tlk 6-pack",
                 "basePrice": 5.39
             },
             {
                 "store": "K‑Market Parila",
                 "distance": 5.0,
-                "product": "Pepsi Max Mango virvoitusjuoma 0,33l 6-pack",
+                "product": "Pepsi Max 0,33L tlk 6-pack",
                 "basePrice": 5.39
             },
             {
@@ -2668,33 +2758,15 @@
                 "basePrice": 5.39
             },
             {
-                "store": "K‑Market Lahela",
-                "distance": 3.0,
-                "product": "Pepsi Max Mango virvoitusjuoma 0,33l 6-pack",
-                "basePrice": 5.55
-            },
-            {
                 "store": "K‑Supermarket Karuselli",
                 "distance": 12.0,
                 "product": "Pepsi Max 0,33L tlk 6-pack",
                 "basePrice": 5.39
             },
             {
-                "store": "K‑Supermarket Karuselli",
+                "store": "K‑Market Kalevantori",
                 "distance": 12.0,
-                "product": "Pepsi Max Mango virvoitusjuoma 0,33l 6-pack",
-                "basePrice": 5.39
-            },
-            {
-                "store": "K‑Market Kalevantori",
-                "distance": 120.0,
                 "product": "Pepsi Max 0,33L tlk 6-pack",
-                "basePrice": 5.39
-            },
-            {
-                "store": "K‑Market Kalevantori",
-                "distance": 120.0,
-                "product": "Pepsi Max Mango virvoitusjuoma 0,33l 6-pack",
                 "basePrice": 5.39
             },
             {
@@ -2704,26 +2776,20 @@
                 "basePrice": 5.19
             },
             {
-                "store": "K‑Citymarket Kerava",
-                "distance": 12.0,
-                "product": "Pepsi Max Mango virvoitusjuoma 0,33l 6-pack",
-                "basePrice": 5.19
-            },
-            {
                 "store": "K‑Market Keravan asema",
                 "distance": 12.0,
                 "product": "Pepsi Max 0,33L tlk 6-pack",
                 "basePrice": 5.39
             },
             {
-                "store": "K‑Market Keravan asema",
-                "distance": 12.0,
-                "product": "Pepsi Max Mango virvoitusjuoma 0,33l 6-pack",
-                "basePrice": 5.59
+                "store": "K‑Supermarket Oregano",
+                "distance": 16.0,
+                "product": "Pepsi Max 0,33L tlk 6-pack",
+                "basePrice": 5.39
             },
             {
                 "store": "K‑Market Riskiläkuja",
-                "distance": 120.0,
+                "distance": 18.0,
                 "product": "Pepsi Max 0,33L tlk 6-pack",
                 "basePrice": 5.39
             },
@@ -2734,27 +2800,21 @@
                 "basePrice": 5.39
             },
             {
-                "store": "K‑Supermarket Korso",
-                "distance": 15.0,
-                "product": "Pepsi Max Mango virvoitusjuoma 0,33l 6-pack",
+                "store": "K‑Supermarket Hyrrä",
+                "distance": 1.0,
+                "product": "Pepsi Max 0,33L tlk 6-pack",
                 "basePrice": 5.39
             },
             {
                 "store": "K‑Market Ahjontori",
-                "distance": 120.0,
+                "distance": 12.0,
                 "product": "Pepsi Max 0,33L tlk 6-pack",
                 "basePrice": 5.39
             },
             {
-                "store": "K‑Supermarket Hyrrä",
-                "distance": 1.0,
+                "store": "K‑Market Kyrölä",
+                "distance": 10.0,
                 "product": "Pepsi Max 0,33L tlk 6-pack",
-                "basePrice": 5.39
-            },
-            {
-                "store": "K‑Supermarket Hyrrä",
-                "distance": 1.0,
-                "product": "Pepsi Max Mango virvoitusjuoma 0,33l 6-pack",
                 "basePrice": 5.39
             },
             {
@@ -2764,27 +2824,9 @@
                 "basePrice": 5.39
             },
             {
-                "store": "K‑Market Kyrölä",
-                "distance": 120.0,
-                "product": "Pepsi Max 0,33L tlk 6-pack",
-                "basePrice": 5.39
-            },
-            {
-                "store": "K‑Market Kyrölä",
-                "distance": 120.0,
-                "product": "Pepsi Max Mango virvoitusjuoma 0,33l 6-pack",
-                "basePrice": 5.39
-            },
-            {
                 "store": "K‑Market Ilola",
                 "distance": 15.0,
                 "product": "Pepsi Max 0,33L tlk 6-pack",
-                "basePrice": 5.39
-            },
-            {
-                "store": "K‑Market Ilola",
-                "distance": 15.0,
-                "product": "Pepsi Max Mango virvoitusjuoma 0,33l 6-pack",
                 "basePrice": 5.39
             },
             {
@@ -2794,45 +2836,9 @@
                 "basePrice": 5.39
             },
             {
-                "store": "K‑Market Satukallio",
-                "distance": 120.0,
-                "product": "Pepsi Max Mango virvoitusjuoma 0,33l 6-pack",
-                "basePrice": 5.39
-            },
-            {
-                "store": "K‑Market Kaakkola",
-                "distance": 120.0,
-                "product": "Pepsi Max 0,33L tlk 6-pack",
-                "basePrice": 5.39
-            },
-            {
-                "store": "K‑Market Kaakkola",
-                "distance": 120.0,
-                "product": "Pepsi Max Mango virvoitusjuoma 0,33l 6-pack",
-                "basePrice": 5.39
-            },
-            {
-                "store": "K‑Supermarket Nikinmäki",
-                "distance": 15.0,
-                "product": "Pepsi Max 0,33L tlk 6-pack",
-                "basePrice": 5.39
-            },
-            {
-                "store": "K‑Supermarket Nikinmäki",
-                "distance": 15.0,
-                "product": "Pepsi Max Mango virvoitusjuoma 0,33l 6-pack",
-                "basePrice": 5.39
-            },
-            {
                 "store": "K‑Market Rekola",
                 "distance": 16.0,
                 "product": "Pepsi Max 0,33L tlk 6-pack",
-                "basePrice": 5.39
-            },
-            {
-                "store": "K‑Market Rekola",
-                "distance": 16.0,
-                "product": "Pepsi Max Mango virvoitusjuoma 0,33l 6-pack",
                 "basePrice": 5.39
             },
             {
@@ -2848,10 +2854,10 @@
                 "basePrice": 5.19
             },
             {
-                "store": "K‑Citymarket Koivukylä",
-                "distance": 17.0,
-                "product": "Pepsi Max Mango virvoitusjuoma 0,33l 6-pack",
-                "basePrice": 5.19
+                "store": "K‑Supermarket Nikinmäki",
+                "distance": 15.0,
+                "product": "Pepsi Max 0,33L tlk 6-pack",
+                "basePrice": 5.39
             },
             {
                 "store": "K‑Market Ristipuro",
@@ -2860,9 +2866,45 @@
                 "basePrice": 5.39
             },
             {
-                "store": "K‑Market Ristipuro",
+                "store": "K‑Market Kinnari",
+                "distance": 10.0,
+                "product": "Pepsi Max 0,33L tlk 6-pack",
+                "basePrice": 5.39
+            },
+            {
+                "store": "K‑Citymarket Järvenpää",
+                "distance": 10.0,
+                "product": "Pepsi Max 0,33L tlk 6-pack",
+                "basePrice": 5.19
+            },
+            {
+                "store": "K‑Market Kaakkola",
                 "distance": 120.0,
-                "product": "Pepsi Max Mango virvoitusjuoma 0,33l 6-pack",
+                "product": "Pepsi Max 0,33L tlk 6-pack",
+                "basePrice": 5.39
+            },
+            {
+                "store": "K‑Supermarket Pajala",
+                "distance": 11.0,
+                "product": "Pepsi Max 0,33L tlk 6-pack",
+                "basePrice": 5.39
+            },
+            {
+                "store": "K‑Supermarket Peltola",
+                "distance": 18.0,
+                "product": "Pepsi Max 0,33L tlk 6-pack",
+                "basePrice": 5.39
+            },
+            {
+                "store": "K‑Market Saunakallio",
+                "distance": 10.0,
+                "product": "Pepsi Max 0,33L tlk 6-pack",
+                "basePrice": 5.39
+            },
+            {
+                "store": "K‑Market Haarajoki",
+                "distance": 13.0,
+                "product": "Pepsi Max 0,33L tlk 6-pack",
                 "basePrice": 5.39
             },
             {
@@ -2878,73 +2920,7 @@
                 "basePrice": 5.39
             },
             {
-                "store": "K‑Market Kinnari",
-                "distance": 120.0,
-                "product": "Pepsi Max 0,33L tlk 6-pack",
-                "basePrice": 5.39
-            },
-            {
-                "store": "K‑Citymarket Järvenpää",
-                "distance": 10.0,
-                "product": "Pepsi Max 0,33L tlk 6-pack",
-                "basePrice": 5.19
-            },
-            {
-                "store": "K‑Citymarket Järvenpää",
-                "distance": 10.0,
-                "product": "Pepsi Max Mango virvoitusjuoma 0,33l 6-pack",
-                "basePrice": 5.19
-            },
-            {
-                "store": "K‑Supermarket Pajala",
-                "distance": 11.0,
-                "product": "Pepsi Max 0,33L tlk 6-pack",
-                "basePrice": 5.39
-            },
-            {
-                "store": "K‑Supermarket Pajala",
-                "distance": 11.0,
-                "product": "Pepsi Max Mango virvoitusjuoma 0,33l 6-pack",
-                "basePrice": 5.39
-            },
-            {
-                "store": "K‑Supermarket Peltola",
-                "distance": 18.0,
-                "product": "Pepsi Max 0,33L tlk 6-pack",
-                "basePrice": 5.39
-            },
-            {
-                "store": "K‑Supermarket Peltola",
-                "distance": 18.0,
-                "product": "Pepsi Max Mango virvoitusjuoma 0,33l 6-pack",
-                "basePrice": 5.39
-            },
-            {
-                "store": "K‑Market Saunakallio",
-                "distance": 120.0,
-                "product": "Pepsi Max 0,33L tlk 6-pack",
-                "basePrice": 5.39
-            },
-            {
-                "store": "K‑Market Haarajoki",
-                "distance": 120.0,
-                "product": "Pepsi Max 0,33L tlk 6-pack",
-                "basePrice": 5.39
-            },
-            {
                 "store": "K‑Market Kielotie",
-                "distance": 18.0,
-                "product": "Pepsi Max 0,33L tlk 6-pack",
-                "basePrice": 5.39
-            },
-            {
-                "store": "K‑Market Kielotie",
-                "distance": 18.0,
-                "product": "Pepsi Max Mango virvoitusjuoma 0,33l 6-pack",
-                "basePrice": 4.99
-            },
-            {
-                "store": "K‑Supermarket Yliveto",
                 "distance": 18.0,
                 "product": "Pepsi Max 0,33L tlk 6-pack",
                 "basePrice": 5.39
@@ -2952,7 +2928,7 @@
             {
                 "store": "K‑Supermarket Yliveto",
                 "distance": 18.0,
-                "product": "Pepsi Max Mango virvoitusjuoma 0,33l 6-pack",
+                "product": "Pepsi Max 0,33L tlk 6-pack",
                 "basePrice": 5.39
             },
             {
@@ -2968,21 +2944,9 @@
                 "basePrice": 5.39
             },
             {
-                "store": "K‑Supermarket Honkatori",
-                "distance": 22.0,
-                "product": "Pepsi Max Mango virvoitusjuoma 0,33l 6-pack",
-                "basePrice": 5.39
-            },
-            {
                 "store": "K‑Market Tikkuri",
                 "distance": 18.0,
                 "product": "Pepsi Max 0,33L tlk 6-pack",
-                "basePrice": 5.39
-            },
-            {
-                "store": "K‑Market Tikkuri",
-                "distance": 18.0,
-                "product": "Pepsi Max Mango virvoitusjuoma 0,33l 6-pack",
                 "basePrice": 5.39
             },
             {
@@ -2992,21 +2956,9 @@
                 "basePrice": 5.39
             },
             {
-                "store": "K‑Market DIXI",
-                "distance": 18.0,
-                "product": "Pepsi Max Mango virvoitusjuoma 0,33l 6-pack",
-                "basePrice": 5.39
-            },
-            {
                 "store": "K‑Market Suutarila",
                 "distance": 20.0,
                 "product": "Pepsi Max 0,33L tlk 6-pack",
-                "basePrice": 5.39
-            },
-            {
-                "store": "K‑Market Suutarila",
-                "distance": 20.0,
-                "product": "Pepsi Max Mango virvoitusjuoma 0,33l 6-pack",
                 "basePrice": 5.39
             },
             {
@@ -3016,25 +2968,7 @@
                 "basePrice": 5.39
             },
             {
-                "store": "K‑Supermarket Kellokoski",
-                "distance": 14.0,
-                "product": "Pepsi Max Mango virvoitusjuoma 0,33l 6-pack",
-                "basePrice": 5.39
-            },
-            {
                 "store": "K‑Market Tapuli",
-                "distance": 20.0,
-                "product": "Pepsi Max 0,33L tlk 6-pack",
-                "basePrice": 5.39
-            },
-            {
-                "store": "K‑Market Tapuli",
-                "distance": 20.0,
-                "product": "Pepsi Max Mango virvoitusjuoma 0,33l 6-pack",
-                "basePrice": 5.55
-            },
-            {
-                "store": "K‑Market Puistori",
                 "distance": 20.0,
                 "product": "Pepsi Max 0,33L tlk 6-pack",
                 "basePrice": 5.39
@@ -3042,7 +2976,7 @@
             {
                 "store": "K‑Market Puistori",
                 "distance": 20.0,
-                "product": "Pepsi Max Mango virvoitusjuoma 0,33l 6-pack",
+                "product": "Pepsi Max 0,33L tlk 6-pack",
                 "basePrice": 5.39
             },
             {
@@ -3052,33 +2986,15 @@
                 "basePrice": 5.39
             },
             {
-                "store": "K‑Market Heikinlaakso",
-                "distance": 20.0,
-                "product": "Pepsi Max Mango virvoitusjuoma 0,33l 6-pack",
-                "basePrice": 5.39
-            },
-            {
                 "store": "K‑Supermarket Hakunila",
                 "distance": 15.0,
                 "product": "Pepsi Max 0,33L tlk 6-pack",
                 "basePrice": 5.39
             },
             {
-                "store": "K‑Supermarket Hakunila",
-                "distance": 15.0,
-                "product": "Pepsi Max Mango virvoitusjuoma 0,33l 6-pack",
-                "basePrice": 5.39
-            },
-            {
                 "store": "K‑Market Kastanja",
-                "distance": 120.0,
+                "distance": 18.0,
                 "product": "Pepsi Max 0,33L tlk 6-pack",
-                "basePrice": 5.39
-            },
-            {
-                "store": "K‑Market Kastanja",
-                "distance": 120.0,
-                "product": "Pepsi Max Mango virvoitusjuoma 0,33l 6-pack",
                 "basePrice": 5.39
             },
             {
@@ -3088,21 +3004,9 @@
                 "basePrice": 5.39
             },
             {
-                "store": "K‑Market Siltamäki",
-                "distance": 21.0,
-                "product": "Pepsi Max Mango virvoitusjuoma 0,33l 6-pack",
-                "basePrice": 5.39
-            },
-            {
                 "store": "K‑Market Töyrynummi",
                 "distance": 21.0,
                 "product": "Pepsi Max 0,33L tlk 6-pack",
-                "basePrice": 5.39
-            },
-            {
-                "store": "K‑Market Töyrynummi",
-                "distance": 21.0,
-                "product": "Pepsi Max Mango virvoitusjuoma 0,33l 6-pack",
                 "basePrice": 5.39
             },
             {
@@ -3112,33 +3016,15 @@
                 "basePrice": 5.19
             },
             {
-                "store": "K‑Citymarket Tammisto",
+                "store": "K‑Market Kartanonkoski",
                 "distance": 18.0,
-                "product": "Pepsi Max Mango virvoitusjuoma 0,33l 6-pack",
-                "basePrice": 5.19
-            },
-            {
-                "store": "K‑Market Kartanonkoski",
-                "distance": 120.0,
-                "product": "Pepsi Max 0,33L tlk 6-pack",
-                "basePrice": 5.39
-            },
-            {
-                "store": "K‑Market Kartanonkoski",
-                "distance": 120.0,
-                "product": "Pepsi Max Mango virvoitusjuoma 0,33l 6-pack",
-                "basePrice": 5.39
-            },
-            {
-                "store": "K‑Supermarket Jokela",
-                "distance": 20.0,
                 "product": "Pepsi Max 0,33L tlk 6-pack",
                 "basePrice": 5.39
             },
             {
                 "store": "K‑Supermarket Jokela",
                 "distance": 20.0,
-                "product": "Pepsi Max Mango virvoitusjuoma 0,33l 6-pack",
+                "product": "Pepsi Max 0,33L tlk 6-pack",
                 "basePrice": 5.39
             },
             {
@@ -3148,26 +3034,8 @@
                 "basePrice": 5.19
             },
             {
-                "store": "K‑Citymarket Malmi",
-                "distance": 28.0,
-                "product": "Pepsi Max Mango virvoitusjuoma 0,33l 6-pack",
-                "basePrice": 5.19
-            },
-            {
                 "store": "K‑Market Länsimäki",
                 "distance": 22.0,
-                "product": "Pepsi Max 0,33L tlk 6-pack",
-                "basePrice": 5.39
-            },
-            {
-                "store": "K‑Market Länsimäki",
-                "distance": 22.0,
-                "product": "Pepsi Max Mango virvoitusjuoma 0,33l 6-pack",
-                "basePrice": 5.59
-            },
-            {
-                "store": "K‑Market Vesala",
-                "distance": 24.0,
                 "product": "Pepsi Max 0,33L tlk 6-pack",
                 "basePrice": 5.39
             }
