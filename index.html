@@ -23,7 +23,7 @@
             </div>
             
             <div class="flex flex-wrap items-center gap-4 w-full lg:w-auto justify-between lg:justify-end">
-                <!-- Kävijämäärälaskuri (näyttää nyt vain yhden luvun api/visitors kautta) -->
+                <!-- Kävijämäärälaskuri -->
                 <div class="flex items-center gap-2 text-xs text-slate-400 bg-slate-900/60 px-3 py-2 rounded-xl border border-slate-700/60">
                     <span>👁️ Kävijät:</span>
                     <img src="https://api.visitorbadge.io/api/visitors?path=tuusula-juomavertailu&countColor=%233b82f6&style=flat" alt="Kävijämäärä" class="inline-block h-4" />
@@ -183,39 +183,46 @@
             document.getElementById("categoryTitleEV").innerText = cat.name;
             document.getElementById("categoryTitleICE").innerText = cat.name;
 
-            // Yhdistetään saman kaupan tuotteet yhteen
-            const storeMap = {};
+            // 1. Etsitään ensin halvin hinta per kauppa
+            const storeMinPrices = {};
             cat.items.forEach(item => {
+                if (storeMinPrices[item.store] === undefined || item.basePrice < storeMinPrices[item.store]) {
+                    storeMinPrices[item.store] = item.basePrice;
+                }
+            });
+
+            // 2. Suodatetaan mukaan vain tuotteet, jotka vastaavat kyseisen kaupan halvinta hintaa
+            const cheapestItems = cat.items.filter(item => item.basePrice === storeMinPrices[item.store]);
+
+            // 3. Yhdistetään saman kaupan saman hintaiset tuotteet yhteen riviin
+            const storeMap = {};
+            cheapestItems.forEach(item => {
                 if (!storeMap[item.store]) {
                     storeMap[item.store] = {
                         store: item.store,
                         distance: item.distance,
                         products: new Set(),
-                        minBasePrice: item.basePrice
+                        basePrice: item.basePrice
                     };
                 }
                 storeMap[item.store].products.add(item.product);
-                if (item.basePrice < storeMap[item.store].minBasePrice) {
-                    storeMap[item.store].minBasePrice = item.basePrice;
-                }
             });
 
             const processedItems = Object.values(storeMap).map(storeObj => {
                 const dt = calculateDriveTime(storeObj.distance);
                 const addCostEV = (dt.roundTripKm * costPerKmEV) / cat.buyQuantity;
                 const addCostICE = (dt.roundTripKm * costPerKmICE) / cat.buyQuantity;
-                const basePrice = storeObj.minBasePrice;
                 const productNames = Array.from(storeObj.products).join(" / ");
 
                 return {
                     store: storeObj.store,
                     distance: storeObj.distance,
                     product: productNames,
-                    basePrice: basePrice,
+                    basePrice: storeObj.basePrice,
                     roundTripKm: dt.roundTripKm,
                     driveTime: dt.timeStr,
-                    effEV: basePrice + addCostEV,
-                    effICE: basePrice + addCostICE
+                    effEV: storeObj.basePrice + addCostEV,
+                    effICE: storeObj.basePrice + addCostICE
                 };
             });
 
