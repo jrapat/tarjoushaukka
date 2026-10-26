@@ -23,10 +23,10 @@
             </div>
             
             <div class="flex flex-wrap items-center gap-4 w-full lg:w-auto justify-between lg:justify-end">
-                <!-- Kävijämäärälaskuri -->
+                <!-- Kävijämäärälaskuri (näyttää nyt vain yhden luvun api/visitors kautta) -->
                 <div class="flex items-center gap-2 text-xs text-slate-400 bg-slate-900/60 px-3 py-2 rounded-xl border border-slate-700/60">
                     <span>👁️ Kävijät:</span>
-                    <img src="https://api.visitorbadge.io/api/combined?path=tuusula-juomavertailu&countColor=%233b82f6&style=flat" alt="Kävijämäärä" class="inline-block h-4" />
+                    <img src="https://api.visitorbadge.io/api/visitors?path=tuusula-juomavertailu&countColor=%233b82f6&style=flat" alt="Kävijämäärä" class="inline-block h-4" />
                 </div>
 
                 <!-- Category Tabs -->
@@ -122,7 +122,6 @@
     <script>
         let categories = {};
 
-        // Haetaan data data.json tiedostosta aina tuoreena (välimuistin ohitus ?t=)
         async function loadData() {
             try {
                 const response = await fetch('data.json?t=' + new Date().getTime());
@@ -179,22 +178,44 @@
             const costPerKmICE = (iceCons / 100) * icePriceVal;
 
             const cat = categories[currentCategoryKey];
-            if (!cat) return;
+            if (!cat || !cat.items) return;
             
             document.getElementById("categoryTitleEV").innerText = cat.name;
             document.getElementById("categoryTitleICE").innerText = cat.name;
 
-            const processedItems = cat.items.map(item => {
-                const dt = calculateDriveTime(item.distance);
+            // Yhdistetään saman kaupan tuotteet yhteen
+            const storeMap = {};
+            cat.items.forEach(item => {
+                if (!storeMap[item.store]) {
+                    storeMap[item.store] = {
+                        store: item.store,
+                        distance: item.distance,
+                        products: new Set(),
+                        minBasePrice: item.basePrice
+                    };
+                }
+                storeMap[item.store].products.add(item.product);
+                if (item.basePrice < storeMap[item.store].minBasePrice) {
+                    storeMap[item.store].minBasePrice = item.basePrice;
+                }
+            });
+
+            const processedItems = Object.values(storeMap).map(storeObj => {
+                const dt = calculateDriveTime(storeObj.distance);
                 const addCostEV = (dt.roundTripKm * costPerKmEV) / cat.buyQuantity;
                 const addCostICE = (dt.roundTripKm * costPerKmICE) / cat.buyQuantity;
+                const basePrice = storeObj.minBasePrice;
+                const productNames = Array.from(storeObj.products).join(" / ");
 
                 return {
-                    ...item,
+                    store: storeObj.store,
+                    distance: storeObj.distance,
+                    product: productNames,
+                    basePrice: basePrice,
                     roundTripKm: dt.roundTripKm,
                     driveTime: dt.timeStr,
-                    effEV: item.basePrice + addCostEV,
-                    effICE: item.basePrice + addCostICE
+                    effEV: basePrice + addCostEV,
+                    effICE: basePrice + addCostICE
                 };
             });
 
