@@ -166,18 +166,6 @@
                 "basePrice": 20.2
             },
             {
-                "store": "K‑Supermarket Hakunila",
-                "distance": 15.0,
-                "product": "Coca-Cola Zero 0,33l 24-pack",
-                "basePrice": 16.3
-            },
-            {
-                "store": "K‑Supermarket Hakunila",
-                "distance": 15.0,
-                "product": "Coca-Cola 0,33l 24-pack",
-                "basePrice": 20.95
-            },
-            {
                 "store": "K‑Citymarket Tammisto",
                 "distance": 18.0,
                 "product": "Coca-Cola Zero 0,33l 24-pack",
@@ -262,6 +250,12 @@
                 "basePrice": 20.45
             },
             {
+                "store": "K‑Supermarket Martsari",
+                "distance": 21.0,
+                "product": "Coca-Cola Zero 0,33l 24-pack",
+                "basePrice": 16.3
+            },
+            {
                 "store": "K‑Supermarket Hyrrä",
                 "distance": 1.0,
                 "product": "Coca-Cola Zero 0,33l 24-pack",
@@ -286,100 +280,10 @@
                 "basePrice": 16.99
             },
             {
-                "store": "K‑Supermarket Martsari",
-                "distance": 21.0,
-                "product": "Coca-Cola Zero 0,33l 24-pack",
-                "basePrice": 16.3
-            },
-            {
                 "store": "K‑Citymarket Easton",
                 "distance": 25.0,
                 "product": "Coca-Cola Zero 0,33l 24-pack",
                 "basePrice": 14.99
-            },
-            {
-                "store": "K‑Citymarket Easton",
-                "distance": 25.0,
-                "product": "Sprite Zero Sugar Lemon-Lime virvoitusjuoma 0,33l 24-pack",
-                "basePrice": 14.99
-            },
-            {
-                "store": "K‑Citymarket Easton",
-                "distance": 25.0,
-                "product": "Fanta Appelsiini Zero virvoitusjuoma 0,33l 24-pack",
-                "basePrice": 14.99
-            },
-            {
-                "store": "K‑Citymarket Easton",
-                "distance": 25.0,
-                "product": "Fanta Vadelma Zero virvoitusjuoma 0,33l 24-pack",
-                "basePrice": 14.99
-            },
-            {
-                "store": "K‑Citymarket Easton",
-                "distance": 25.0,
-                "product": "Coca-Cola 0,33l 24-pack",
-                "basePrice": 16.99
-            },
-            {
-                "store": "K‑Citymarket Hyvinkää",
-                "distance": 20.0,
-                "product": "Coca-Cola Zero 0,33l 24-pack",
-                "basePrice": 16.15
-            },
-            {
-                "store": "K‑Citymarket Hyvinkää",
-                "distance": 20.0,
-                "product": "Sprite Zero Sugar Lemon-Lime virvoitusjuoma 0,33l 24-pack",
-                "basePrice": 16.25
-            },
-            {
-                "store": "K‑Citymarket Hyvinkää",
-                "distance": 20.0,
-                "product": "Fanta Appelsiini Zero virvoitusjuoma 0,33l 24-pack",
-                "basePrice": 16.25
-            },
-            {
-                "store": "K‑Citymarket Hyvinkää",
-                "distance": 20.0,
-                "product": "Fanta Vadelma Zero virvoitusjuoma 0,33l 24-pack",
-                "basePrice": 16.25
-            },
-            {
-                "store": "K‑Citymarket Hyvinkää",
-                "distance": 20.0,
-                "product": "Coca-Cola 0,33l 24-pack",
-                "basePrice": 20.2
-            },
-            {
-                "store": "K‑Citymarket Mäntsälä",
-                "distance": 32.0,
-                "product": "Coca-Cola Zero 0,33l 24-pack",
-                "basePrice": 16.15
-            },
-            {
-                "store": "K‑Citymarket Mäntsälä",
-                "distance": 32.0,
-                "product": "Sprite Zero Sugar Lemon-Lime virvoitusjuoma 0,33l 24-pack",
-                "basePrice": 10.99
-            },
-            {
-                "store": "K‑Citymarket Mäntsälä",
-                "distance": 32.0,
-                "product": "Fanta Appelsiini Zero virvoitusjuoma 0,33l 24-pack",
-                "basePrice": 16.25
-            },
-            {
-                "store": "K‑Citymarket Mäntsälä",
-                "distance": 32.0,
-                "product": "Fanta Vadelma Zero virvoitusjuoma 0,33l 24-pack",
-                "basePrice": 10.99
-            },
-            {
-                "store": "K‑Citymarket Mäntsälä",
-                "distance": 32.0,
-                "product": "Coca-Cola 0,33l 24-pack",
-                "basePrice": 20.2
             },
             {
                 "store": "K‑Citymarket Myyrmäki",
@@ -410,6 +314,66 @@
                 "distance": 22.0,
                 "product": "Coca-Cola 0,33l 24-pack",
                 "basePrice": 20.45
+            },
+            {
+                "store": "K‑Citymarket Hyvinkää",
+                "distance": 20.0,
+                "product": "Coca-Cola Zero 0,33l 24-pack",
+                "basePrice": 16.15
+            },
+            {
+                "store": "K‑Citymarket Hyvinkää",
+                "distance": 20.0,
+                "product": "Sprite Zero Sugar Lemon-Lime virvoitusjuoma 0,33l 24-pack",
+                "basePrice": 16.25
+            },
+            {
+                "store": "K‑Citymarket Hyvinkää",
+                "distance": 20.0,
+                "product": "Fanta Appelsiini Zero virvoitusjuoma 0,33l 24-pack",
+                "basePrice": 16.25
+            },
+            {
+                "store": "K‑Citymarket Hyvinkää",
+                "distance": 20.0,
+                "product": "Fanta Vadelma Zero virvoitusjuoma 0,33l 24-pack",
+                "basePrice": 16.25
+            },
+            {
+                "store": "K‑Citymarket Hyvinkää",
+                "distance": 20.0,
+                "product": "Coca-Cola 0,33l 24-pack",
+                "basePrice": 20.2
+            },
+            {
+                "store": "K‑Citymarket Mäntsälä",
+                "distance": 32.0,
+                "product": "Coca-Cola Zero 0,33l 24-pack",
+                "basePrice": 16.15
+            },
+            {
+                "store": "K‑Citymarket Mäntsälä",
+                "distance": 32.0,
+                "product": "Sprite Zero Sugar Lemon-Lime virvoitusjuoma 0,33l 24-pack",
+                "basePrice": 10.99
+            },
+            {
+                "store": "K‑Citymarket Mäntsälä",
+                "distance": 32.0,
+                "product": "Fanta Appelsiini Zero virvoitusjuoma 0,33l 24-pack",
+                "basePrice": 16.25
+            },
+            {
+                "store": "K‑Citymarket Mäntsälä",
+                "distance": 32.0,
+                "product": "Fanta Vadelma Zero virvoitusjuoma 0,33l 24-pack",
+                "basePrice": 10.99
+            },
+            {
+                "store": "K‑Citymarket Mäntsälä",
+                "distance": 32.0,
+                "product": "Coca-Cola 0,33l 24-pack",
+                "basePrice": 20.2
             },
             {
                 "store": "K‑Supermarket Konala",
@@ -514,6 +478,36 @@
                 "basePrice": 20.45
             },
             {
+                "store": "K‑Citymarket Iso Omena",
+                "distance": 33.0,
+                "product": "Coca-Cola Zero 0,33l 24-pack",
+                "basePrice": 16.25
+            },
+            {
+                "store": "K‑Citymarket Iso Omena",
+                "distance": 33.0,
+                "product": "Sprite Zero Sugar Lemon-Lime virvoitusjuoma 0,33l 24-pack",
+                "basePrice": 16.45
+            },
+            {
+                "store": "K‑Citymarket Iso Omena",
+                "distance": 33.0,
+                "product": "Fanta Appelsiini Zero virvoitusjuoma 0,33l 24-pack",
+                "basePrice": 16.45
+            },
+            {
+                "store": "K‑Citymarket Iso Omena",
+                "distance": 33.0,
+                "product": "Fanta Vadelma Zero virvoitusjuoma 0,33l 24-pack",
+                "basePrice": 16.45
+            },
+            {
+                "store": "K‑Citymarket Iso Omena",
+                "distance": 33.0,
+                "product": "Coca-Cola 0,33l 24-pack",
+                "basePrice": 20.45
+            },
+            {
                 "store": "K‑Citymarket Riihimäki",
                 "distance": 48.0,
                 "product": "Coca-Cola Zero 0,33l 24-pack",
@@ -598,10 +592,34 @@
                 "basePrice": 18.09
             },
             {
-                "store": "K‑Citymarket Iso Omena",
-                "distance": 33.0,
+                "store": "K‑Citymarket Kirkkonummi",
+                "distance": 48.0,
                 "product": "Coca-Cola Zero 0,33l 24-pack",
                 "basePrice": 16.25
+            },
+            {
+                "store": "K‑Citymarket Kirkkonummi",
+                "distance": 48.0,
+                "product": "Sprite Zero Sugar Lemon-Lime virvoitusjuoma 0,33l 24-pack",
+                "basePrice": 16.45
+            },
+            {
+                "store": "K‑Citymarket Kirkkonummi",
+                "distance": 48.0,
+                "product": "Fanta Appelsiini Zero virvoitusjuoma 0,33l 24-pack",
+                "basePrice": 16.45
+            },
+            {
+                "store": "K‑Citymarket Kirkkonummi",
+                "distance": 48.0,
+                "product": "Fanta Vadelma Zero virvoitusjuoma 0,33l 24-pack",
+                "basePrice": 16.45
+            },
+            {
+                "store": "K‑Citymarket Kirkkonummi",
+                "distance": 48.0,
+                "product": "Coca-Cola 0,33l 24-pack",
+                "basePrice": 20.45
             },
             {
                 "store": "K‑Citymarket Hämeensaari",
@@ -844,32 +862,62 @@
                 "basePrice": 14.99
             },
             {
-                "store": "K‑Citymarket Kirkkonummi",
-                "distance": 48.0,
+                "store": "K‑Citymarket Vihti Nummela",
+                "distance": 45.0,
                 "product": "Coca-Cola Zero 0,33l 24-pack",
                 "basePrice": 16.25
             },
             {
-                "store": "K‑Citymarket Kirkkonummi",
-                "distance": 48.0,
+                "store": "K‑Citymarket Vihti Nummela",
+                "distance": 45.0,
                 "product": "Sprite Zero Sugar Lemon-Lime virvoitusjuoma 0,33l 24-pack",
                 "basePrice": 16.45
             },
             {
-                "store": "K‑Citymarket Kirkkonummi",
-                "distance": 48.0,
+                "store": "K‑Citymarket Vihti Nummela",
+                "distance": 45.0,
                 "product": "Fanta Appelsiini Zero virvoitusjuoma 0,33l 24-pack",
                 "basePrice": 16.45
             },
             {
-                "store": "K‑Citymarket Kirkkonummi",
-                "distance": 48.0,
+                "store": "K‑Citymarket Vihti Nummela",
+                "distance": 45.0,
                 "product": "Fanta Vadelma Zero virvoitusjuoma 0,33l 24-pack",
                 "basePrice": 16.45
             },
             {
-                "store": "K‑Citymarket Kirkkonummi",
-                "distance": 48.0,
+                "store": "K‑Citymarket Vihti Nummela",
+                "distance": 45.0,
+                "product": "Coca-Cola 0,33l 24-pack",
+                "basePrice": 20.45
+            },
+            {
+                "store": "K‑Citymarket Lohja",
+                "distance": 45.0,
+                "product": "Coca-Cola Zero 0,33l 24-pack",
+                "basePrice": 16.25
+            },
+            {
+                "store": "K‑Citymarket Lohja",
+                "distance": 45.0,
+                "product": "Sprite Zero Sugar Lemon-Lime virvoitusjuoma 0,33l 24-pack",
+                "basePrice": 16.45
+            },
+            {
+                "store": "K‑Citymarket Lohja",
+                "distance": 45.0,
+                "product": "Fanta Appelsiini Zero virvoitusjuoma 0,33l 24-pack",
+                "basePrice": 16.45
+            },
+            {
+                "store": "K‑Citymarket Lohja",
+                "distance": 45.0,
+                "product": "Fanta Vadelma Zero virvoitusjuoma 0,33l 24-pack",
+                "basePrice": 16.45
+            },
+            {
+                "store": "K‑Citymarket Lohja",
+                "distance": 45.0,
                 "product": "Coca-Cola 0,33l 24-pack",
                 "basePrice": 20.45
             },
@@ -1126,62 +1174,32 @@
                 "basePrice": 20.45
             },
             {
-                "store": "K‑Citymarket Vihti Nummela",
-                "distance": 45.0,
+                "store": "K‑Citymarket Loimaa",
+                "distance": 120.0,
                 "product": "Coca-Cola Zero 0,33l 24-pack",
                 "basePrice": 16.25
             },
             {
-                "store": "K‑Citymarket Vihti Nummela",
-                "distance": 45.0,
+                "store": "K‑Citymarket Loimaa",
+                "distance": 120.0,
                 "product": "Sprite Zero Sugar Lemon-Lime virvoitusjuoma 0,33l 24-pack",
                 "basePrice": 16.45
             },
             {
-                "store": "K‑Citymarket Vihti Nummela",
-                "distance": 45.0,
+                "store": "K‑Citymarket Loimaa",
+                "distance": 120.0,
                 "product": "Fanta Appelsiini Zero virvoitusjuoma 0,33l 24-pack",
                 "basePrice": 16.45
             },
             {
-                "store": "K‑Citymarket Vihti Nummela",
-                "distance": 45.0,
+                "store": "K‑Citymarket Loimaa",
+                "distance": 120.0,
                 "product": "Fanta Vadelma Zero virvoitusjuoma 0,33l 24-pack",
                 "basePrice": 16.45
             },
             {
-                "store": "K‑Citymarket Vihti Nummela",
-                "distance": 45.0,
-                "product": "Coca-Cola 0,33l 24-pack",
-                "basePrice": 20.45
-            },
-            {
-                "store": "K‑Citymarket Lohja",
-                "distance": 45.0,
-                "product": "Coca-Cola Zero 0,33l 24-pack",
-                "basePrice": 16.25
-            },
-            {
-                "store": "K‑Citymarket Lohja",
-                "distance": 45.0,
-                "product": "Sprite Zero Sugar Lemon-Lime virvoitusjuoma 0,33l 24-pack",
-                "basePrice": 16.45
-            },
-            {
-                "store": "K‑Citymarket Lohja",
-                "distance": 45.0,
-                "product": "Fanta Appelsiini Zero virvoitusjuoma 0,33l 24-pack",
-                "basePrice": 16.45
-            },
-            {
-                "store": "K‑Citymarket Lohja",
-                "distance": 45.0,
-                "product": "Fanta Vadelma Zero virvoitusjuoma 0,33l 24-pack",
-                "basePrice": 16.45
-            },
-            {
-                "store": "K‑Citymarket Lohja",
-                "distance": 45.0,
+                "store": "K‑Citymarket Loimaa",
+                "distance": 120.0,
                 "product": "Coca-Cola 0,33l 24-pack",
                 "basePrice": 20.45
             }
@@ -1218,13 +1236,13 @@
             {
                 "store": "K‑Citymarket Kerava",
                 "distance": 12.0,
-                "product": "Hartwall Novelle Vadelma-veriappelsiini kivennäisvesi 0,33l 24-pack",
+                "product": "Hartwall Novelle Citronelle kivennäisvesi 0,33l 24-pack",
                 "basePrice": 10.99
             },
             {
                 "store": "K‑Citymarket Kerava",
                 "distance": 12.0,
-                "product": "Hartwall Novelle Citronelle kivennäisvesi 0,33l 24-pack",
+                "product": "Hartwall Novelle Vadelma-veriappelsiini kivennäisvesi 0,33l 24-pack",
                 "basePrice": 10.99
             },
             {
@@ -1236,13 +1254,13 @@
             {
                 "store": "K‑Supermarket Oregano",
                 "distance": 16.0,
-                "product": "Hartwall Novelle Vadelma-veriappelsiini kivennäisvesi 0,33l 24-pack",
+                "product": "Hartwall Novelle Citronelle kivennäisvesi 0,33l 24-pack",
                 "basePrice": 11.99
             },
             {
                 "store": "K‑Supermarket Oregano",
                 "distance": 16.0,
-                "product": "Hartwall Novelle Citronelle kivennäisvesi 0,33l 24-pack",
+                "product": "Hartwall Novelle Vadelma-veriappelsiini kivennäisvesi 0,33l 24-pack",
                 "basePrice": 11.99
             },
             {
@@ -1266,14 +1284,14 @@
             {
                 "store": "K‑Citymarket Koivukylä",
                 "distance": 17.0,
-                "product": "Hartwall Novelle Vadelma-veriappelsiini kivennäisvesi 0,33l 24-pack",
-                "basePrice": 10.99
+                "product": "Hartwall Novelle Citronelle kivennäisvesi 0,33l 24-pack",
+                "basePrice": 11.29
             },
             {
                 "store": "K‑Citymarket Koivukylä",
                 "distance": 17.0,
-                "product": "Hartwall Novelle Citronelle kivennäisvesi 0,33l 24-pack",
-                "basePrice": 11.29
+                "product": "Hartwall Novelle Vadelma-veriappelsiini kivennäisvesi 0,33l 24-pack",
+                "basePrice": 10.99
             },
             {
                 "store": "K‑Citymarket Koivukylä",
@@ -1308,13 +1326,13 @@
             {
                 "store": "K‑Citymarket Järvenpää",
                 "distance": 10.0,
-                "product": "Hartwall Novelle Vadelma-veriappelsiini kivennäisvesi 0,33l 24-pack",
+                "product": "Hartwall Novelle Citronelle kivennäisvesi 0,33l 24-pack",
                 "basePrice": 11.29
             },
             {
                 "store": "K‑Citymarket Järvenpää",
                 "distance": 10.0,
-                "product": "Hartwall Novelle Citronelle kivennäisvesi 0,33l 24-pack",
+                "product": "Hartwall Novelle Vadelma-veriappelsiini kivennäisvesi 0,33l 24-pack",
                 "basePrice": 11.29
             },
             {
@@ -1374,13 +1392,13 @@
             {
                 "store": "K‑Supermarket Hyrrä",
                 "distance": 1.0,
-                "product": "Hartwall Novelle Vadelma-veriappelsiini kivennäisvesi 0,33l 24-pack",
+                "product": "Hartwall Novelle Citronelle kivennäisvesi 0,33l 24-pack",
                 "basePrice": 11.99
             },
             {
                 "store": "K‑Supermarket Hyrrä",
                 "distance": 1.0,
-                "product": "Hartwall Novelle Citronelle kivennäisvesi 0,33l 24-pack",
+                "product": "Hartwall Novelle Vadelma-veriappelsiini kivennäisvesi 0,33l 24-pack",
                 "basePrice": 11.99
             },
             {
@@ -1410,13 +1428,13 @@
             {
                 "store": "K‑Citymarket Jumbo",
                 "distance": 18.0,
-                "product": "Hartwall Novelle Vadelma-veriappelsiini kivennäisvesi 0,33l 24-pack",
+                "product": "Hartwall Novelle Citronelle kivennäisvesi 0,33l 24-pack",
                 "basePrice": 11.29
             },
             {
                 "store": "K‑Citymarket Jumbo",
                 "distance": 18.0,
-                "product": "Hartwall Novelle Citronelle kivennäisvesi 0,33l 24-pack",
+                "product": "Hartwall Novelle Vadelma-veriappelsiini kivennäisvesi 0,33l 24-pack",
                 "basePrice": 11.29
             },
             {
@@ -1434,14 +1452,14 @@
             {
                 "store": "K‑Citymarket Tammisto",
                 "distance": 18.0,
-                "product": "Hartwall Novelle Vadelma-veriappelsiini kivennäisvesi 0,33l 24-pack",
-                "basePrice": 11.31
+                "product": "Hartwall Novelle Citronelle kivennäisvesi 0,33l 24-pack",
+                "basePrice": 11.29
             },
             {
                 "store": "K‑Citymarket Tammisto",
                 "distance": 18.0,
-                "product": "Hartwall Novelle Citronelle kivennäisvesi 0,33l 24-pack",
-                "basePrice": 11.29
+                "product": "Hartwall Novelle Vadelma-veriappelsiini kivennäisvesi 0,33l 24-pack",
+                "basePrice": 11.31
             },
             {
                 "store": "K‑Citymarket Tammisto",
@@ -1458,13 +1476,13 @@
             {
                 "store": "K‑Citymarket Malmi",
                 "distance": 28.0,
-                "product": "Hartwall Novelle Vadelma-veriappelsiini kivennäisvesi 0,33l 24-pack",
+                "product": "Hartwall Novelle Citronelle kivennäisvesi 0,33l 24-pack",
                 "basePrice": 11.29
             },
             {
                 "store": "K‑Citymarket Malmi",
                 "distance": 28.0,
-                "product": "Hartwall Novelle Citronelle kivennäisvesi 0,33l 24-pack",
+                "product": "Hartwall Novelle Vadelma-veriappelsiini kivennäisvesi 0,33l 24-pack",
                 "basePrice": 11.29
             },
             {
@@ -1478,6 +1496,18 @@
                 "distance": 14.0,
                 "product": "Hartwall Novelle kivennäisvesi 0,33l 24-pack",
                 "basePrice": 12.29
+            },
+            {
+                "store": "K‑Supermarket Kellokoski",
+                "distance": 14.0,
+                "product": "Hartwall Novelle Citronelle kivennäisvesi 0,33l 24-pack",
+                "basePrice": 12.29
+            },
+            {
+                "store": "K‑Supermarket Kellokoski",
+                "distance": 14.0,
+                "product": "Hartwall Novelle Plus Sinkki E 0,33l 12-pack",
+                "basePrice": 10.85
             },
             {
                 "store": "K‑Supermarket Jokela",
@@ -1506,13 +1536,13 @@
             {
                 "store": "K‑Supermarket Nurmijärvi",
                 "distance": 20.0,
-                "product": "Hartwall Novelle Vadelma-veriappelsiini kivennäisvesi 0,33l 24-pack",
+                "product": "Hartwall Novelle Citronelle kivennäisvesi 0,33l 24-pack",
                 "basePrice": 11.79
             },
             {
                 "store": "K‑Supermarket Nurmijärvi",
                 "distance": 20.0,
-                "product": "Hartwall Novelle Citronelle kivennäisvesi 0,33l 24-pack",
+                "product": "Hartwall Novelle Vadelma-veriappelsiini kivennäisvesi 0,33l 24-pack",
                 "basePrice": 11.79
             },
             {
@@ -1572,13 +1602,13 @@
             {
                 "store": "K‑Supermarket Mustapekka",
                 "distance": 25.0,
-                "product": "Hartwall Novelle Vadelma-veriappelsiini kivennäisvesi 0,33l 24-pack",
+                "product": "Hartwall Novelle Citronelle kivennäisvesi 0,33l 24-pack",
                 "basePrice": 12.29
             },
             {
                 "store": "K‑Supermarket Mustapekka",
                 "distance": 25.0,
-                "product": "Hartwall Novelle Citronelle kivennäisvesi 0,33l 24-pack",
+                "product": "Hartwall Novelle Vadelma-veriappelsiini kivennäisvesi 0,33l 24-pack",
                 "basePrice": 12.29
             },
             {
@@ -1600,6 +1630,24 @@
                 "basePrice": 10.99
             },
             {
+                "store": "K‑Citymarket Easton",
+                "distance": 25.0,
+                "product": "Hartwall Novelle Citronelle kivennäisvesi 0,33l 24-pack",
+                "basePrice": 10.99
+            },
+            {
+                "store": "K‑Citymarket Easton",
+                "distance": 25.0,
+                "product": "Hartwall Novelle Vadelma-veriappelsiini kivennäisvesi 0,33l 24-pack",
+                "basePrice": 10.99
+            },
+            {
+                "store": "K‑Citymarket Easton",
+                "distance": 25.0,
+                "product": "Hartwall Novelle Plus Sinkki E 0,33l 12-pack",
+                "basePrice": 9.99
+            },
+            {
                 "store": "K‑Supermarket Martinlaakson Ostari",
                 "distance": 21.0,
                 "product": "Hartwall Novelle kivennäisvesi 0,33l 24-pack",
@@ -1615,18 +1663,18 @@
                 "store": "K‑Citymarket Kivistö",
                 "distance": 14.0,
                 "product": "Hartwall Novelle kivennäisvesi 0,33l 24-pack",
+                "basePrice": 10.99
+            },
+            {
+                "store": "K‑Citymarket Kivistö",
+                "distance": 14.0,
+                "product": "Hartwall Novelle Citronelle kivennäisvesi 0,33l 24-pack",
                 "basePrice": 10.99
             },
             {
                 "store": "K‑Citymarket Kivistö",
                 "distance": 14.0,
                 "product": "Hartwall Novelle Vadelma-veriappelsiini kivennäisvesi 0,33l 24-pack",
-                "basePrice": 10.99
-            },
-            {
-                "store": "K‑Citymarket Kivistö",
-                "distance": 14.0,
-                "product": "Hartwall Novelle Citronelle kivennäisvesi 0,33l 24-pack",
                 "basePrice": 10.99
             },
             {
@@ -1644,13 +1692,13 @@
             {
                 "store": "K‑Citymarket Myyrmäki",
                 "distance": 22.0,
-                "product": "Hartwall Novelle Vadelma-veriappelsiini kivennäisvesi 0,33l 24-pack",
+                "product": "Hartwall Novelle Citronelle kivennäisvesi 0,33l 24-pack",
                 "basePrice": 11.29
             },
             {
                 "store": "K‑Citymarket Myyrmäki",
                 "distance": 22.0,
-                "product": "Hartwall Novelle Citronelle kivennäisvesi 0,33l 24-pack",
+                "product": "Hartwall Novelle Vadelma-veriappelsiini kivennäisvesi 0,33l 24-pack",
                 "basePrice": 11.29
             },
             {
@@ -1666,12 +1714,6 @@
                 "basePrice": 12.29
             },
             {
-                "store": "K‑Supermarket Arabia",
-                "distance": 120.0,
-                "product": "Hartwall Novelle Citronelle kivennäisvesi 0,33l 24-pack",
-                "basePrice": 12.29
-            },
-            {
                 "store": "K‑Supermarket Hertta",
                 "distance": 26.0,
                 "product": "Hartwall Novelle kivennäisvesi 0,33l 24-pack",
@@ -1698,13 +1740,13 @@
             {
                 "store": "K‑Citymarket Mäntsälä",
                 "distance": 32.0,
-                "product": "Hartwall Novelle Vadelma-veriappelsiini kivennäisvesi 0,33l 24-pack",
+                "product": "Hartwall Novelle Citronelle kivennäisvesi 0,33l 24-pack",
                 "basePrice": 10.99
             },
             {
                 "store": "K‑Citymarket Mäntsälä",
                 "distance": 32.0,
-                "product": "Hartwall Novelle Citronelle kivennäisvesi 0,33l 24-pack",
+                "product": "Hartwall Novelle Vadelma-veriappelsiini kivennäisvesi 0,33l 24-pack",
                 "basePrice": 10.99
             },
             {
@@ -1722,13 +1764,13 @@
             {
                 "store": "K‑Citymarket Hyvinkää",
                 "distance": 20.0,
-                "product": "Hartwall Novelle Vadelma-veriappelsiini kivennäisvesi 0,33l 24-pack",
+                "product": "Hartwall Novelle Citronelle kivennäisvesi 0,33l 24-pack",
                 "basePrice": 10.99
             },
             {
                 "store": "K‑Citymarket Hyvinkää",
                 "distance": 20.0,
-                "product": "Hartwall Novelle Citronelle kivennäisvesi 0,33l 24-pack",
+                "product": "Hartwall Novelle Vadelma-veriappelsiini kivennäisvesi 0,33l 24-pack",
                 "basePrice": 10.99
             },
             {
@@ -1764,18 +1806,18 @@
             {
                 "store": "K‑Citymarket Klaukkala",
                 "distance": 22.0,
+                "product": "Hartwall Novelle Citronelle kivennäisvesi 0,33l 24-pack",
+                "basePrice": 11.29
+            },
+            {
+                "store": "K‑Citymarket Klaukkala",
+                "distance": 22.0,
                 "product": "Hartwall Novelle Vadelma-veriappelsiini kivennäisvesi 0,33l 24-pack",
                 "basePrice": 11.95
             },
             {
                 "store": "K‑Citymarket Klaukkala",
                 "distance": 22.0,
-                "product": "Hartwall Novelle Citronelle kivennäisvesi 0,33l 24-pack",
-                "basePrice": 11.29
-            },
-            {
-                "store": "K‑Citymarket Klaukkala",
-                "distance": 22.0,
                 "product": "Hartwall Novelle Plus Sinkki E 0,33l 12-pack",
                 "basePrice": 10.85
             },
@@ -1795,18 +1837,18 @@
                 "store": "K‑Supermarket Konala",
                 "distance": 25.0,
                 "product": "Hartwall Novelle kivennäisvesi 0,33l 24-pack",
+                "basePrice": 12.29
+            },
+            {
+                "store": "K‑Supermarket Konala",
+                "distance": 25.0,
+                "product": "Hartwall Novelle Citronelle kivennäisvesi 0,33l 24-pack",
                 "basePrice": 12.29
             },
             {
                 "store": "K‑Supermarket Konala",
                 "distance": 25.0,
                 "product": "Hartwall Novelle Vadelma-veriappelsiini kivennäisvesi 0,33l 24-pack",
-                "basePrice": 12.29
-            },
-            {
-                "store": "K‑Supermarket Konala",
-                "distance": 25.0,
-                "product": "Hartwall Novelle Citronelle kivennäisvesi 0,33l 24-pack",
                 "basePrice": 12.29
             },
             {
@@ -1824,13 +1866,13 @@
             {
                 "store": "K‑Citymarket Columbus",
                 "distance": 25.0,
-                "product": "Hartwall Novelle Vadelma-veriappelsiini kivennäisvesi 0,33l 24-pack",
-                "basePrice": 11.29
+                "product": "Hartwall Novelle Citronelle kivennäisvesi 0,33l 24-pack",
+                "basePrice": 10.99
             },
             {
                 "store": "K‑Citymarket Columbus",
                 "distance": 25.0,
-                "product": "Hartwall Novelle Citronelle kivennäisvesi 0,33l 24-pack",
+                "product": "Hartwall Novelle Vadelma-veriappelsiini kivennäisvesi 0,33l 24-pack",
                 "basePrice": 11.29
             },
             {
@@ -1848,14 +1890,14 @@
             {
                 "store": "K‑Supermarket Saari",
                 "distance": 30.0,
-                "product": "Hartwall Novelle Vadelma-veriappelsiini kivennäisvesi 0,33l 24-pack",
-                "basePrice": 12.59
+                "product": "Hartwall Novelle Citronelle kivennäisvesi 0,33l 24-pack",
+                "basePrice": 12.29
             },
             {
                 "store": "K‑Supermarket Saari",
                 "distance": 30.0,
-                "product": "Hartwall Novelle Citronelle kivennäisvesi 0,33l 24-pack",
-                "basePrice": 12.29
+                "product": "Hartwall Novelle Vadelma-veriappelsiini kivennäisvesi 0,33l 24-pack",
+                "basePrice": 12.59
             },
             {
                 "store": "K‑Supermarket Saari",
@@ -1872,13 +1914,13 @@
             {
                 "store": "K‑Supermarket Tripla",
                 "distance": 27.0,
-                "product": "Hartwall Novelle Vadelma-veriappelsiini kivennäisvesi 0,33l 24-pack",
+                "product": "Hartwall Novelle Citronelle kivennäisvesi 0,33l 24-pack",
                 "basePrice": 11.99
             },
             {
                 "store": "K‑Supermarket Tripla",
                 "distance": 27.0,
-                "product": "Hartwall Novelle Citronelle kivennäisvesi 0,33l 24-pack",
+                "product": "Hartwall Novelle Vadelma-veriappelsiini kivennäisvesi 0,33l 24-pack",
                 "basePrice": 11.99
             },
             {
@@ -2034,13 +2076,13 @@
             {
                 "store": "K‑Citymarket Sello",
                 "distance": 28.0,
-                "product": "Hartwall Novelle Vadelma-veriappelsiini kivennäisvesi 0,33l 24-pack",
+                "product": "Hartwall Novelle Citronelle kivennäisvesi 0,33l 24-pack",
                 "basePrice": 10.99
             },
             {
                 "store": "K‑Citymarket Sello",
                 "distance": 28.0,
-                "product": "Hartwall Novelle Citronelle kivennäisvesi 0,33l 24-pack",
+                "product": "Hartwall Novelle Vadelma-veriappelsiini kivennäisvesi 0,33l 24-pack",
                 "basePrice": 10.99
             },
             {
@@ -2186,12 +2228,6 @@
                 "distance": 18.0,
                 "product": "Pepsi Max virvoitusjuoma 0,33l 18-pack",
                 "basePrice": 14.15
-            },
-            {
-                "store": "K‑Citymarket Jumbo",
-                "distance": 18.0,
-                "product": "Hartwall Jaffa Lemonade sokeriton virvoitusjuoma 0,33l 18-pack DOLLY",
-                "basePrice": 14.99
             },
             {
                 "store": "K‑Citymarket Kivistö",
@@ -2806,12 +2842,6 @@
                 "basePrice": 5.39
             },
             {
-                "store": "K‑Market Ilola",
-                "distance": 15.0,
-                "product": "Pepsi Max 0,33L tlk 6-pack",
-                "basePrice": 5.39
-            },
-            {
                 "store": "K‑Market Satukallio",
                 "distance": 120.0,
                 "product": "Pepsi Max 0,33L tlk 6-pack",
@@ -2834,6 +2864,12 @@
                 "distance": 17.0,
                 "product": "Pepsi Max 0,33L tlk 6-pack",
                 "basePrice": 5.19
+            },
+            {
+                "store": "K‑Market Ilola",
+                "distance": 15.0,
+                "product": "Pepsi Max 0,33L tlk 6-pack",
+                "basePrice": 5.39
             },
             {
                 "store": "K‑Supermarket Nikinmäki",
@@ -2902,6 +2938,12 @@
                 "basePrice": 5.39
             },
             {
+                "store": "K‑Supermarket Honkatori",
+                "distance": 22.0,
+                "product": "Pepsi Max 0,33L tlk 6-pack",
+                "basePrice": 5.39
+            },
+            {
                 "store": "K‑Market Kielotie",
                 "distance": 18.0,
                 "product": "Pepsi Max 0,33L tlk 6-pack",
@@ -2916,12 +2958,6 @@
             {
                 "store": "K‑Market Jokiniemi",
                 "distance": 18.0,
-                "product": "Pepsi Max 0,33L tlk 6-pack",
-                "basePrice": 5.39
-            },
-            {
-                "store": "K‑Supermarket Honkatori",
-                "distance": 22.0,
                 "product": "Pepsi Max 0,33L tlk 6-pack",
                 "basePrice": 5.39
             },
@@ -2950,14 +2986,14 @@
                 "basePrice": 5.39
             },
             {
-                "store": "K‑Market Tapuli",
-                "distance": 20.0,
+                "store": "K‑Supermarket Hakunila",
+                "distance": 15.0,
                 "product": "Pepsi Max 0,33L tlk 6-pack",
                 "basePrice": 5.39
             },
             {
-                "store": "K‑Market Puistori",
-                "distance": 20.0,
+                "store": "K‑Market Kastanja",
+                "distance": 18.0,
                 "product": "Pepsi Max 0,33L tlk 6-pack",
                 "basePrice": 5.39
             },
@@ -2968,14 +3004,14 @@
                 "basePrice": 5.39
             },
             {
-                "store": "K‑Supermarket Hakunila",
-                "distance": 15.0,
+                "store": "K‑Market Tapuli",
+                "distance": 20.0,
                 "product": "Pepsi Max 0,33L tlk 6-pack",
                 "basePrice": 5.39
             },
             {
-                "store": "K‑Market Kastanja",
-                "distance": 18.0,
+                "store": "K‑Market Puistori",
+                "distance": 20.0,
                 "product": "Pepsi Max 0,33L tlk 6-pack",
                 "basePrice": 5.39
             },
@@ -3010,12 +3046,6 @@
                 "basePrice": 5.39
             },
             {
-                "store": "K‑Citymarket Malmi",
-                "distance": 28.0,
-                "product": "Pepsi Max 0,33L tlk 6-pack",
-                "basePrice": 5.19
-            },
-            {
                 "store": "K‑Market Länsimäki",
                 "distance": 22.0,
                 "product": "Pepsi Max 0,33L tlk 6-pack",
@@ -3044,6 +3074,12 @@
                 "distance": 120.0,
                 "product": "Pepsi Max 0,33L tlk 6-pack",
                 "basePrice": 5.39
+            },
+            {
+                "store": "K‑Citymarket Malmi",
+                "distance": 28.0,
+                "product": "Pepsi Max 0,33L tlk 6-pack",
+                "basePrice": 5.19
             },
             {
                 "store": "K‑Citymarket Jumbo",
@@ -3118,24 +3154,6 @@
                 "basePrice": 5.19
             },
             {
-                "store": "K‑Supermarket Viikki",
-                "distance": 23.0,
-                "product": "Pepsi Max 0,33L tlk 6-pack",
-                "basePrice": 5.39
-            },
-            {
-                "store": "K‑Market Pihlajisto",
-                "distance": 120.0,
-                "product": "Pepsi Max 0,33L tlk 6-pack",
-                "basePrice": 5.39
-            },
-            {
-                "store": "K‑Market Latokartano",
-                "distance": 120.0,
-                "product": "Pepsi Max 0,33L tlk 6-pack",
-                "basePrice": 4.99
-            },
-            {
                 "store": "K‑Market Mellunmäki",
                 "distance": 120.0,
                 "product": "Pepsi Max 0,33L tlk 6-pack",
@@ -3148,10 +3166,22 @@
                 "basePrice": 5.39
             },
             {
+                "store": "K‑Supermarket Myllypuro",
+                "distance": 24.0,
+                "product": "Pepsi Max 0,33L tlk 6-pack",
+                "basePrice": 5.39
+            },
+            {
                 "store": "K‑Market Myllypadontie",
                 "distance": 120.0,
                 "product": "Pepsi Max 0,33L tlk 6-pack",
                 "basePrice": 5.39
+            },
+            {
+                "store": "K‑Market Latokartano",
+                "distance": 120.0,
+                "product": "Pepsi Max 0,33L tlk 6-pack",
+                "basePrice": 4.99
             },
             {
                 "store": "K‑Citymarket Easton",
@@ -3160,7 +3190,19 @@
                 "basePrice": 5.19
             },
             {
+                "store": "K‑Supermarket Viikki",
+                "distance": 23.0,
+                "product": "Pepsi Max 0,33L tlk 6-pack",
+                "basePrice": 5.39
+            },
+            {
                 "store": "K‑Market Siilitie",
+                "distance": 120.0,
+                "product": "Pepsi Max 0,33L tlk 6-pack",
+                "basePrice": 5.39
+            },
+            {
+                "store": "K‑Market Pihlajisto",
                 "distance": 120.0,
                 "product": "Pepsi Max 0,33L tlk 6-pack",
                 "basePrice": 5.39
@@ -3262,12 +3304,6 @@
                 "basePrice": 5.15
             },
             {
-                "store": "K‑Market Arabianranta",
-                "distance": 120.0,
-                "product": "Pepsi Max 0,33L tlk 6-pack",
-                "basePrice": 5.39
-            },
-            {
                 "store": "K‑Citymarket Columbus",
                 "distance": 25.0,
                 "product": "Pepsi Max 0,33L tlk 6-pack",
@@ -3304,7 +3340,7 @@
                 "basePrice": 5.39
             },
             {
-                "store": "K‑Market Ruokakippari",
+                "store": "K‑Market Arabianranta",
                 "distance": 120.0,
                 "product": "Pepsi Max 0,33L tlk 6-pack",
                 "basePrice": 5.39
@@ -3370,13 +3406,13 @@
                 "basePrice": 5.39
             },
             {
-                "store": "K‑Supermarket Redi",
-                "distance": 27.0,
+                "store": "K‑Market Verkkosaari",
+                "distance": 30.0,
                 "product": "Pepsi Max 0,33L tlk 6-pack",
                 "basePrice": 5.39
             },
             {
-                "store": "K‑Market Pikku-Redi",
+                "store": "K‑Supermarket Redi",
                 "distance": 27.0,
                 "product": "Pepsi Max 0,33L tlk 6-pack",
                 "basePrice": 5.39
@@ -3436,7 +3472,7 @@
                 "basePrice": 5.39
             },
             {
-                "store": "K‑Market Ruokasaari",
+                "store": "K‑Market Peltosaari",
                 "distance": 30.0,
                 "product": "Pepsi Max 0,33L tlk 6-pack",
                 "basePrice": 5.39
@@ -4003,7 +4039,7 @@
                 "store": "K‑Supermarket Honkatori",
                 "distance": 22.0,
                 "product": "Juju Päärynä sokeriton virvoitusjuoma 0,5l",
-                "basePrice": 1.99
+                "basePrice": 1.49
             },
             {
                 "store": "K‑Market Jokiniemi",
@@ -4270,12 +4306,6 @@
                 "basePrice": 3.15
             },
             {
-                "store": "K‑Market DIXI",
-                "distance": 18.0,
-                "product": "Fanta Halloween Berry Zero virvoitusjuoma 0,5l",
-                "basePrice": 2.45
-            },
-            {
                 "store": "K‑Market Suutarila",
                 "distance": 20.0,
                 "product": "Muumi Metsämansikka sokeriton virvoitusjuoma 0,5l",
@@ -4340,6 +4370,12 @@
                 "distance": 20.0,
                 "product": "Fanta Halloween Berry Zero virvoitusjuoma 0,5l",
                 "basePrice": 2.45
+            },
+            {
+                "store": "K‑Market Tapuli",
+                "distance": 20.0,
+                "product": "Juju Päärynä sokeriton virvoitusjuoma 0,5l",
+                "basePrice": 1.99
             },
             {
                 "store": "K‑Market Puistori",
@@ -4948,6 +4984,36 @@
                 "basePrice": 2.79
             },
             {
+                "store": "K‑Market Pikkusisko",
+                "distance": 120.0,
+                "product": "Smurffit päärynän makuinen sokeriton virvoitusjuoma 0,5l",
+                "basePrice": 2.79
+            },
+            {
+                "store": "K‑Market Pikkusisko",
+                "distance": 120.0,
+                "product": "Smurffi Päärynälimonadi 0,5l",
+                "basePrice": 3.15
+            },
+            {
+                "store": "K‑Market Pikkusisko",
+                "distance": 120.0,
+                "product": "Muumi Metsämansikka 0,5l virvoitusjuoma",
+                "basePrice": 3.15
+            },
+            {
+                "store": "K‑Market Pikkusisko",
+                "distance": 120.0,
+                "product": "Fanta Halloween Berry Zero virvoitusjuoma 0,5l",
+                "basePrice": 1.99
+            },
+            {
+                "store": "K‑Market Pikkusisko",
+                "distance": 120.0,
+                "product": "Juju Päärynä sokeriton virvoitusjuoma 0,5l",
+                "basePrice": 1.99
+            },
+            {
                 "store": "K‑Market Kurkimäki",
                 "distance": 120.0,
                 "product": "Muumi Metsämansikka sokeriton virvoitusjuoma 0,5l",
@@ -5012,6 +5078,36 @@
                 "distance": 120.0,
                 "product": "Muumi Metsämansikka sokeriton virvoitusjuoma 0,5l",
                 "basePrice": 2.69
+            },
+            {
+                "store": "K‑Market Pihlajisto",
+                "distance": 120.0,
+                "product": "Smurffit päärynän makuinen sokeriton virvoitusjuoma 0,5l",
+                "basePrice": 2.69
+            },
+            {
+                "store": "K‑Market Pihlajisto",
+                "distance": 120.0,
+                "product": "Smurffi Päärynälimonadi 0,5l",
+                "basePrice": 2.99
+            },
+            {
+                "store": "K‑Market Pihlajisto",
+                "distance": 120.0,
+                "product": "Muumi Metsämansikka 0,5l virvoitusjuoma",
+                "basePrice": 2.99
+            },
+            {
+                "store": "K‑Market Pihlajisto",
+                "distance": 120.0,
+                "product": "Fanta Halloween Berry Zero virvoitusjuoma 0,5l",
+                "basePrice": 2.45
+            },
+            {
+                "store": "K‑Market Pihlajisto",
+                "distance": 120.0,
+                "product": "Juju Päärynä sokeriton virvoitusjuoma 0,5l",
+                "basePrice": 1.99
             },
             {
                 "store": "K‑Market Mellunmäki",
@@ -5360,6 +5456,12 @@
                 "distance": 120.0,
                 "product": "Muumi Metsämansikka 0,5l virvoitusjuoma",
                 "basePrice": 2.99
+            },
+            {
+                "store": "K‑Market Pikkupekka",
+                "distance": 120.0,
+                "product": "Fanta Halloween Berry Zero virvoitusjuoma 0,5l",
+                "basePrice": 2.19
             },
             {
                 "store": "K‑Market Pikkupekka",
@@ -6312,6 +6414,12 @@
             {
                 "store": "K‑Market Lyyra",
                 "distance": 120.0,
+                "product": "Smurffit päärynän makuinen sokeriton virvoitusjuoma 0,5l",
+                "basePrice": 2.79
+            },
+            {
+                "store": "K‑Market Lyyra",
+                "distance": 120.0,
                 "product": "Smurffi Päärynälimonadi 0,5l",
                 "basePrice": 3.15
             },
@@ -6902,12 +7010,6 @@
                 "distance": 28.0,
                 "product": "Muumi Metsämansikka 0,5l virvoitusjuoma",
                 "basePrice": 2.79
-            },
-            {
-                "store": "K‑Citymarket Sello",
-                "distance": 28.0,
-                "product": "Fanta Halloween Berry Zero virvoitusjuoma 0,5l",
-                "basePrice": 1.99
             },
             {
                 "store": "K‑Citymarket Sello",
@@ -7522,6 +7624,12 @@
                 "basePrice": 5.45
             },
             {
+                "store": "K‑Supermarket Korso",
+                "distance": 15.0,
+                "product": "Fanta Zero Ananas & Greippi virvoitusjuoma 0,33l 6-pack",
+                "basePrice": 5.49
+            },
+            {
                 "store": "K‑Supermarket Hyrrä",
                 "distance": 1.0,
                 "product": "Dr Pepper Original virvoitusjuoma 0,33l 6-pack",
@@ -7666,48 +7774,6 @@
                 "basePrice": 5.69
             },
             {
-                "store": "K‑Market Ilola",
-                "distance": 15.0,
-                "product": "Dr Pepper Original virvoitusjuoma 0,33l 6-pack",
-                "basePrice": 6.15
-            },
-            {
-                "store": "K‑Market Ilola",
-                "distance": 15.0,
-                "product": "Coca-Cola Original Taste Kirsikka virvoitusjuoma 0,33l 6-pack",
-                "basePrice": 5.82
-            },
-            {
-                "store": "K‑Market Ilola",
-                "distance": 15.0,
-                "product": "Coca-Cola Original Lime virvoitusjuoma 0,33l 6-pack",
-                "basePrice": 5.82
-            },
-            {
-                "store": "K‑Market Ilola",
-                "distance": 15.0,
-                "product": "Fanta Appelsiini virvoitusjuoma 0,33l 6-pack",
-                "basePrice": 5.95
-            },
-            {
-                "store": "K‑Market Ilola",
-                "distance": 15.0,
-                "product": "Dr Pepper Zero virvoitusjuoma 0,33l 6-pack",
-                "basePrice": 5.49
-            },
-            {
-                "store": "K‑Market Ilola",
-                "distance": 15.0,
-                "product": "Coca-Cola virvoitusjuoma 0,33l 6-pack",
-                "basePrice": 5.82
-            },
-            {
-                "store": "K‑Market Ilola",
-                "distance": 15.0,
-                "product": "Coca-Cola Zero Vanilja virvoitusjuoma 0,33l 6-pack",
-                "basePrice": 4.99
-            },
-            {
                 "store": "K‑Market Satukallio",
                 "distance": 120.0,
                 "product": "Dr Pepper Original virvoitusjuoma 0,33l 6-pack",
@@ -7850,6 +7916,48 @@
                 "distance": 17.0,
                 "product": "Dr Pepper Zero virvoitusjuoma 0,33l 6-pack",
                 "basePrice": 5.49
+            },
+            {
+                "store": "K‑Market Ilola",
+                "distance": 15.0,
+                "product": "Dr Pepper Original virvoitusjuoma 0,33l 6-pack",
+                "basePrice": 6.15
+            },
+            {
+                "store": "K‑Market Ilola",
+                "distance": 15.0,
+                "product": "Coca-Cola Original Taste Kirsikka virvoitusjuoma 0,33l 6-pack",
+                "basePrice": 5.82
+            },
+            {
+                "store": "K‑Market Ilola",
+                "distance": 15.0,
+                "product": "Coca-Cola Original Lime virvoitusjuoma 0,33l 6-pack",
+                "basePrice": 5.82
+            },
+            {
+                "store": "K‑Market Ilola",
+                "distance": 15.0,
+                "product": "Fanta Appelsiini virvoitusjuoma 0,33l 6-pack",
+                "basePrice": 5.95
+            },
+            {
+                "store": "K‑Market Ilola",
+                "distance": 15.0,
+                "product": "Dr Pepper Zero virvoitusjuoma 0,33l 6-pack",
+                "basePrice": 5.49
+            },
+            {
+                "store": "K‑Market Ilola",
+                "distance": 15.0,
+                "product": "Coca-Cola virvoitusjuoma 0,33l 6-pack",
+                "basePrice": 5.82
+            },
+            {
+                "store": "K‑Market Ilola",
+                "distance": 15.0,
+                "product": "Coca-Cola Zero Vanilja virvoitusjuoma 0,33l 6-pack",
+                "basePrice": 4.99
             },
             {
                 "store": "K‑Supermarket Nikinmäki",
@@ -8218,6 +8326,24 @@
                 "basePrice": 4.99
             },
             {
+                "store": "K‑Supermarket Honkatori",
+                "distance": 22.0,
+                "product": "Dr Pepper Original virvoitusjuoma 0,33l 6-pack",
+                "basePrice": 5.99
+            },
+            {
+                "store": "K‑Supermarket Honkatori",
+                "distance": 22.0,
+                "product": "Fanta Appelsiini virvoitusjuoma 0,33l 6-pack",
+                "basePrice": 5.85
+            },
+            {
+                "store": "K‑Supermarket Honkatori",
+                "distance": 22.0,
+                "product": "Dr Pepper Zero virvoitusjuoma 0,33l 6-pack",
+                "basePrice": 5.35
+            },
+            {
                 "store": "K‑Market Kielotie",
                 "distance": 18.0,
                 "product": "Dr Pepper Original virvoitusjuoma 0,33l 6-pack",
@@ -8320,24 +8446,6 @@
                 "basePrice": 4.99
             },
             {
-                "store": "K‑Supermarket Honkatori",
-                "distance": 22.0,
-                "product": "Dr Pepper Original virvoitusjuoma 0,33l 6-pack",
-                "basePrice": 5.99
-            },
-            {
-                "store": "K‑Supermarket Honkatori",
-                "distance": 22.0,
-                "product": "Fanta Appelsiini virvoitusjuoma 0,33l 6-pack",
-                "basePrice": 5.85
-            },
-            {
-                "store": "K‑Supermarket Honkatori",
-                "distance": 22.0,
-                "product": "Dr Pepper Zero virvoitusjuoma 0,33l 6-pack",
-                "basePrice": 5.35
-            },
-            {
                 "store": "K‑Market Tikkuri",
                 "distance": 18.0,
                 "product": "Dr Pepper Original virvoitusjuoma 0,33l 6-pack",
@@ -8448,12 +8556,6 @@
             {
                 "store": "K‑Market Suutarila",
                 "distance": 20.0,
-                "product": "Dr Pepper Zero virvoitusjuoma 0,33l 6-pack",
-                "basePrice": 5.59
-            },
-            {
-                "store": "K‑Market Suutarila",
-                "distance": 20.0,
                 "product": "Coca-Cola virvoitusjuoma 0,33l 6-pack",
                 "basePrice": 5.82
             },
@@ -8462,6 +8564,12 @@
                 "distance": 20.0,
                 "product": "Coca-Cola Zero Vanilja virvoitusjuoma 0,33l 6-pack",
                 "basePrice": 4.99
+            },
+            {
+                "store": "K‑Market Suutarila",
+                "distance": 20.0,
+                "product": "Fanta Zero Ananas & Greippi virvoitusjuoma 0,33l 6-pack",
+                "basePrice": 5.69
             },
             {
                 "store": "K‑Supermarket Kellokoski",
@@ -8482,86 +8590,62 @@
                 "basePrice": 5.45
             },
             {
-                "store": "K‑Market Tapuli",
-                "distance": 20.0,
+                "store": "K‑Supermarket Hakunila",
+                "distance": 15.0,
                 "product": "Dr Pepper Original virvoitusjuoma 0,33l 6-pack",
-                "basePrice": 6.29
+                "basePrice": 5.99
             },
             {
-                "store": "K‑Market Tapuli",
-                "distance": 20.0,
+                "store": "K‑Supermarket Hakunila",
+                "distance": 15.0,
+                "product": "Fanta Appelsiini virvoitusjuoma 0,33l 6-pack",
+                "basePrice": 6.39
+            },
+            {
+                "store": "K‑Supermarket Hakunila",
+                "distance": 15.0,
+                "product": "Dr Pepper Zero virvoitusjuoma 0,33l 6-pack",
+                "basePrice": 5.35
+            },
+            {
+                "store": "K‑Market Kastanja",
+                "distance": 18.0,
+                "product": "Dr Pepper Original virvoitusjuoma 0,33l 6-pack",
+                "basePrice": 6.35
+            },
+            {
+                "store": "K‑Market Kastanja",
+                "distance": 18.0,
                 "product": "Coca-Cola Original Taste Kirsikka virvoitusjuoma 0,33l 6-pack",
                 "basePrice": 5.82
             },
             {
-                "store": "K‑Market Tapuli",
-                "distance": 20.0,
+                "store": "K‑Market Kastanja",
+                "distance": 18.0,
                 "product": "Coca-Cola Original Lime virvoitusjuoma 0,33l 6-pack",
                 "basePrice": 5.82
             },
             {
-                "store": "K‑Market Tapuli",
-                "distance": 20.0,
+                "store": "K‑Market Kastanja",
+                "distance": 18.0,
                 "product": "Fanta Appelsiini virvoitusjuoma 0,33l 6-pack",
                 "basePrice": 6.15
             },
             {
-                "store": "K‑Market Tapuli",
-                "distance": 20.0,
+                "store": "K‑Market Kastanja",
+                "distance": 18.0,
                 "product": "Dr Pepper Zero virvoitusjuoma 0,33l 6-pack",
-                "basePrice": 5.59
+                "basePrice": 5.65
             },
             {
-                "store": "K‑Market Tapuli",
-                "distance": 20.0,
+                "store": "K‑Market Kastanja",
+                "distance": 18.0,
                 "product": "Coca-Cola virvoitusjuoma 0,33l 6-pack",
                 "basePrice": 5.82
             },
             {
-                "store": "K‑Market Tapuli",
-                "distance": 20.0,
-                "product": "Coca-Cola Zero Vanilja virvoitusjuoma 0,33l 6-pack",
-                "basePrice": 4.99
-            },
-            {
-                "store": "K‑Market Siltamäki",
-                "distance": 21.0,
-                "product": "Dr Pepper Original virvoitusjuoma 0,33l 6-pack",
-                "basePrice": 6.29
-            },
-            {
-                "store": "K‑Market Siltamäki",
-                "distance": 21.0,
-                "product": "Coca-Cola Original Taste Kirsikka virvoitusjuoma 0,33l 6-pack",
-                "basePrice": 5.82
-            },
-            {
-                "store": "K‑Market Siltamäki",
-                "distance": 21.0,
-                "product": "Coca-Cola Original Lime virvoitusjuoma 0,33l 6-pack",
-                "basePrice": 5.82
-            },
-            {
-                "store": "K‑Market Siltamäki",
-                "distance": 21.0,
-                "product": "Fanta Appelsiini virvoitusjuoma 0,33l 6-pack",
-                "basePrice": 6.15
-            },
-            {
-                "store": "K‑Market Siltamäki",
-                "distance": 21.0,
-                "product": "Dr Pepper Zero virvoitusjuoma 0,33l 6-pack",
-                "basePrice": 5.59
-            },
-            {
-                "store": "K‑Market Siltamäki",
-                "distance": 21.0,
-                "product": "Coca-Cola virvoitusjuoma 0,33l 6-pack",
-                "basePrice": 5.82
-            },
-            {
-                "store": "K‑Market Siltamäki",
-                "distance": 21.0,
+                "store": "K‑Market Kastanja",
+                "distance": 18.0,
                 "product": "Coca-Cola Zero Vanilja virvoitusjuoma 0,33l 6-pack",
                 "basePrice": 4.99
             },
@@ -8608,62 +8692,86 @@
                 "basePrice": 5.69
             },
             {
-                "store": "K‑Supermarket Hakunila",
-                "distance": 15.0,
+                "store": "K‑Market Tapuli",
+                "distance": 20.0,
                 "product": "Dr Pepper Original virvoitusjuoma 0,33l 6-pack",
-                "basePrice": 5.99
+                "basePrice": 6.29
             },
             {
-                "store": "K‑Supermarket Hakunila",
-                "distance": 15.0,
-                "product": "Fanta Appelsiini virvoitusjuoma 0,33l 6-pack",
-                "basePrice": 6.39
-            },
-            {
-                "store": "K‑Supermarket Hakunila",
-                "distance": 15.0,
-                "product": "Dr Pepper Zero virvoitusjuoma 0,33l 6-pack",
-                "basePrice": 5.35
-            },
-            {
-                "store": "K‑Market Kastanja",
-                "distance": 18.0,
-                "product": "Dr Pepper Original virvoitusjuoma 0,33l 6-pack",
-                "basePrice": 6.35
-            },
-            {
-                "store": "K‑Market Kastanja",
-                "distance": 18.0,
+                "store": "K‑Market Tapuli",
+                "distance": 20.0,
                 "product": "Coca-Cola Original Taste Kirsikka virvoitusjuoma 0,33l 6-pack",
                 "basePrice": 5.82
             },
             {
-                "store": "K‑Market Kastanja",
-                "distance": 18.0,
+                "store": "K‑Market Tapuli",
+                "distance": 20.0,
                 "product": "Coca-Cola Original Lime virvoitusjuoma 0,33l 6-pack",
                 "basePrice": 5.82
             },
             {
-                "store": "K‑Market Kastanja",
-                "distance": 18.0,
+                "store": "K‑Market Tapuli",
+                "distance": 20.0,
                 "product": "Fanta Appelsiini virvoitusjuoma 0,33l 6-pack",
                 "basePrice": 6.15
             },
             {
-                "store": "K‑Market Kastanja",
-                "distance": 18.0,
+                "store": "K‑Market Tapuli",
+                "distance": 20.0,
                 "product": "Dr Pepper Zero virvoitusjuoma 0,33l 6-pack",
-                "basePrice": 5.65
+                "basePrice": 5.59
             },
             {
-                "store": "K‑Market Kastanja",
-                "distance": 18.0,
+                "store": "K‑Market Tapuli",
+                "distance": 20.0,
                 "product": "Coca-Cola virvoitusjuoma 0,33l 6-pack",
                 "basePrice": 5.82
             },
             {
-                "store": "K‑Market Kastanja",
-                "distance": 18.0,
+                "store": "K‑Market Tapuli",
+                "distance": 20.0,
+                "product": "Coca-Cola Zero Vanilja virvoitusjuoma 0,33l 6-pack",
+                "basePrice": 4.99
+            },
+            {
+                "store": "K‑Market Siltamäki",
+                "distance": 21.0,
+                "product": "Dr Pepper Original virvoitusjuoma 0,33l 6-pack",
+                "basePrice": 6.29
+            },
+            {
+                "store": "K‑Market Siltamäki",
+                "distance": 21.0,
+                "product": "Coca-Cola Original Taste Kirsikka virvoitusjuoma 0,33l 6-pack",
+                "basePrice": 5.82
+            },
+            {
+                "store": "K‑Market Siltamäki",
+                "distance": 21.0,
+                "product": "Coca-Cola Original Lime virvoitusjuoma 0,33l 6-pack",
+                "basePrice": 5.82
+            },
+            {
+                "store": "K‑Market Siltamäki",
+                "distance": 21.0,
+                "product": "Fanta Appelsiini virvoitusjuoma 0,33l 6-pack",
+                "basePrice": 6.15
+            },
+            {
+                "store": "K‑Market Siltamäki",
+                "distance": 21.0,
+                "product": "Dr Pepper Zero virvoitusjuoma 0,33l 6-pack",
+                "basePrice": 5.59
+            },
+            {
+                "store": "K‑Market Siltamäki",
+                "distance": 21.0,
+                "product": "Coca-Cola virvoitusjuoma 0,33l 6-pack",
+                "basePrice": 5.82
+            },
+            {
+                "store": "K‑Market Siltamäki",
+                "distance": 21.0,
                 "product": "Coca-Cola Zero Vanilja virvoitusjuoma 0,33l 6-pack",
                 "basePrice": 4.99
             },
@@ -8806,52 +8914,64 @@
                 "basePrice": 5.35
             },
             {
-                "store": "K‑Citymarket Malmi",
-                "distance": 28.0,
+                "store": "K‑Market Länsimäki",
+                "distance": 22.0,
                 "product": "Dr Pepper Original virvoitusjuoma 0,33l 6-pack",
-                "basePrice": 6.19
+                "basePrice": 6.35
             },
             {
-                "store": "K‑Citymarket Malmi",
-                "distance": 28.0,
+                "store": "K‑Market Länsimäki",
+                "distance": 22.0,
+                "product": "Coca-Cola Original Taste Kirsikka virvoitusjuoma 0,33l 6-pack",
+                "basePrice": 5.82
+            },
+            {
+                "store": "K‑Market Länsimäki",
+                "distance": 22.0,
+                "product": "Coca-Cola Original Lime virvoitusjuoma 0,33l 6-pack",
+                "basePrice": 5.82
+            },
+            {
+                "store": "K‑Market Länsimäki",
+                "distance": 22.0,
                 "product": "Fanta Appelsiini virvoitusjuoma 0,33l 6-pack",
-                "basePrice": 5.85
+                "basePrice": 6.15
             },
             {
-                "store": "K‑Citymarket Malmi",
-                "distance": 28.0,
+                "store": "K‑Market Länsimäki",
+                "distance": 22.0,
+                "product": "Coca-Cola virvoitusjuoma 0,33l 6-pack",
+                "basePrice": 5.82
+            },
+            {
+                "store": "K‑Market Länsimäki",
+                "distance": 22.0,
+                "product": "Coca-Cola Zero Vanilja virvoitusjuoma 0,33l 6-pack",
+                "basePrice": 4.99
+            },
+            {
+                "store": "K‑Market Länsimäki",
+                "distance": 22.0,
+                "product": "Fanta Zero Ananas & Greippi virvoitusjuoma 0,33l 6-pack",
+                "basePrice": 5.79
+            },
+            {
+                "store": "K‑Supermarket Masi",
+                "distance": 20.0,
+                "product": "Dr Pepper Original virvoitusjuoma 0,33l 6-pack",
+                "basePrice": 6.15
+            },
+            {
+                "store": "K‑Supermarket Masi",
+                "distance": 20.0,
+                "product": "Fanta Appelsiini virvoitusjuoma 0,33l 6-pack",
+                "basePrice": 5.89
+            },
+            {
+                "store": "K‑Supermarket Masi",
+                "distance": 20.0,
                 "product": "Dr Pepper Zero virvoitusjuoma 0,33l 6-pack",
                 "basePrice": 5.45
-            },
-            {
-                "store": "K‑Citymarket Jumbo",
-                "distance": 18.0,
-                "product": "Dr Pepper Original virvoitusjuoma 0,33l 6-pack",
-                "basePrice": 6.19
-            },
-            {
-                "store": "K‑Citymarket Jumbo",
-                "distance": 18.0,
-                "product": "Coca-Cola Original Taste Kirsikka virvoitusjuoma 0,33l 6-pack",
-                "basePrice": 4.99
-            },
-            {
-                "store": "K‑Citymarket Jumbo",
-                "distance": 18.0,
-                "product": "Coca-Cola Original Lime virvoitusjuoma 0,33l 6-pack",
-                "basePrice": 4.99
-            },
-            {
-                "store": "K‑Citymarket Jumbo",
-                "distance": 18.0,
-                "product": "Fanta Appelsiini virvoitusjuoma 0,33l 6-pack",
-                "basePrice": 5.85
-            },
-            {
-                "store": "K‑Citymarket Jumbo",
-                "distance": 18.0,
-                "product": "Dr Pepper Zero virvoitusjuoma 0,33l 6-pack",
-                "basePrice": 4.99
             }
         ]
     }
