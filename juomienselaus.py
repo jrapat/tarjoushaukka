@@ -7,6 +7,7 @@ from playwright.sync_api import sync_playwright
 # Tarkistetaan automaattisesti, ajetaanko skriptiä GitHub Actionsissa (CI) vai omalla koneella
 is_ci = os.getenv("CI") is not None
 
+# Päivitetty etäisyyssanakirja Tuusulasta (km yhdensuuntaisesti)
 # Päivitetty ja täydennetty etäisyyssanakirja Tuusulasta (km yhdensuuntaisesti)
 TUUSULA_DISTANCES = {
     # Lähialue & Tuusula / Järvenpää / Kerava
@@ -22,20 +23,24 @@ TUUSULA_DISTANCES = {
     "Pajala": 11,
     "Kerava": 12,
     "Karuselli": 12,
+    "Keravan asema": 12,
     "Kalevantori": 12, # Kerava
     "Ahjontori": 12,   # Kerava
     "Haarajoki": 13,   # Järvenpää
+    "Satukallio": 13,  # Järvenpää
     "Kellokoski": 14,
     "Kivistö": 14,
     "Jokela": 20,
     "Pornainen": 28,
     "Mäntsälä": 32,
-    # Nurmijärvi & Rajamäki & Klaukkala & Vihti
+    # Nurmijärvi & Rajamäki & Klaukkala & Vihti & Röykkä
     "Lähde": 22,       # Rajamäki
     "Rajamäki": 22,
     "Klaukkala": 22,
     "Nurmijärvi": 20,
     "Masi": 20,
+    "Röykkä": 28,
+    "Karppala": 25,
     "Nummela": 45,
     "Karkkila": 55,
     "Lohja": 45,
@@ -49,8 +54,8 @@ TUUSULA_DISTANCES = {
     "Mikkola": 16,
     "Rekola": 16,
     "Oregano": 16,
-    "Koivukylä": 17,
     "Asola": 17,
+    "Koivukylä": 17,
     "Tammisto": 18,
     "Jumbo": 18,
     "Tikkuri": 18,
@@ -60,18 +65,24 @@ TUUSULA_DISTANCES = {
     "Simonkallio": 18,
     "Peltola": 18,
     "Yliveto": 18,
-    "Riskiläkuja": 18, # Vantaa
-    "Kastanja": 18,    # Vantaa
-    "Kartanonkoski": 18, # Vantaa
+    "Riskiläkuja": 18,
+    "Kastanja": 18,
+    "Kartanonkoski": 18,
+    "Ristipuro": 18,
+    "Ylästö": 16,
     "Manteli": 20,
     "Honkatori": 22,
     "Martsari": 21,
+    "Martinlaakson Ostari": 21,
     "Martinlaakso": 21,
     "Myyrmäki": 22,
+    "Myyrvalinta": 22,
+    "Louhela": 22,
     "Niipperi": 22,
     "Länsimäki": 22,
     "Pähkinärinne": 25,
     "Hämeenkylä": 24,
+    "Pähkinä": 24,
     # Helsinki & Sipoo
     "Puistori": 20,
     "Heikinlaakso": 20,
@@ -84,6 +95,9 @@ TUUSULA_DISTANCES = {
     "Viikki": 23,
     "Myllypuro": 24,
     "Vesala": 24,
+    "Pukinmäki": 22,
+    "Savela": 22,
+    "Pikkusisko": 22,
     "Mustapekka": 25,
     "Konala": 25,
     "Kontumarket": 25,
@@ -99,6 +113,26 @@ TUUSULA_DISTANCES = {
     "Perkkaa": 27,
     "Redi": 27,
     "Tripla": 27,
+    "Pasilan asema": 28,
+    "Sture": 28,
+    "Verkkosaari": 29,
+    "Mäkelänkatu": 28,
+    "Arabia": 26,
+    "Arabianranta": 26,
+    "Toukola": 26,
+    "Naapuri": 26,
+    "Kannelmäki": 25,
+    "Maununneva": 25,
+    "Pihlajisto": 24,
+    "Siilitie": 24,
+    "Latokartano": 23,
+    "Myllypadontie": 24,
+    "Kurkimäki": 26,
+    "Mellunmäki": 26,
+    "Rastila": 26,
+    "Aurinkolahti": 27,
+    "Roihuvuori": 27,
+    "Herttoniemi": 27,
     "Sello": 28,
     "Lähderanta": 27,
     "Malmi": 28,
@@ -109,6 +143,7 @@ TUUSULA_DISTANCES = {
     "Postitalo": 30,
     "Saari": 30,
     "Masurkka": 30,    # Helsinki
+    "Kasari": 30,
     "Iso Omena": 33,
     "Ruoholahti": 34,
     "Kivenlahti": 35,
@@ -116,10 +151,16 @@ TUUSULA_DISTANCES = {
     "Porvoo": 45,
     "Tarmola": 47,
     # Hyvinkää & Riihimäki & Kanta-Häme
+    "Hyvinkäänkylä": 20,
     "Hyvinkää": 20,
     "Vieremä": 22,
     "Kumela": 48,
     "Riihimäki": 48,
+    "Peltosaari": 48,
+    "Munckinkatu": 48,
+    "Hakalantori": 48,
+    "Ukko-Pekka": 48,
+    "Veturi": 48,
     "Turenki": 65,
     "Hämeensaari": 75,
     "Tiiriö": 78,
@@ -132,9 +173,10 @@ TUUSULA_DISTANCES = {
     "Karisma": 72,
     "Okeroinen": 67,
     "Heinola": 105,
-    # Kouvola & Kymenlaakso
+    # Kouvola & Kymenlaakso & Kotka
     "Kouvola": 135,
     "Kotka": 130,
+    "Pasaati": 130,
     # Pirkanmaa & Keski-Suomi
     "Valkeakoski": 115,
     "Ideapark": 135,
@@ -149,6 +191,42 @@ TUUSULA_DISTANCES = {
     "Jämsä": 205,
 }
 
+
+def get_distance(store_name: str) -> float:
+    s_lower = store_name.lower()
+    for key, dist in TUUSULA_DISTANCES.items():
+        if key.lower() in s_lower:
+            return float(dist)
+
+    if any(x in s_lower for x in ["tuusula", "hyrylä"]):
+        return 1.0
+    if any(x in s_lower for x in ["järvenpää"]):
+        return 10.0
+    if any(x in s_lower for x in ["kerava"]):
+        return 12.0
+    if any(x in s_lower for x in ["vantaa", "korso", "tikkurila", "koivukylä"]):
+        return 18.0
+    if any(x in s_lower for x in ["sipoo"]):
+        return 25.0
+    if any(x in s_lower for x in ["helsinki", "espoo", "kauniainen"]):
+        return 28.0
+    if any(x in s_lower for x in ["nurmijärvi", "rajamäki", "klaukkala"]):
+        return 22.0
+    if any(x in s_lower for x in ["hyvinkää"]):
+        return 20.0
+    if any(x in s_lower for x in ["mäntsälä", "porvoo"]):
+        return 35.0
+    if any(
+        x in s_lower
+        for x in ["riihimäki", "lohja", "vihti", "nummela", "kirkkonummi"]
+    ):
+        return 48.0
+    if any(x in s_lower for x in ["lahti", "orimattila"]):
+        return 65.0
+    if any(x in s_lower for x in ["hämeenlinna", "turenki"]):
+        return 75.0
+
+    return 120.0
 
 def get_distance(store_name: str) -> float:
   s_lower = store_name.lower()
@@ -187,6 +265,7 @@ def get_distance(store_name: str) -> float:
 
   return 120.0
 
+
 def set_store_to_hyrra(page):
   try:
     page.goto("https://www.k-ruoka.fi/kauppa/k-supermarket-hyrra", timeout=30000)
@@ -198,8 +277,7 @@ def set_store_to_hyrra(page):
       onetrust_btn.first.click(force=True, timeout=3000)
       page.wait_for_timeout(1000)
     select_btn = page.locator(
-        'button:has-text("Valitse kaupaksi"), button:has-text("Valitse tämä'
-        ' kauppa")'
+        'button:has-text("Valitse kaupaksi"), button:has-text("Valitse tämä kauppa")'
     )
     if select_btn.count() > 0 and select_btn.first.is_visible():
       select_btn.first.click(force=True, timeout=3000)
@@ -254,6 +332,8 @@ def check_product_group(
     target_store_count: int = 50,
     required_keywords: list = None,
     exclude_keywords: list = None,
+    liters: float = 7.92,
+    total_deposit: float = 2.40,
 ):
   print(f"\n🥤 HAETAAN KATEGORIA: {group_label.upper()}")
 
@@ -305,7 +385,8 @@ def check_product_group(
     idx = 0
 
     while (
-        idx < len(stores_to_visit) and len(master_store_data) < target_store_count
+        idx < len(stores_to_visit)
+        and len(master_store_data) < target_store_count
     ):
       current_store = stores_to_visit[idx]
       store_name = current_store["name"]
@@ -388,12 +469,15 @@ def check_product_group(
 
           match = re.search(r"(\d+[\.,]\d+)\s*€", p["price"])
           if match:
-            val = float(match.group(1).replace(",", "."))
+            raw_val = float(match.group(1).replace(",", "."))
+            # Vähennetään pantti pois, koska sen saa kierrätyksessä takaisin
+            net_val = max(0.0, raw_val - total_deposit)
             results.append({
                 "store": s_name,
                 "distance": s_dist,
                 "product": p["name"],
-                "basePrice": val,
+                "basePrice": net_val,
+                "liters": liters,
             })
 
   return results
@@ -427,6 +511,8 @@ if __name__ == "__main__":
       target_store_count=50,
       required_keywords=["24"],
       exclude_keywords=["novelle", "kivennäisvesi", "vichy"],
+      liters=7.92,  # 24 * 0.33l
+      total_deposit=2.40,  # 24 * 0.10€ (pikkupullot)
   )
 
   res_novelle = check_product_group(
@@ -437,6 +523,8 @@ if __name__ == "__main__":
       target_store_count=50,
       required_keywords=["novelle"],
       exclude_keywords=[],
+      liters=7.92,  # 24 * 0.33l
+      total_deposit=2.40,  # 24 * 0.10€ (pikkupullot)
   )
 
   res_18pack = check_product_group(
@@ -447,6 +535,20 @@ if __name__ == "__main__":
       target_store_count=50,
       required_keywords=["18"],
       exclude_keywords=["novelle", "kivennäisvesi"],
+      liters=5.94,  # 18 * 0.33l
+      total_deposit=1.80,  # 18 * 0.10€ (pullot)
+  )
+
+  res_18pack_tulkki = check_product_group(
+      search_url=(
+          "https://www.k-ruoka.fi/haku?q=24%20pack%20pepsi&tuote=pepsi-max-033l-tlk-18-pack-6413605203440"
+      ),
+      group_label="18-packit (Tölkki)",
+      target_store_count=50,
+      required_keywords=["18"],
+      exclude_keywords=["novelle", "kivennäisvesi"],
+      liters=5.94,  # 18 * 0.33l
+      total_deposit=2.70,  # 18 * 0.15€ (tölkit)
   )
 
   res_6pack = check_product_group(
@@ -457,9 +559,51 @@ if __name__ == "__main__":
       target_store_count=50,
       required_keywords=["6"],
       exclude_keywords=["dippi", "taffel", "mauste", "kastike", "chip"],
+      liters=1.98,  # 6 * 0.33l
+      total_deposit=0.90,  # 6 * 0.15€ (tölkit)
+  )
+
+  res_muumilimu = check_product_group(
+      search_url=(
+          "https://www.k-ruoka.fi/kauppa/tuotehaku?haku=Muumi&tuote=muumi-metsamansikka-sokeriton-05l-kmp-6415600566667"
+      ),
+      group_label="Muumilimu",
+      target_store_count=50,
+      required_keywords=["0,5l"],
+      exclude_keywords=["dippi", "taffel", "mauste", "kastike", "chip"],
+      liters=3.0,
+      total_deposit=1.20,  # 6 * 0.20€ (0.5l pullon pantti)
+  )
+
+  res_drpepper = check_product_group(
+      search_url=(
+          "https://www.k-ruoka.fi/kauppa/tuotehaku/juomat/virvoitusjuomat?tuote=dr-pepper-original-033l-tlk-6-pack-6415600596589"
+      ),
+      group_label="Dr. Pepper",
+      target_store_count=50,
+      required_keywords=["6"],
+      exclude_keywords=["dippi", "taffel", "mauste", "kastike", "chip"],
+      liters=1.98,  # 6 * 0.33l
+      total_deposit=0.90,  # 6 * 0.15€ (tölkit)
+  )
+
+  # Kerätään kaikki tuotteet kokonaisvertailuun
+  res_kokonais = (
+      res_limut
+      + res_novelle
+      + res_18pack
+      + res_18pack_tulkki
+      + res_6pack
+      + res_muumilimu
+      + res_drpepper
   )
 
   output_data = {
+      "kokonaisvertailu": {
+          "name": "🏆 Kaikki (Paras litrahinta)",
+          "buyQuantity": 1,
+          "items": res_kokonais,
+      },
       "24-pack-limut": {
           "name": "24-packit (Limut)",
           "buyQuantity": 2,
@@ -471,13 +615,22 @@ if __name__ == "__main__":
           "items": res_novelle,
       },
       "18-pack": {"name": "18-packit", "buyQuantity": 2, "items": res_18pack},
+      "18-pack-tulkki": {
+          "name": "18-packit (Tölkki)",
+          "buyQuantity": 2,
+          "items": res_18pack_tulkki,
+      },
       "6-pack": {"name": "6-packit", "buyQuantity": 4, "items": res_6pack},
+      "muumilimu": {
+          "name": "Muumilimu (0.5L)",
+          "buyQuantity": 4,
+          "items": res_muumilimu,
+      },
+      "dr-pepper": {"name": "Dr. Pepper", "buyQuantity": 4, "items": res_drpepper},
   }
 
   with open("data.json", "w", encoding="utf-8") as f:
     json.dump(output_data, f, ensure_ascii=False, indent=4)
 
   print("\n✅ Kaikki tiedot tallennettu onnistuneesti tiedostoon data.json!")
-
-  # Ajetaan git push automaattisesti haun jälkeen
   git_push_updates()
