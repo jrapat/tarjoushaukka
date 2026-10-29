@@ -189,7 +189,9 @@
             const storeBestValues = {};
             cat.items.forEach(item => {
                 const itemLitres = item.liters || 1.0;
-                const val = isLitrahintaCat ? (item.basePrice / itemLitres) : item.basePrice;
+                const itemDeposit = item.deposit || 0;
+                // Litrahinnassa otetaan pantti huomioon (vähennetään), muuten ei
+                const val = isLitrahintaCat ? ((item.basePrice - itemDeposit) / itemLitres) : item.basePrice;
                 if (storeBestValues[item.store] === undefined || val < storeBestValues[item.store]) {
                     storeBestValues[item.store] = val;
                 }
@@ -198,7 +200,8 @@
             // 2. Suodatetaan mukaan vain parhaan arvon tuotteet
             const bestItems = cat.items.filter(item => {
                 const itemLitres = item.liters || 1.0;
-                const val = isLitrahintaCat ? (item.basePrice / itemLitres) : item.basePrice;
+                const itemDeposit = item.deposit || 0;
+                const val = isLitrahintaCat ? ((item.basePrice - itemDeposit) / itemLitres) : item.basePrice;
                 return Math.abs(val - storeBestValues[item.store]) < 0.02;
             });
 
@@ -211,7 +214,8 @@
                         distance: item.distance,
                         products: new Set(),
                         basePrice: item.basePrice,
-                        liters: item.liters || 1.0
+                        liters: item.liters || 1.0,
+                        deposit: item.deposit || 0
                     };
                 }
                 storeMap[item.store].products.add(item.product);
@@ -223,23 +227,32 @@
                 const addCostICE = (dt.roundTripKm * costPerKmICE) / cat.buyQuantity;
                 const productNames = Array.from(storeObj.products).join(" / ");
                 const itemLitres = storeObj.liters;
+                const itemDeposit = storeObj.deposit;
 
-                const effEV = storeObj.basePrice + addCostEV;
-                const effICE = storeObj.basePrice + addCostICE;
+                const basePrice = storeObj.basePrice; // Täysi hinta hyllyllä
+                const netBasePrice = basePrice - itemDeposit; // Hinta ilman panttia litrahintaa varten
+
+                const effEV = basePrice + addCostEV;
+                const effICE = basePrice + addCostICE;
+
+                // Litrahinta lasketaan pantittomasta hinnasta + matkakuluista
+                const effEVPerL = (netBasePrice + addCostEV) / itemLitres;
+                const effICEPerL = (netBasePrice + addCostICE) / itemLitres;
+                const basePerL = netBasePrice / itemLitres;
 
                 return {
                     store: storeObj.store,
                     distance: storeObj.distance,
                     product: productNames,
-                    basePrice: storeObj.basePrice,
+                    basePrice: basePrice,
                     liters: itemLitres,
                     roundTripKm: dt.roundTripKm,
                     driveTime: dt.timeStr,
                     effEV: effEV,
                     effICE: effICE,
-                    effEVPerL: effEV / itemLitres,
-                    effICEPerL: effICE / itemLitres,
-                    basePerL: storeObj.basePrice / itemLitres
+                    effEVPerL: effEVPerL,
+                    effICEPerL: effICEPerL,
+                    basePerL: basePerL
                 };
             });
 
@@ -262,7 +275,7 @@
                 const priceStr = priceVal.toFixed(2);
                 const baseStr = item.basePrice.toFixed(2);
                 const unitLabel = isLitrahinta ? '€ / l' : '/ kpl';
-                const baseUnitLabel = isLitrahinta ? `${item.basePerL.toFixed(2)} €/l` : `Tuotehinta: ${baseStr} €`;
+                const baseUnitLabel = isLitrahinta ? `${item.basePerL.toFixed(2)} €/l (ilman panttia)` : `Tuotehinta: ${baseStr} €`;
 
                 const badgeColor = index === 0 ? `bg-${colorTheme}-500/20 text-${colorTheme}-400 border border-${colorTheme}-500/30` : 'bg-slate-700 text-slate-300';
 
