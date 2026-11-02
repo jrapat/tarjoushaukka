@@ -445,10 +445,8 @@ def check_product_group(
                     if match:
                         total_val = float(match.group(1).replace(",", "."))
                         qty = p.get("qtyMultiplier", 1)
-                        # Lasketaan yksikköhinta kampanjan mukaan (esim. 7 € / 3 kpl -> 2.33 €)
                         unit_val = total_val / qty
 
-                        # Jos kampanjassa litrat/pantit skaalautuvat kappalemäärän mukaan
                         item_liters = liters * qty if qty > 1 and liters < 5 else liters
                         item_deposit = total_deposit * qty if qty > 1 and total_deposit < 5 else total_deposit
 
@@ -537,8 +535,32 @@ if __name__ == "__main__":
             "https://www.k-ruoka.fi/kauppa/tuotehaku?haku=Pepsi%20max&tuote=pepsi-max-033l-tlk-6-pack-6413605015555"
         ),
         group_label="6-packit",
-        target_store_count=50,
+        target_store_count=100,
         required_keywords=["6"],
+        exclude_keywords=["dippi", "taffel", "mauste", "kastike", "chip"],
+        liters=1.98,
+        total_deposit=0.90,
+    )
+
+    res_7up = check_product_group(
+        search_url=(
+            "https://www.k-ruoka.fi/kauppa/tuotehaku/juomat/virvoitusjuomat?tuote=7up-zero-sugar-033l-tlk-6-pack-6413605254411"
+        ),
+        group_label="7up 6-packit",
+        target_store_count=100,
+        required_keywords=["7up"],
+        exclude_keywords=["dippi", "taffel", "mauste", "kastike", "chip"],
+        liters=1.98,
+        total_deposit=0.90,
+    )
+
+    res_mountaindew = check_product_group(
+        search_url=(
+            "https://www.k-ruoka.fi/kauppa/tuotehaku/juomat/virvoitusjuomat?tuote=mountain-dew-no-sugar-033l-tlk-6-pack-6413605191600"
+        ),
+        group_label="Mountain Dew 6-packit",
+        target_store_count=100,
+        required_keywords=["mountain", "dew"],
         exclude_keywords=["dippi", "taffel", "mauste", "kastike", "chip"],
         liters=1.98,
         total_deposit=0.90,
@@ -548,12 +570,24 @@ if __name__ == "__main__":
         search_url=(
             "https://www.k-ruoka.fi/kauppa/tuotehaku?haku=Muumi&tuote=muumi-metsamansikka-sokeriton-05l-kmp-6415600566667"
         ),
-        group_label="Muumilimu",
-        target_store_count=50,
-        required_keywords=["0,5l", "Muumi"],
+        group_label="Muumilimu (0.5L)",
+        target_store_count=100,
+        required_keywords=["0,5l"],
         exclude_keywords=["dippi", "taffel", "mauste", "kastike", "chip"],
         liters=0.5,
         total_deposit=0.20,
+    )
+
+    res_muumilimu_6pack = check_product_group(
+        search_url=(
+            "https://www.k-ruoka.fi/kauppa/tuotehaku/juomat/virvoitusjuomat?tuote=muumi-metsamansikka-033l-tlk-6-pack-6415600591737"
+        ),
+        group_label="Muumilimu 6-pack (Tölkki)",
+        target_store_count=100,
+        required_keywords=["muumi"],
+        exclude_keywords=["dippi", "taffel", "mauste", "kastike", "chip"],
+        liters=1.98,
+        total_deposit=0.90,
     )
 
     res_drpepper = check_product_group(
@@ -576,7 +610,7 @@ if __name__ == "__main__":
         target_store_count=50,
         required_keywords=["julmust"],
         exclude_keywords=["dippi", "taffel", "mauste", "kastike", "chip"],
-        liters=0.5,
+        liters=0.33,
         total_deposit=0.15,
     )
 
@@ -592,13 +626,16 @@ if __name__ == "__main__":
         total_deposit=0.15,
     )
 
-    # Kokonaisvertailuun kerätään vain limut ja energiajuomat (Novelle jätetty pois)
+    # Kokonaisvertailuun kerätään limut ja energiajuomat (Novelle jätetty pois)
     res_kokonais = (
         res_limut
         + res_18pack
         + res_18pack_tulkki
         + res_6pack
+        + res_7up
+        + res_mountaindew
         + res_muumilimu
+        + res_muumilimu_6pack
         + res_drpepper
         + res_julmust
         + res_voltcola
@@ -627,10 +664,17 @@ if __name__ == "__main__":
             "items": res_18pack_tulkki,
         },
         "6-pack": {"name": "6-packit", "buyQuantity": 4, "items": res_6pack},
+        "7up": {"name": "7up 6-packit", "buyQuantity": 4, "items": res_7up},
+        "mountaindew": {"name": "Mountain Dew 6-packit", "buyQuantity": 4, "items": res_mountaindew},
         "muumilimu": {
             "name": "Muumilimu (0.5L)",
             "buyQuantity": 4,
             "items": res_muumilimu,
+        },
+        "muumilimu-6pack": {
+            "name": "Muumilimu 6-pack (Tölkki)",
+            "buyQuantity": 4,
+            "items": res_muumilimu_6pack,
         },
         "dr-pepper": {"name": "Dr. Pepper", "buyQuantity": 4, "items": res_drpepper},
         "julmust": {"name": "Nocco Julmust", "buyQuantity": 4, "items": res_julmust},
