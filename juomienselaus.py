@@ -7,7 +7,7 @@ from playwright.sync_api import sync_playwright
 # Tarkistetaan automaattisesti, ajetaanko skriptiä GitHub Actionsissa (CI) vai omalla koneella
 is_ci = os.getenv("CI") is not None
 
-# Päivitetty etäisyyssanakirja Tuusulasta (km yhdensuuntaisesti)
+# Täydennetty etäisyyssanakirja Tuusulasta (km yhdensuuntaisesti)
 TUUSULA_DISTANCES = {
     "Hyrrä": 1,
     "Hyrylä": 1,
@@ -361,26 +361,47 @@ def check_product_group(
                 store_products = page.evaluate("""
                     () => {
                         const items = [];
+                        const parseCard = (card) => {
+                            const nameEl = card.querySelector('h3, h4, [class*="title"], [class*="Name"]');
+                            const priceEl = card.querySelector('[class*="price"], [class*="Price"], [class*="price-container"]');
+                            const extraEl = card.querySelector('[class*="ProductPrice__Extra"], [class*="Extra"]');
+                            
+                            if (nameEl) {
+                                const name = nameEl.innerText.trim().replace(/\\n/g, ' ');
+                                let price = priceEl ? priceEl.innerText.trim().replace(/\\n/g, ' ') : '';
+                                const extraText = extraEl ? extraEl.innerText.trim() : '';
+
+                                let qtyMultiplier = 1;
+                                if (extraText) {
+                                    const matchQty = extraText.match(/\/(\d+)\s*kpl/i);
+                                    if (matchQty) {
+                                        qtyMultiplier = parseInt(matchQty[1], 10);
+                                    }
+                                }
+
+                                if (name.length > 3 && !items.some(i => i.name === name)) {
+                                    items.push({ name, price, qtyMultiplier });
+                                }
+                            }
+                        };
+
                         const h1 = document.querySelector('h1');
                         const mainPriceEl = document.querySelector('[class*="price-container"], [class*="Price"], [class*="price"]');
+                        const extraEl = document.querySelector('[class*="ProductPrice__Extra"], [class*="Extra"]');
                         if (h1) {
                             const name = h1.innerText.trim().replace(/\\n/g, ' ');
                             const price = mainPriceEl ? mainPriceEl.innerText.trim().replace(/\\n/g, ' ') : '';
-                            items.push({ name, price });
+                            const extraText = extraEl ? extraEl.innerText.trim() : '';
+                            let qtyMultiplier = 1;
+                            if (extraText) {
+                                const matchQty = extraText.match(/\/(\d+)\s*kpl/i);
+                                if (matchQty) { qtyMultiplier = parseInt(matchQty[1], 10); }
+                            }
+                            items.push({ name, price, qtyMultiplier });
                         }
 
                         const cards = document.querySelectorAll('article, [class*="productCard"], [class*="ProductCard"], a[href*="/kauppa/tuote/"]');
-                        cards.forEach(card => {
-                            const nameEl = card.querySelector('h3, h4, [class*="title"], [class*="Name"]');
-                            const priceEl = card.querySelector('[class*="price"], [class*="Price"]');
-                            if (nameEl) {
-                                const name = nameEl.innerText.trim().replace(/\\n/g, ' ');
-                                const price = priceEl ? priceEl.innerText.trim().replace(/\\n/g, ' ') : '';
-                                if (name.length > 3 && !items.some(i => i.name === name)) {
-                                    items.push({ name, price });
-                                }
-                            }
-                        });
+                        cards.forEach(parseCard);
                         return items;
                     }
                 """)
@@ -420,16 +441,24 @@ def check_product_group(
                     if any(ex in p_name for ex in exclude_keywords):
                         continue
 
-                    match = re.search(r"(\d+[\.,]\d+)\s*€", p["price"])
+                    match = re.search(r"(\d+[\.,]\d+|\d+)\s*€", p["price"])
                     if match:
-                        raw_val = float(match.group(1).replace(",", "."))
+                        total_val = float(match.group(1).replace(",", "."))
+                        qty = p.get("qtyMultiplier", 1)
+                        # Lasketaan yksikköhinta kampanjan mukaan (esim. 7 € / 3 kpl -> 2.33 €)
+                        unit_val = total_val / qty
+
+                        # Jos kampanjassa litrat/pantit skaalautuvat kappalemäärän mukaan
+                        item_liters = liters * qty if qty > 1 and liters < 5 else liters
+                        item_deposit = total_deposit * qty if qty > 1 and total_deposit < 5 else total_deposit
+
                         results.append({
                             "store": s_name,
                             "distance": s_dist,
                             "product": p["name"],
-                            "basePrice": raw_val,
-                            "liters": liters,
-                            "deposit": total_deposit,
+                            "basePrice": unit_val,
+                            "liters": item_liters,
+                            "deposit": item_deposit,
                         })
 
     return results
@@ -464,19 +493,19 @@ if __name__ == "__main__":
         required_keywords=["24"],
         exclude_keywords=["novelle", "kivennäisvesi", "vichy"],
         liters=7.92,
-        total_deposit=2.40,  # 24 * 0.10€
+        total_deposit=2.40,
     )
 
     res_novelle = check_product_group(
         search_url=(
             "https://www.k-ruoka.fi/kauppa/tuotehaku?haku=novelle&tuote=novelle-kivennaisve-033l-kmp-24-pack-6413601003846"
         ),
-        group_label="24-packit (Novelle Kivennäisvedet)",
+        group_label="24-packit (Novelle)",
         target_store_count=50,
         required_keywords=["novelle"],
         exclude_keywords=[],
         liters=7.92,
-        total_deposit=2.40,  # 24 * 0.10€
+        total_deposit=2.40,
     )
 
     res_18pack = check_product_group(
@@ -488,7 +517,7 @@ if __name__ == "__main__":
         required_keywords=["18"],
         exclude_keywords=["novelle", "kivennäisvesi"],
         liters=5.94,
-        total_deposit=1.80,  # 18 * 0.10€
+        total_deposit=1.80,
     )
 
     res_18pack_tulkki = check_product_group(
@@ -500,7 +529,7 @@ if __name__ == "__main__":
         required_keywords=["18"],
         exclude_keywords=["novelle", "kivennäisvesi"],
         liters=5.94,
-        total_deposit=2.70,  # 18 * 0.15€
+        total_deposit=2.70,
     )
 
     res_6pack = check_product_group(
@@ -512,7 +541,7 @@ if __name__ == "__main__":
         required_keywords=["6"],
         exclude_keywords=["dippi", "taffel", "mauste", "kastike", "chip"],
         liters=1.98,
-        total_deposit=0.90,  # 6 * 0.15€
+        total_deposit=0.90,
     )
 
     res_muumilimu = check_product_group(
@@ -521,10 +550,10 @@ if __name__ == "__main__":
         ),
         group_label="Muumilimu",
         target_store_count=50,
-        required_keywords=["0,5l"],
+        required_keywords=["0,5l", "Muumi"],
         exclude_keywords=["dippi", "taffel", "mauste", "kastike", "chip"],
-        liters=3.0,
-        total_deposit=1.20,
+        liters=0.5,
+        total_deposit=0.20,
     )
 
     res_drpepper = check_product_group(
@@ -536,7 +565,7 @@ if __name__ == "__main__":
         required_keywords=["dr", "pepper"],
         exclude_keywords=["dippi", "taffel", "mauste", "kastike", "chip"],
         liters=1.98,
-        total_deposit=0.90,  # 6 * 0.15€
+        total_deposit=0.90,
     )
 
     res_julmust = check_product_group(
@@ -547,8 +576,8 @@ if __name__ == "__main__":
         target_store_count=50,
         required_keywords=["julmust"],
         exclude_keywords=["dippi", "taffel", "mauste", "kastike", "chip"],
-        liters=1.98,
-        total_deposit=0.90,  # 6 * 0.15€
+        liters=0.5,
+        total_deposit=0.15,
     )
 
     res_voltcola = check_product_group(
