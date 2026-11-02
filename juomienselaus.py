@@ -423,7 +423,6 @@ def check_product_group(
                     match = re.search(r"(\d+[\.,]\d+)\s*€", p["price"])
                     if match:
                         raw_val = float(match.group(1).replace(",", "."))
-                        # Hinta pidetään kokonaisena (pohjahinta sisältää pantin), mutta pantti tallennetaan erikseen litrahintalaskentaa varten
                         results.append({
                             "store": s_name,
                             "distance": s_dist,
@@ -524,8 +523,8 @@ if __name__ == "__main__":
         target_store_count=50,
         required_keywords=["0,5l"],
         exclude_keywords=["dippi", "taffel", "mauste", "kastike", "chip"],
-        liters=0.5,
-        total_deposit=0.20,
+        liters=3.0,
+        total_deposit=1.20,
     )
 
     res_drpepper = check_product_group(
@@ -534,21 +533,46 @@ if __name__ == "__main__":
         ),
         group_label="Dr. Pepper",
         target_store_count=50,
-        required_keywords=["dr", "pepper"],  # Vaaditaan nimenomaan Dr. Pepper
+        required_keywords=["dr", "pepper"],
         exclude_keywords=["dippi", "taffel", "mauste", "kastike", "chip"],
         liters=1.98,
         total_deposit=0.90,  # 6 * 0.15€
     )
 
-    # Kerätään kaikki tuotteet kokonaisvertailuun
+    res_julmust = check_product_group(
+        search_url=(
+            "https://www.k-ruoka.fi/kauppa/tuotehaku?haku=julmust&tuote=nocco-julmust-033l-tlk-7340131605853"
+        ),
+        group_label="Nocco Julmust",
+        target_store_count=50,
+        required_keywords=["julmust"],
+        exclude_keywords=["dippi", "taffel", "mauste", "kastike", "chip"],
+        liters=1.98,
+        total_deposit=0.90,  # 6 * 0.15€
+    )
+
+    res_voltcola = check_product_group(
+        search_url=(
+            "https://www.k-ruoka.fi/kauppa/tuotehaku?haku=volt%20cola&tuote=volt-cola-energy-05l-tlk-4027752000795"
+        ),
+        group_label="Volt Cola",
+        target_store_count=50,
+        required_keywords=["volt", "cola"],
+        exclude_keywords=["dippi", "taffel", "mauste", "kastike", "chip"],
+        liters=0.5,
+        total_deposit=0.15,
+    )
+
+    # Kokonaisvertailuun kerätään vain limut ja energiajuomat (Novelle jätetty pois)
     res_kokonais = (
         res_limut
-        + res_novelle
         + res_18pack
         + res_18pack_tulkki
         + res_6pack
         + res_muumilimu
         + res_drpepper
+        + res_julmust
+        + res_voltcola
     )
 
     output_data = {
@@ -580,6 +604,8 @@ if __name__ == "__main__":
             "items": res_muumilimu,
         },
         "dr-pepper": {"name": "Dr. Pepper", "buyQuantity": 4, "items": res_drpepper},
+        "julmust": {"name": "Nocco Julmust", "buyQuantity": 4, "items": res_julmust},
+        "volt-cola": {"name": "Volt Cola (0.5L)", "buyQuantity": 4, "items": res_voltcola},
     }
 
     with open("data.json", "w", encoding="utf-8") as f:
