@@ -222,13 +222,19 @@ def get_distance(store_name: str) -> float:
 def set_store_to_hyrra(page):
     try:
         page.goto("https://www.k-ruoka.fi/kauppa/k-supermarket-hyrra", timeout=30000)
+        # Annetaan hetki aikaa evästevalikon skripteille latautua rauhassa
         page.wait_for_timeout(2000)
+        
         onetrust_btn = page.locator(
             '#onetrust-accept-btn-handler, button:has-text("Hyväksy kaikki")'
         )
         if onetrust_btn.count() > 0:
-            onetrust_btn.first.click(force=True, timeout=3000)
-            page.wait_for_timeout(1000)
+            try:
+                onetrust_btn.first.click(force=True, timeout=5000)
+                page.wait_for_timeout(1000) # Odotetaan hetki valikon sulkeutumista
+            except Exception:
+                pass
+                
         select_btn = page.locator(
             'button:has-text("Valitse kaupaksi"), button:has-text("Valitse tämä kauppa")'
         )
@@ -246,19 +252,19 @@ def get_store_links_from_page(page):
             avail_btn = page.locator('text="Saatavuus muissa kaupoissa"')
 
         if avail_btn.count() > 0:
-            avail_btn.first.click(timeout=3000)
-            page.wait_for_timeout(1000)
-            for _ in range(6):
+            avail_btn.first.click(timeout=2000)
+            page.wait_for_timeout(400)
+            for _ in range(4):
                 more_btn = page.locator(
                     'button:has-text("Näytä lisää"), button:has-text("Lataa lisää")'
                 )
                 if more_btn.count() > 0 and more_btn.first.is_visible():
                     try:
-                        more_btn.first.click(timeout=1000)
+                        more_btn.first.click(timeout=500)
                     except Exception:
                         pass
-                page.evaluate("window.scrollBy(0, 1000);")
-                page.wait_for_timeout(400)
+                page.evaluate("window.scrollBy(0, 1500);")
+                page.wait_for_timeout(200)
     except Exception:
         pass
 
@@ -322,8 +328,8 @@ def check_product_group(
         )
 
         set_store_to_hyrra(page)
-        page.goto(search_url, wait_until="domcontentloaded", timeout=60000)
-        page.wait_for_timeout(1500)
+        page.goto(search_url, wait_until="domcontentloaded", timeout=30000)
+        page.wait_for_timeout(800)
 
         stores_to_visit = []
         visited_urls = set()
@@ -355,8 +361,8 @@ def check_product_group(
             )
 
             try:
-                page.goto(store_url, wait_until="domcontentloaded", timeout=30000)
-                page.wait_for_timeout(1000)
+                page.goto(store_url, wait_until="domcontentloaded", timeout=15000)
+                page.wait_for_timeout(400)
 
                 store_products = page.evaluate("""
                     () => {
@@ -447,8 +453,9 @@ def check_product_group(
                         qty = p.get("qtyMultiplier", 1)
                         unit_val = total_val / qty
 
-                        item_liters = liters * qty if qty > 1 and liters < 5 else liters
-                        item_deposit = total_deposit * qty if qty > 1 and total_deposit < 5 else total_deposit
+                        # KORJATTU: Kerrotaan litrat ja pantit aina oikein kampanjan kappalemäärällä (qty)
+                        item_liters = liters * qty
+                        item_deposit = total_deposit * qty
 
                         results.append({
                             "store": s_name,
@@ -535,7 +542,7 @@ if __name__ == "__main__":
             "https://www.k-ruoka.fi/kauppa/tuotehaku?haku=Pepsi%20max&tuote=pepsi-max-033l-tlk-6-pack-6413605015555"
         ),
         group_label="6-packit",
-        target_store_count=100,
+        target_store_count=50,
         required_keywords=["6"],
         exclude_keywords=["dippi", "taffel", "mauste", "kastike", "chip"],
         liters=1.98,
@@ -547,7 +554,7 @@ if __name__ == "__main__":
             "https://www.k-ruoka.fi/kauppa/tuotehaku/juomat/virvoitusjuomat?tuote=7up-zero-sugar-033l-tlk-6-pack-6413605254411"
         ),
         group_label="7up 6-packit",
-        target_store_count=100,
+        target_store_count=50,
         required_keywords=["7up"],
         exclude_keywords=["dippi", "taffel", "mauste", "kastike", "chip"],
         liters=1.98,
@@ -559,7 +566,7 @@ if __name__ == "__main__":
             "https://www.k-ruoka.fi/kauppa/tuotehaku/juomat/virvoitusjuomat?tuote=mountain-dew-no-sugar-033l-tlk-6-pack-6413605191600"
         ),
         group_label="Mountain Dew 6-packit",
-        target_store_count=100,
+        target_store_count=50,
         required_keywords=["mountain", "dew"],
         exclude_keywords=["dippi", "taffel", "mauste", "kastike", "chip"],
         liters=1.98,
@@ -571,7 +578,7 @@ if __name__ == "__main__":
             "https://www.k-ruoka.fi/kauppa/tuotehaku?haku=Muumi&tuote=muumi-metsamansikka-sokeriton-05l-kmp-6415600566667"
         ),
         group_label="Muumilimu (0.5L)",
-        target_store_count=100,
+        target_store_count=50,
         required_keywords=["0,5l"],
         exclude_keywords=["dippi", "taffel", "mauste", "kastike", "chip"],
         liters=0.5,
@@ -583,7 +590,7 @@ if __name__ == "__main__":
             "https://www.k-ruoka.fi/kauppa/tuotehaku/juomat/virvoitusjuomat?tuote=muumi-metsamansikka-033l-tlk-6-pack-6415600591737"
         ),
         group_label="Muumilimu 6-pack (Tölkki)",
-        target_store_count=100,
+        target_store_count=50,
         required_keywords=["muumi"],
         exclude_keywords=["dippi", "taffel", "mauste", "kastike", "chip"],
         liters=1.98,
