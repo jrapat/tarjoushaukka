@@ -9,6 +9,16 @@ is_ci = os.getenv("CI") is not None
 
 # Täydennetty etäisyyssanakirja Tuusulasta (km yhdensuuntaisesti)
 TUUSULA_DISTANCES = {
+    "K-Supermarket Kamppi": 32.0,
+    "K-Supermarket Söderkulla": 35.0,
+    "K-Market Kivikko": 23.0,
+    "K-Supermarket Grani": 35.0,
+    "K-Supermarket Mankkaa": 34.0,
+    "K-Supermarket Lippulaiva": 41.0,
+    "K-Market Iivisniemi": 42.0,
+    "K-Market Latokaski": 39.0,
+    "K-Supermarket Aurora": 31.0,
+    "K-Supermarket Suurpelto": 36.0,
     "Hyrrä": 1,
     "Hyrylä": 1,
     "Lahela": 3,
@@ -222,7 +232,6 @@ def get_distance(store_name: str) -> float:
 def set_store_to_hyrra(page):
     try:
         page.goto("https://www.k-ruoka.fi/kauppa/k-supermarket-hyrra", timeout=30000)
-        # Annetaan hetki aikaa evästevalikon skripteille latautua rauhassa
         page.wait_for_timeout(2000)
         
         onetrust_btn = page.locator(
@@ -231,7 +240,7 @@ def set_store_to_hyrra(page):
         if onetrust_btn.count() > 0:
             try:
                 onetrust_btn.first.click(force=True, timeout=5000)
-                page.wait_for_timeout(1000) # Odotetaan hetki valikon sulkeutumista
+                page.wait_for_timeout(1000)
             except Exception:
                 pass
                 
@@ -370,40 +379,25 @@ def check_product_group(
                         const parseCard = (card) => {
                             const nameEl = card.querySelector('h3, h4, [class*="title"], [class*="Name"]');
                             const priceEl = card.querySelector('[class*="price"], [class*="Price"], [class*="price-container"]');
-                            const extraEl = card.querySelector('[class*="ProductPrice__Extra"], [class*="Extra"]');
                             
                             if (nameEl) {
                                 const name = nameEl.innerText.trim().replace(/\\n/g, ' ');
-                                let price = priceEl ? priceEl.innerText.trim().replace(/\\n/g, ' ') : '';
-                                const extraText = extraEl ? extraEl.innerText.trim() : '';
-
-                                let qtyMultiplier = 1;
-                                if (extraText) {
-                                    const matchQty = extraText.match(/\/(\d+)\s*kpl/i);
-                                    if (matchQty) {
-                                        qtyMultiplier = parseInt(matchQty[1], 10);
-                                    }
-                                }
+                                const price = priceEl ? priceEl.innerText.trim().replace(/\\n/g, ' ') : '';
+                                const cardText = card.innerText.trim().replace(/\\n/g, ' ');
 
                                 if (name.length > 3 && !items.some(i => i.name === name)) {
-                                    items.push({ name, price, qtyMultiplier });
+                                    items.push({ name, price, cardText });
                                 }
                             }
                         };
 
                         const h1 = document.querySelector('h1');
                         const mainPriceEl = document.querySelector('[class*="price-container"], [class*="Price"], [class*="price"]');
-                        const extraEl = document.querySelector('[class*="ProductPrice__Extra"], [class*="Extra"]');
                         if (h1) {
                             const name = h1.innerText.trim().replace(/\\n/g, ' ');
                             const price = mainPriceEl ? mainPriceEl.innerText.trim().replace(/\\n/g, ' ') : '';
-                            const extraText = extraEl ? extraEl.innerText.trim() : '';
-                            let qtyMultiplier = 1;
-                            if (extraText) {
-                                const matchQty = extraText.match(/\/(\d+)\s*kpl/i);
-                                if (matchQty) { qtyMultiplier = parseInt(matchQty[1], 10); }
-                            }
-                            items.push({ name, price, qtyMultiplier });
+                            const cardText = document.body.innerText.trim().replace(/\\n/g, ' ');
+                            items.push({ name, price, cardText });
                         }
 
                         const cards = document.querySelectorAll('article, [class*="productCard"], [class*="ProductCard"], a[href*="/kauppa/tuote/"]');
@@ -450,20 +444,24 @@ def check_product_group(
                     match = re.search(r"(\d+[\.,]\d+|\d+)\s*€", p["price"])
                     if match:
                         total_val = float(match.group(1).replace(",", "."))
-                        qty = p.get("qtyMultiplier", 1)
-                        unit_val = total_val / qty
+                        
+                        # Etsitään monipakkauksen määrä (2 kpl, 3 kpl, 5 kpl jne.) hintatekstistä tai kortilta
+                        combined_text = f"{p.get('price', '')} {p.get('cardText', '')}"
+                        qty = 1
+                        qty_match = re.search(r"(?:/|\b)([2345])\s*kpl", combined_text, re.IGNORECASE)
+                        if qty_match:
+                            qty = int(qty_match.group(1))
 
-                        # KORJATTU: Kerrotaan litrat ja pantit aina oikein kampanjan kappalemäärällä (qty)
-                        item_liters = liters * qty
-                        item_deposit = total_deposit * qty
+                        # Lasketaan yksikköhinta (esim. 7 € / 3 kpl = 2.33 €)
+                        unit_val = total_val / qty
 
                         results.append({
                             "store": s_name,
                             "distance": s_dist,
                             "product": p["name"],
                             "basePrice": unit_val,
-                            "liters": item_liters,
-                            "deposit": item_deposit,
+                            "liters": liters,       # Yhden yksikön litrat (esim. 0.33 l)
+                            "deposit": total_deposit, # Yhden yksikön pantti (esim. 0.15 €)
                         })
 
     return results
@@ -542,7 +540,7 @@ if __name__ == "__main__":
             "https://www.k-ruoka.fi/kauppa/tuotehaku?haku=Pepsi%20max&tuote=pepsi-max-033l-tlk-6-pack-6413605015555"
         ),
         group_label="6-packit",
-        target_store_count=50,
+        target_store_count=100,
         required_keywords=["6"],
         exclude_keywords=["dippi", "taffel", "mauste", "kastike", "chip"],
         liters=1.98,
@@ -554,7 +552,7 @@ if __name__ == "__main__":
             "https://www.k-ruoka.fi/kauppa/tuotehaku/juomat/virvoitusjuomat?tuote=7up-zero-sugar-033l-tlk-6-pack-6413605254411"
         ),
         group_label="7up 6-packit",
-        target_store_count=50,
+        target_store_count=100,
         required_keywords=["7up"],
         exclude_keywords=["dippi", "taffel", "mauste", "kastike", "chip"],
         liters=1.98,
@@ -566,7 +564,7 @@ if __name__ == "__main__":
             "https://www.k-ruoka.fi/kauppa/tuotehaku/juomat/virvoitusjuomat?tuote=mountain-dew-no-sugar-033l-tlk-6-pack-6413605191600"
         ),
         group_label="Mountain Dew 6-packit",
-        target_store_count=50,
+        target_store_count=100,
         required_keywords=["mountain", "dew"],
         exclude_keywords=["dippi", "taffel", "mauste", "kastike", "chip"],
         liters=1.98,
@@ -578,7 +576,7 @@ if __name__ == "__main__":
             "https://www.k-ruoka.fi/kauppa/tuotehaku?haku=Muumi&tuote=muumi-metsamansikka-sokeriton-05l-kmp-6415600566667"
         ),
         group_label="Muumilimu (0.5L)",
-        target_store_count=50,
+        target_store_count=100,
         required_keywords=["0,5l"],
         exclude_keywords=["dippi", "taffel", "mauste", "kastike", "chip"],
         liters=0.5,
@@ -590,7 +588,7 @@ if __name__ == "__main__":
             "https://www.k-ruoka.fi/kauppa/tuotehaku/juomat/virvoitusjuomat?tuote=muumi-metsamansikka-033l-tlk-6-pack-6415600591737"
         ),
         group_label="Muumilimu 6-pack (Tölkki)",
-        target_store_count=50,
+        target_store_count=100,
         required_keywords=["muumi"],
         exclude_keywords=["dippi", "taffel", "mauste", "kastike", "chip"],
         liters=1.98,
@@ -602,7 +600,7 @@ if __name__ == "__main__":
             "https://www.k-ruoka.fi/kauppa/tuotehaku/juomat/virvoitusjuomat?tuote=dr-pepper-original-033l-tlk-6-pack-6415600596589"
         ),
         group_label="Dr. Pepper",
-        target_store_count=50,
+        target_store_count=100,
         required_keywords=["dr", "pepper"],
         exclude_keywords=["dippi", "taffel", "mauste", "kastike", "chip"],
         liters=1.98,
@@ -614,7 +612,7 @@ if __name__ == "__main__":
             "https://www.k-ruoka.fi/kauppa/tuotehaku?haku=julmust&tuote=nocco-julmust-033l-tlk-7340131605853"
         ),
         group_label="Nocco Julmust",
-        target_store_count=50,
+        target_store_count=100,
         required_keywords=["julmust"],
         exclude_keywords=["dippi", "taffel", "mauste", "kastike", "chip"],
         liters=0.33,
