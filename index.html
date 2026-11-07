@@ -190,7 +190,6 @@
             cat.items.forEach(item => {
                 const itemLitres = item.liters || 1.0;
                 const itemDeposit = item.deposit || 0;
-                // Litrahinnassa otetaan pantti huomioon (vähennetään), muuten ei
                 const val = isLitrahintaCat ? ((item.basePrice - itemDeposit) / itemLitres) : item.basePrice;
                 if (storeBestValues[item.store] === undefined || val < storeBestValues[item.store]) {
                     storeBestValues[item.store] = val;
@@ -205,11 +204,12 @@
                 return Math.abs(val - storeBestValues[item.store]) < 0.02;
             });
 
-            // 3. Yhdistetään saman kaupan saman arvon tuotteet
+            // 3. Yhdistetään saman kaupan tuotteet, säilyttäen tuotekohtaiset litrat ja hinnat
             const storeMap = {};
             bestItems.forEach(item => {
-                if (!storeMap[item.store]) {
-                    storeMap[item.store] = {
+                const key = `${item.store}_${item.basePrice}_${item.liters}`;
+                if (!storeMap[key]) {
+                    storeMap[key] = {
                         store: item.store,
                         distance: item.distance,
                         products: new Set(),
@@ -218,7 +218,7 @@
                         deposit: item.deposit || 0
                     };
                 }
-                storeMap[item.store].products.add(item.product);
+                storeMap[key].products.add(item.product);
             });
 
             const processedItems = Object.values(storeMap).map(storeObj => {
@@ -229,13 +229,12 @@
                 const itemLitres = storeObj.liters;
                 const itemDeposit = storeObj.deposit;
 
-                const basePrice = storeObj.basePrice; // Täysi hinta hyllyllä
-                const netBasePrice = basePrice - itemDeposit; // Hinta ilman panttia litrahintaa varten
+                const basePrice = storeObj.basePrice; 
+                const netBasePrice = basePrice - itemDeposit; 
 
                 const effEV = basePrice + addCostEV;
                 const effICE = basePrice + addCostICE;
 
-                // Litrahinta lasketaan pantittomasta hinnasta + matkakuluista
                 const effEVPerL = (netBasePrice + addCostEV) / itemLitres;
                 const effICEPerL = (netBasePrice + addCostICE) / itemLitres;
                 const basePerL = netBasePrice / itemLitres;
